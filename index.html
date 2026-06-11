@@ -93,9 +93,7 @@
     background: var(--card); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 22px 22px 18px;
     box-shadow: var(--shadow); position: relative; overflow: hidden;
-    transition: opacity .25s ease, transform .25s ease;
   }
-  .card.dim { opacity: 0.25; }
   .card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
     background: var(--dc, var(--sage));
@@ -134,11 +132,10 @@
   .item {
     background: var(--card); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 18px;
-    box-shadow: var(--shadow); transition: opacity .25s ease;
+    box-shadow: var(--shadow);
     display: flex; flex-direction: column;
     position: relative;
   }
-  .item.dim { opacity: 0.25; }
   .item .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
   .tag { font-size: 11.5px; padding: 2px 9px; border-radius: 999px; color: #fff; }
   .item h4 { font-size: 15.5px; font-weight: 700; line-height: 1.45; }
@@ -263,7 +260,8 @@
       "Stem 分離:把詩歌拆成人聲/鼓/貝斯,做練團分軌與音控教材",
       "依主領音域自動移調、規劃 setlist 調性銜接",
       "混音問題診斷:描述症狀,AI 給 EQ/壓縮方向",
-      "音控課教材與簡報生成(已有專用 Skill)"
+      "音控課教材與簡報生成(已有專用 Skill)",
+      "技術文件知識庫:Stage Setting 訊號路由表變成新同工可白話提問的查詢系統"
     ],
     "tools": ["Klangio", "Songscription", "Moises", "Suno", "Canva 簡報 Skill"]
   },
@@ -295,7 +293,7 @@
     "uses": [
       "會議錄音轉逐字稿,自動整理決議與待辦",
       "章程、辦法、SOP 草擬與條文一致性檢查",
-      "年度事工計畫與預算文件的結構化整理",
+      "預算管理:預算 vs 實際支出自動對帳、半年度結算,設備汰換週期提醒",
       "公告、週報、通知信的草稿生成"
     ],
     "tools": ["錄音轉寫 + Claude 摘要", "Docs 範本", "Gmail 草稿連接器"]
@@ -307,7 +305,9 @@
       "教案與課程大綱生成(已有主日學 Skill,讀舊課程保持系列感)",
       "互動問答、遊戲、勞作點子,依年齡層自動調整難度",
       "課程插圖與學習單生成",
-      "同一個故事改寫成低年級/高年級兩種版本"
+      "同一個故事改寫成低年級/高年級兩種版本",
+      "注音歌詞投影片:歌詞貼上→自動注音→套版輸出,兒主敬拜不再手工標注音",
+      "教材資源庫:課程分配表自動追進度、催收授課附註;給老師群的通知信草稿"
     ],
     "tools": ["主日學 Skill", "Curipod", "MagicSchool", "Canva Magic Studio"]
   },
@@ -316,7 +316,7 @@
     "doing": "同工團隊、服事排班、培訓交接",
     "uses": [
       "敏感訊息草擬:提醒、感謝、調整職務的措辭斟酌",
-      "服事排班規則化,衝突自動檢查",
+      "服事意願表單→月排班表:把表單回覆自動彙整成排班矩陣,並遵守個人限制(主領與小幫手分開、盡量與青少服事同日…)",
       "新同工訓練手冊與交接文件,從零散筆記整理成冊",
       "一對一關懷談話前的準備與紀錄整理"
     ],
@@ -346,14 +346,16 @@
   },
   {
     "key": "philosophy", "name": "哲學思考", "color": "var(--lavender)",
-    "doing": "閱讀、思辨、寫作",
+    "doing": "閱讀、思辨、寫作、大量資訊的解析",
     "uses": [
+      "底層思考框架:面對大量知識要解析時,先用第一性原理、心智模型、抽象階梯拆出結構再下判斷——讓 AI 陪你練「怎麼想」,而不是只給答案",
+      "知識網絡建構:零散輸入整理成概念地圖與卡片盒筆記,AI 幫你找出概念間的連結與缺口",
       "蘇格拉底式對話:讓 AI 持續追問,逼出論證漏洞",
       "難讀文本的伴讀:分段解釋、給反例、連結其他思想家",
       "論證結構圖:把一篇文章拆成前提與結論的骨架",
       "信仰與哲學的對話:護教論證的正反方演練"
     ],
-    "tools": ["Claude 長對話", "論證地圖", "閱讀筆記整理"]
+    "tools": ["Claude 長對話", "心智模型庫", "論證地圖", "卡片盒筆記"]
   }
 ]
 </script>
@@ -378,49 +380,49 @@
       "items": [
         {
           "title": "Klang.io 推出 Transcription Studio:多樂器同時採譜",
-          "summary": "號稱全球首個能同時轉譜多種樂器的 AI 採譜工具,整首詩歌錄音可拆成各樂器譜面。",
+          "summary": "Klang.io 是長期深耕「音訊轉樂譜」的德國公司,新推出的 Transcription Studio 號稱是全球第一個能在同一份錄音裡同時辨識多種樂器、並分別輸出各自譜面的工具。它的運作分兩層:先用音源分離模型把混音拆成人聲、吉他、貝斯、鼓等獨立音軌,再對每一軌做音高與節奏偵測,輸出五線譜、簡譜或 MIDI。過去的採譜工具一次只能處理一種樂器,遇到完整編曲的詩歌就力不從心;這次的突破在於「整首歌進去、整套分譜出來」,對需要幫整個樂團準備譜面的人來說,是工作流程等級的改變,而不只是單點功能的進步。",
           "domains": ["music"],
           "use": "練團錄音直接出各聲部譜;音控課示範各樂器在編曲中的角色。",
           "links": [{"label": "MusicRadar 報導", "url": "https://www.musicradar.com/music-tech/klang-io-says-transcription-studio-is-the-worlds-first-ai-music-tool-that-can-transcribe-multiple-instruments-simultaneously"}, {"label": "Klang.io", "url": "https://klang.io/"}]
         },
         {
           "title": "AI 採譜精準度大躍進:Stem 分離後可達 ~98%",
-          "summary": "2026 年採譜工具普遍先做音源分離再轉譜,單一樂器精準度從八成跳到近九成八,複音(和弦、對位)處理成熟。",
+          "summary": "2026 年 AI 採譜領域的共同趨勢,是把「音源分離」變成轉譜前的標準前置步驟:先把混音拆成獨立樂器音軌,再對單一音軌做多音高偵測(Multi-Pitch Estimation,讓 AI 同時「聽見」多個音)。評測顯示,單一樂器的轉譜精準度因此從約八成跳升到接近 98%;過去最棘手的複音內容——和弦、對位、多樂器齊奏——如今也能穩定處理。另一個成熟方向是即時視覺化:音訊一邊播放,MIDI 音符或譜面一邊浮現,方便邊聽邊校對。商業模式多為免費額度+訂閱制,免費版約可轉 30–60 秒,月費落在 10–25 美元,入門門檻不高,適合先試再決定是否付費。",
           "domains": ["music"],
           "use": "吉他工具的下一步:把任何詩歌 YouTube 連結變成和弦譜 + 指板位置。",
           "links": [{"label": "AI Tools Digest 評比", "url": "https://www.aitoolsdigest.com/blog/ai-music-transcription-tools-2026"}]
         },
         {
           "title": "Suno「Voices」人聲風格生成上線",
-          "summary": "三月推出的聲音風格功能,可用指定聲音特質生成完整歌曲,惟人聲克隆準確度評價兩極。",
+          "summary": "Suno 是目前最主流的文字生成音樂服務之一:輸入一句描述,幾分鐘內產出含人聲、編曲、混音的完整歌曲。三月上線的「Voices」功能更進一步,讓使用者指定聲音特質來影響生成歌曲的人聲風格,等於把「寫歌」與「找歌手」合併成一個步驟。不過社群實測評價兩極:風格化的聲音表現尚可,要精準克隆特定人聲仍不穩定。整體來看,AI 生成音樂已從玩具走向「快速共創工具」——擅長打草稿、做 demo、生成替代版本、在音訊與可編輯譜面之間搭橋;但版權歸屬與正式場合的使用倫理,仍是每個團隊要自己想清楚的題目。",
           "domains": ["music", "social"],
           "use": "活動宣傳配樂、兒少課程主題曲 demo;正式敬拜使用前需思考版權與神學立場。",
           "links": [{"label": "2026 AI 音樂生成工具比較", "url": "https://www.aisingerapp.com/blog/best-ai-song-generators-2026"}]
         },
         {
           "title": "Apple WWDC:多 AI Extensions 系統,Claude 首次成為 iPhone 選項",
-          "summary": "iOS 27 開放第三方 AI 接入 Siri 體系,Claude 可直接在 iPhone 系統層使用;Gemini 3.5 Pro 也預計六月發布。",
+          "summary": "今年 WWDC 的核心轉向是「系統層的多 AI 架構」:iOS 27 推出 AI Extensions 機制,Siri 不再綁定單一模型,使用者可以把助理引擎換成 Gemini、Claude 等第三方 AI——這是 Claude 第一次成為 iPhone 的系統級選項。對產業的意義是,手機正式從「裝 AI App」進入「挑 AI 引擎」的時代,語音喚起、跨 App 操作、系統整合都會跟著開放。同一週的其他大事:Google 確認 Gemini 3.5 Pro 預計六月發布;微軟在 Build 大會發表自研的 MAI 系列模型,主打推理能力與更低的 token 成本。前沿模型的競爭正從「誰最聰明」轉向「誰嵌得進你的日常裝置與工作流」。",
           "domains": ["frontier"],
           "use": "手機上語音喚起 Claude 處理排班、回訊草稿,服事現場不用開電腦。",
           "links": [{"label": "Crescendo AI News", "url": "https://www.crescendo.ai/news/latest-ai-news-and-updates"}]
         },
         {
           "title": "Curipod:互動式課程投影片生成",
-          "summary": "輸入主題自動生成含投票、問答、繪圖互動的課堂投影片,2026 年教育工具榜常客。",
+          "summary": "Curipod 是專為課堂互動設計的 AI 投影片工具:輸入主題與年齡層,自動生成一整份含暖身投票、開放問答、學生繪圖、文字雲等互動環節的投影片;學生用手機或平板掃 QR code 進入,答案即時投到大螢幕上。它的設計哲學不是「AI 幫老師講課」,而是「AI 幫老師把參與感設計進課程」——生成的每一頁都是一個互動點,老師的角色從講述者變成討論主持人。在 2026 年的教育工具評比中,它常被列為互動課堂類首選;免費版已可使用核心功能。對節奏快、注意力短的兒少場景,這種「全員即時參與」的形式特別有效。",
           "domains": ["kids"],
           "use": "大班活動課(MODE_C)的互動環節:現場投票、搶答,孩子用平板參與。",
           "links": [{"label": "Edcafe 教育 AI 工具榜", "url": "https://www.edcafe.ai/blog/ai-tools-for-content-creation-in-education"}]
         },
         {
           "title": "Canva Magic Studio 深化教育場景",
-          "summary": "用提示詞直接生成投影片、圖表與學習單;研究指出教師備課時間可省 60–80%。",
+          "summary": "Canva 把旗下 AI 功能整合成 Magic Studio:用文字提示直接生成簡報、海報、圖表與學習單的初稿,再用 Magic Edit(改圖)、Magic Write(改文案)、自動去背、一鍵改尺寸等工具細修。對教育與事工現場的意義在於「從空白頁到可用初稿」的時間被大幅壓縮——研究指出善用這類工具的教師,例行備課時間可省下六到八成,把時間留給真正需要人的部分:引導、陪伴、處理特殊狀況。由於它是平台級功能,簡報、社群貼文、教材可以共用同一套品牌素材與風格;對同時管理多種視覺產出的人,維持視覺一致性的成本幾乎歸零。",
           "domains": ["kids", "social"],
           "use": "你已接 Canva 連接器:主日學學習單、教會活動視覺可一條龍生成並套用個人風格。",
           "links": [{"label": "教育內容 AI 工具 2026", "url": "https://www.eklavvya.com/blog/ai-driven-educational-content-creation"}]
         },
         {
           "title": "Guidde:操作教學影片自動生成",
-          "summary": "錄一次操作流程,AI 自動剪輯、配旁白、產字幕,號稱快 11 倍。",
+          "summary": "Guidde 解決的是「操作教學」這類最枯燥的文件工作:開著它的瀏覽器擴充,把流程實際操作一遍,它就自動截取每個步驟、生成標註截圖、配上 AI 旁白與字幕,輸出一支可分享的教學影片加圖文 SOP,官方號稱比手工製作快 11 倍。這類工具的價值在於把「知識交接的成本」壓到趨近於零:過去寫一份控台開機流程、投影軟體操作手冊要花一個下午,現在錄一次就同時有影片版與文件版,新進同工隨時可以重看、不必反覆口頭教學。對人員會輪替、需要持續訓練志工的團隊,這是投資報酬率最高的一類 AI 工具。",
           "domains": ["team", "governance"],
           "use": "音控台操作 SOP、投影軟體教學:錄一次,新同工永遠有影片可看。",
           "links": [{"label": "Guidde 教育影片工具", "url": "https://www.guidde.com/knowledge-hub/best-ai-video-creation-tools-education-2026"}]
@@ -446,7 +448,7 @@ const bar = document.getElementById('filterBar');
 function chipEl(key, name, color) {
   const b = document.createElement('button');
   b.className = 'chip'; b.textContent = name; b.dataset.key = key;
-  b.onclick = () => { filter = key; render(); };
+  b.onclick = () => { filter = (filter === key) ? 'all' : key; render(); };
   if (filter === key) { b.classList.add('active'); b.style.background = color || 'var(--text)'; }
   return b;
 }
@@ -461,8 +463,9 @@ function renderDomains() {
   const g = document.getElementById('domainGrid');
   g.innerHTML = '';
   DOMAINS.forEach(d => {
+    if (filter !== 'all' && filter !== d.key) return;
     const c = document.createElement('div');
-    c.className = 'card' + (filter !== 'all' && filter !== d.key ? ' dim' : '');
+    c.className = 'card';
     c.style.setProperty('--dc', d.color);
     c.innerHTML = `
       <h3><span class="dot"></span>${d.name}</h3>
@@ -480,15 +483,16 @@ function renderReports() {
   list.innerHTML = '';
   if (!REPORTS.length) { list.innerHTML = '<p class="empty">尚無週報。</p>'; return; }
   REPORTS.forEach((r, i) => {
+    const visible = r.items.filter(it => filter === 'all' || it.domains.includes(filter));
+    if (!visible.length) return;
     const sec = document.createElement('div');
     sec.className = 'report';
     sec.innerHTML = `<div class="report-date"><span class="badge">第 ${REPORTS.length - i} 期</span>${r.week}</div>`;
     const grid = document.createElement('div');
     grid.className = 'items';
-    r.items.forEach(it => {
-      const match = filter === 'all' || it.domains.includes(filter);
+    visible.forEach(it => {
       const el = document.createElement('div');
-      el.className = 'item' + (match ? '' : ' dim');
+      el.className = 'item';
       const isSaved = saved.includes(itemId(it));
       el.innerHTML = `
         <button class="star ${isSaved ? 'on' : ''}" title="加入想試清單">${isSaved ? '★' : '☆'}</button>
@@ -508,6 +512,7 @@ function renderReports() {
     sec.appendChild(grid);
     list.appendChild(sec);
   });
+  if (!list.children.length) list.innerHTML = '<p class="empty">這個領域目前沒有相關週報。</p>';
 }
 
 /* ---- saved list ---- */

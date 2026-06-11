@@ -158,6 +158,31 @@
     padding: 8px; touch-action: manipulation;
   }
   .item .tags { padding-right: 30px; }
+
+  /* ---------- analysis block ---------- */
+  .analysis {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px 22px 14px; margin-top: 14px;
+    border-top: 5px solid var(--lavender);
+  }
+  .analysis h4 { font-family:'DM Serif Display','Noto Serif TC',serif; font-size: 19px; }
+  .analysis .topline { font-size: 14px; color: var(--text-soft); margin: 6px 0 4px; }
+  .verdict { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .verdict:last-of-type { border-bottom: none; }
+  .verdict b { font-size: 14.5px; }
+  .lv {
+    display: inline-block; font-size: 11.5px; color: #fff; border-radius: 999px;
+    padding: 2px 10px; margin-right: 8px; vertical-align: 1px;
+  }
+  .verdict p { font-size: 13.5px; color: var(--text-soft); margin-top: 4px; }
+  .verdict .practice {
+    margin-top: 7px; font-size: 13px; background: #F2F0EA; border-radius: 8px; padding: 7px 10px;
+  }
+  .verdict .practice b { color: var(--caramel); font-weight: 500; font-size: 13px; }
+  .analysis .meta-note {
+    margin: 12px 0 6px; font-size: 13px; color: var(--text-soft);
+    border-left: 3px solid var(--lavender); padding-left: 10px;
+  }
   .star.on { color: var(--caramel); }
 
   /* ---------- saved list ---------- */
@@ -427,7 +452,34 @@
           "use": "音控台操作 SOP、投影軟體教學:錄一次,新同工永遠有影片可看。",
           "links": [{"label": "Guidde 教育影片工具", "url": "https://www.guidde.com/knowledge-hub/best-ai-video-creation-tools-education-2026"}]
         }
-      ]
+      ],
+      "analysis": {
+        "topline": "七則中三則值得主動投入(Guidde、Canva Magic Studio、Stem 分離工具),一則等系統更新即可被動受益(Apple 多 AI),Curipod 與 Klang.io 挑場景使用,Suno Voices 可略過。判斷基準有兩個:這項能力與「每週實際反覆發生的事務」重疊多少,以及現在上手的成本有多低。",
+        "verdicts": [
+          { "item": "Guidde:操作教學影片", "level": "invest",
+            "reason": "音控與投影是輪替最頻繁的服事位置,等於每年都要重教一輪同樣的操作;國中生小幫手訓練的課綱裡也包含投影片操作與音控基礎。這是少數能直接從負責人身上把重複教學時間拿走的工具。",
+            "practice": "先錄三支:控台開機與基本設定、直播軟體操作、投影流程。放進同工群組釘選,之後新人報到一律「先看影片再實作」,你只負責驗收。" },
+          { "item": "Canva Magic Studio", "level": "invest",
+            "reason": "每月外展固定要產出活動 DM、電子 DM、抽獎聯等文宣,而 Canva 連接器與個人設計風格 Skill 都已就緒——這是零新學習成本的提速,不是新工具。",
+            "practice": "下次外展文宣試一條龍:提示生成初稿 → 套個人風格 → 一鍵改尺寸出 IG/LINE/列印三版,並把成品存成品牌模板,之後每月重複使用。" },
+          { "item": "Stem 分離與採譜", "level": "invest",
+            "reason": "人聲訓練學員的常見卡點(抓不到 key、和聲編排、音準)正是拆軌練習能解的;混音課程也一直需要分軌教材。用途在「訓練」,比「採譜」本身更貼合現況。",
+            "practice": "用 Moises 拆 2–3 首常用詩歌:給 BGV 學員只留人聲軌跟唱、給音控課做單軌 EQ 前後對比素材。先訂一個月驗證有感再續。" },
+          { "item": "Curipod:互動課堂", "level": "try",
+            "reason": "主日學主力年齡層沒有自己的裝置、外展檢討的方向是實體闖關制,所以不適合主日學本體;但國中生小幫手有手機、成人裝備課需要參與感,這兩個場景很合。",
+            "practice": "免費版先做一份小幫手訓練的 10 分鐘互動段落(投票+搶答),實測一次看現場反應,再決定是否常態化到音控課等成人課程。" },
+          { "item": "Klang.io 多樂器採譜", "level": "try",
+            "reason": "團隊的工作格式是和弦譜+YouTube 連結,沒有「全套五線譜分譜」的常規需求;它解決的是偶發的特殊編曲場合,不是每週的事。",
+            "practice": "不訂閱。遇到需要弦樂或鍵盤聲部譜的特殊場合,用免費額度單次處理即可。" },
+          { "item": "Apple 多 AI 架構", "level": "passive",
+            "reason": "事務多半在手機上協調,系統層能直接喚起 Claude 之後,語音草擬訊息、查排班都不必開電腦。它是基礎建設,不需要任何學習投資。",
+            "practice": "iOS 27 正式版釋出後,把預設助理切換成 Claude,先從「口述 → 生成提醒訊息草稿」這一個動作開始養成習慣。" },
+          { "item": "Suno Voices", "level": "skip",
+            "reason": "正式敬拜使用 AI 生成歌曲牽涉版權與神學立場,團隊尚未討論;活動配樂用現成詩歌已足夠。它不解決目前存在的任何問題。",
+            "practice": "暫不投入。若未來想碰,先和同工開一次「AI 生成內容在敬拜中的使用原則」的對話,有共識再試。" }
+        ],
+        "meta": "後設觀察:本期選材偏音樂與教育工具,但實際最大的反覆成本在行政自動化(排班、表單追蹤、預算對帳)。未來幾期若把蒐集方向加入「行政與工作流自動化」並降低音樂生成類比重,命中率會更高。"
+      }
     }
   ]
 }
@@ -510,6 +562,28 @@ function renderReports() {
       grid.appendChild(el);
     });
     sec.appendChild(grid);
+    if (r.analysis) {
+      const LV = {
+        invest: { t:'值得主動投入', c:'var(--sage)' },
+        try: { t:'挑場景試', c:'var(--caramel)' },
+        passive: { t:'被動受益', c:'var(--dustyblue)' },
+        skip: { t:'可略過', c:'var(--rose)' }
+      };
+      const an = document.createElement('div');
+      an.className = 'analysis';
+      an.innerHTML = `<h4>本期分析與總結</h4>
+        <p class="topline">${r.analysis.topline}</p>` +
+        r.analysis.verdicts.map(v => {
+          const l = LV[v.level] || LV.try;
+          return `<div class="verdict">
+            <span class="lv" style="background:${l.c}">${l.t}</span><b>${v.item}</b>
+            <p>${v.reason}</p>
+            <div class="practice"><b>實務</b> · ${v.practice}</div>
+          </div>`;
+        }).join('') +
+        (r.analysis.meta ? `<p class="meta-note">${r.analysis.meta}</p>` : '');
+      sec.appendChild(an);
+    }
     list.appendChild(sec);
   });
   if (!list.children.length) list.innerHTML = '<p class="empty">這個領域目前沒有相關週報。</p>';

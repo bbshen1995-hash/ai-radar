@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F4F0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AI 雷達">
+<title>Bernard 的 AI 應用雷達</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F4F0;
+    --card: #FDFCFA;
+    --text: #3A3A3A;
+    --text-soft: #6B6862;
+    --line: #E5E2DB;
+    --terracotta: #C47C6A;
+    --sage: #7A9E87;
+    --dustyblue: #7A94A8;
+    --caramel: #C9964A;
+    --lavender: #A18FB8;
+    --rose: #C08A95;
+    --teal: #6E9E9A;
+    --olive: #9AA06B;
+    --plum: #98768F;
+    --slate: #8A8FA8;
+    --radius: 14px;
+    --shadow: 0 2px 12px rgba(90, 85, 75, 0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', 'Noto Sans TC', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    padding-bottom: 80px;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    max-width: 1080px; margin: 0 auto;
+    padding: 0 max(24px, env(safe-area-inset-left)) 0 max(24px, env(safe-area-inset-right));
+  }
+
+  /* ---------- header ---------- */
+  header { padding: 56px 0 8px; }
+  .eyebrow {
+    font-size: 13px; letter-spacing: 3px; color: var(--terracotta);
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'DM Serif Display', 'Noto Serif TC', serif;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 700; line-height: 1.25;
+  }
+  h1 .accent { color: var(--sage); }
+  .subtitle { color: var(--text-soft); margin-top: 12px; max-width: 620px; font-weight: 300; }
+
+  /* ---------- filter chips ---------- */
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0 10px;
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: 10px 0;
+  }
+  .chip {
+    border: 1px solid var(--line); background: var(--card);
+    border-radius: 999px; padding: 8px 16px; font-size: 14px;
+    cursor: pointer; color: var(--text-soft); font-family: inherit;
+    transition: all .18s ease;
+    min-height: 38px; touch-action: manipulation;
+  }
+  .chip:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+  .chip.active { color: #fff; border-color: transparent; }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 48px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+  h2 {
+    font-family: 'DM Serif Display', 'Noto Serif TC', serif;
+    font-size: 26px; font-weight: 700;
+  }
+  .sec-note { color: var(--text-soft); font-size: 14px; font-weight: 300; }
+  .sec-bar { width: 46px; height: 4px; border-radius: 2px; margin: 10px 0 24px; }
+
+  /* ---------- domain grid ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 22px 18px;
+    box-shadow: var(--shadow); position: relative; overflow: hidden;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .card.dim { opacity: 0.25; }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+    background: var(--dc, var(--sage));
+  }
+  .card h3 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .card h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dc); flex: none; }
+  .card .doing { font-size: 13px; color: var(--text-soft); margin: 6px 0 12px; font-weight: 300; }
+  .card ul { list-style: none; }
+  .card li {
+    font-size: 14px; padding: 5px 0 5px 18px; position: relative;
+    border-bottom: 1px dashed var(--line);
+  }
+  .card li:last-child { border-bottom: none; }
+  .card li::before {
+    content: ''; position: absolute; left: 2px; top: 13px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--dc); opacity: .65;
+  }
+  .tools { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool {
+    font-size: 12px; padding: 3px 10px; border-radius: 999px;
+    background: color-mix(in srgb, var(--dc) 13%, white); color: var(--text);
+    border: 1px solid color-mix(in srgb, var(--dc) 30%, white);
+  }
+
+  /* ---------- weekly reports ---------- */
+  .report { margin-bottom: 34px; }
+  .report-date {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--text-soft); margin-bottom: 14px;
+  }
+  .report-date .badge {
+    background: var(--lavender); color: #fff; border-radius: 999px;
+    padding: 2px 12px; font-size: 13px;
+  }
+  .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+  .item {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 18px;
+    box-shadow: var(--shadow); transition: opacity .25s ease;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .item.dim { opacity: 0.25; }
+  .item .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11.5px; padding: 2px 9px; border-radius: 999px; color: #fff; }
+  .item h4 { font-size: 15.5px; font-weight: 700; line-height: 1.45; }
+  .item p { font-size: 13.5px; color: var(--text-soft); margin-top: 6px; flex: 1; }
+  .item .use {
+    margin-top: 10px; font-size: 13px; background: #F2F0EA;
+    border-radius: 8px; padding: 8px 10px;
+  }
+  .item .use b { color: var(--sage); font-weight: 500; }
+  .item .links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .item .links a {
+    font-size: 12.5px; color: var(--dustyblue); text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--dustyblue) 40%, white);
+  }
+  .item .links a:hover { color: var(--terracotta); }
+  .star {
+    background: none; border: none; cursor: pointer; font-size: 19px;
+    color: #C9C5BB; line-height: 1;
+    position: absolute; top: 8px; right: 8px;
+    padding: 8px; touch-action: manipulation;
+  }
+  .item .tags { padding-right: 30px; }
+  .star.on { color: var(--caramel); }
+
+  /* ---------- saved list ---------- */
+  #savedList { list-style: none; }
+  #savedList li {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 14px; margin-bottom: 8px; font-size: 14px;
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  }
+  #savedList .rm {
+    background: none; border: none; color: var(--rose); cursor: pointer;
+    font-size: 14px; padding: 8px; margin: -8px; touch-action: manipulation;
+  }
+  .empty { color: var(--text-soft); font-size: 14px; font-weight: 300; }
+
+  /* ---------- existing setup ---------- */
+  .setup { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+  .setup div {
+    background: color-mix(in srgb, var(--sage) 8%, white);
+    border: 1px solid color-mix(in srgb, var(--sage) 22%, white);
+    border-radius: 10px; padding: 12px 14px; font-size: 13.5px;
+  }
+  .setup div b { display: block; font-weight: 700; margin-bottom: 2px; }
+  .setup div span { color: var(--text-soft); font-weight: 300; }
+
+  footer { margin-top: 64px; text-align: center; color: var(--text-soft); font-size: 12.5px; font-weight: 300; }
+
+  /* ---------- responsive ---------- */
+  @media (hover: none) {
+    .chip:hover { transform: none; box-shadow: none; }
+  }
+  @media (max-width: 640px) {
+    header { padding: 32px 0 4px; }
+    .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+    section { margin-top: 36px; }
+    h2 { font-size: 22px; }
+    .sec-head { flex-direction: column; gap: 2px; }
+    .filters { gap: 6px; margin-top: 20px; }
+    .chip { padding: 7px 13px; font-size: 13px; }
+    .card { padding: 18px 16px 14px; }
+    .item { padding: 16px 14px; }
+    .grid, .items { gap: 12px; }
+    body { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">AI Application Radar</div>
+    <h1>Bernard 的 <span class="accent">AI 應用雷達</span></h1>
+    <p class="subtitle">把你的九個生活領域,與 AI 能力的交集畫成一張地圖。每週自動更新前沿動態,標出哪些新功能正好落在你的軌道上。</p>
+  </header>
+
+  <div class="filters" id="filterBar"></div>
+
+  <section id="domains">
+    <div class="sec-head"><h2>領域 × AI 交集地圖</h2><span class="sec-note">你在做的事,AI 現在能接手的部分</span></div>
+    <div class="sec-bar" style="background:var(--terracotta)"></div>
+    <div class="grid" id="domainGrid"></div>
+  </section>
+
+  <section id="weekly">
+    <div class="sec-head"><h2>每週前沿週報</h2><span class="sec-note">每週自動蒐集,只留下與你有交集的</span></div>
+    <div class="sec-bar" style="background:var(--lavender)"></div>
+    <div id="reportList"></div>
+  </section>
+
+  <section id="saved">
+    <div class="sec-head"><h2>想試清單</h2><span class="sec-note">點 ★ 收藏,存在這台電腦的瀏覽器裡</span></div>
+    <div class="sec-bar" style="background:var(--caramel)"></div>
+    <ul id="savedList"></ul>
+  </section>
+
+  <section id="have">
+    <div class="sec-head"><h2>你已經擁有的 AI 配置</h2><span class="sec-note">在 Claude 裡可直接喚起,不必另找工具</span></div>
+    <div class="sec-bar" style="background:var(--sage)"></div>
+    <div class="setup">
+      <div><b>主日學課程產生器</b><span>讀 Drive 舊課程 → 大綱 → Slides,支援三種年齡模式</span></div>
+      <div><b>音控課簡報 Skill</b><span>恩典蟲敬拜音樂分享室專用 Canva 簡報</span></div>
+      <div><b>個人設計風格指南</b><span>海報、貼文、簡報自動套用你的美學</span></div>
+      <div><b>吉他學習工具</b><span>guitar-tool.html — 指板/和弦/調性系統</span></div>
+      <div><b>Canva 連接器</b><span>生成設計、品牌模板、匯出</span></div>
+      <div><b>Gmail / 日曆 / Drive</b><span>信件分類草稿、排程、檔案讀寫</span></div>
+    </div>
+  </section>
+
+  <footer>每週四由 Claude 排程任務自動更新週報 · 手動更新:請 Claude「更新 AI 雷達」</footer>
+</div>
+
+<!-- ==================== 領域資料 ==================== -->
+<script type="application/json" id="domains-data">
+[
+  {
+    "key": "music", "name": "音樂與敬拜音控", "color": "var(--terracotta)",
+    "doing": "吉他、敬拜團、音控訓練、混音課程",
+    "uses": [
+      "錄音自動採譜成譜面或 MIDI,整理詩歌和弦譜",
+      "Stem 分離:把詩歌拆成人聲/鼓/貝斯,做練團分軌與音控教材",
+      "依主領音域自動移調、規劃 setlist 調性銜接",
+      "混音問題診斷:描述症狀,AI 給 EQ/壓縮方向",
+      "音控課教材與簡報生成(已有專用 Skill)"
+    ],
+    "tools": ["Klangio", "Songscription", "Moises", "Suno", "Canva 簡報 Skill"]
+  },
+  {
+    "key": "coffee", "name": "咖啡", "color": "var(--caramel)",
+    "doing": "手沖、品飲、可能的烘焙探索",
+    "uses": [
+      "沖煮紀錄表格化,AI 分析參數與風味的關聯",
+      "「太酸/太澀」對話式診斷,建議調整研磨度、水溫、比例",
+      "風味描述詞彙練習:對照風味輪,把感受寫成精確語言",
+      "豆單與烘焙曲線資料整理比較"
+    ],
+    "tools": ["Claude + 試算表", "拍照辨識豆袋資訊", "沖煮日誌 App"]
+  },
+  {
+    "key": "faith", "name": "信仰與神學", "color": "var(--dustyblue)",
+    "doing": "讀經、靈修、講道或分享預備",
+    "uses": [
+      "經文背景與原文字義研究(需自行查證出處)",
+      "跨譯本比較、平行經文與主題串珠",
+      "講章/分享大綱腦力激盪,聽眾角度的回饋",
+      "靈修筆記整理成可分享的短文"
+    ],
+    "tools": ["Claude 研經對話", "Logos AI", "STEP Bible + AI 整理"]
+  },
+  {
+    "key": "governance", "name": "教會治理", "color": "var(--slate)",
+    "doing": "會議、章程制度、事工規劃",
+    "uses": [
+      "會議錄音轉逐字稿,自動整理決議與待辦",
+      "章程、辦法、SOP 草擬與條文一致性檢查",
+      "年度事工計畫與預算文件的結構化整理",
+      "公告、週報、通知信的草稿生成"
+    ],
+    "tools": ["錄音轉寫 + Claude 摘要", "Docs 範本", "Gmail 草稿連接器"]
+  },
+  {
+    "key": "kids", "name": "兒少教學", "color": "var(--sage)",
+    "doing": "兒童主日學、分齡課程設計",
+    "uses": [
+      "教案與課程大綱生成(已有主日學 Skill,讀舊課程保持系列感)",
+      "互動問答、遊戲、勞作點子,依年齡層自動調整難度",
+      "課程插圖與學習單生成",
+      "同一個故事改寫成低年級/高年級兩種版本"
+    ],
+    "tools": ["主日學 Skill", "Curipod", "MagicSchool", "Canva Magic Studio"]
+  },
+  {
+    "key": "team", "name": "團隊管理", "color": "var(--teal)",
+    "doing": "同工團隊、服事排班、培訓交接",
+    "uses": [
+      "敏感訊息草擬:提醒、感謝、調整職務的措辭斟酌",
+      "服事排班規則化,衝突自動檢查",
+      "新同工訓練手冊與交接文件,從零散筆記整理成冊",
+      "一對一關懷談話前的準備與紀錄整理"
+    ],
+    "tools": ["Claude 草稿對話", "日曆連接器", "Guidde 教學影片"]
+  },
+  {
+    "key": "health", "name": "健康生活", "color": "var(--olive)",
+    "doing": "作息、飲食、運動習慣",
+    "uses": [
+      "飲食/運動紀錄丟給 AI 做週回顧,找出模式",
+      "習慣設計:把目標拆成可執行的微習慣與提醒",
+      "外食選擇的即時營養粗估",
+      "作息調整實驗的紀錄與分析(非醫療診斷)"
+    ],
+    "tools": ["Claude + 紀錄表", "排程提醒", "拍照估算餐點"]
+  },
+  {
+    "key": "social", "name": "社群經營與美編", "color": "var(--rose)",
+    "doing": "教會/社群貼文、海報、視覺設計",
+    "uses": [
+      "貼文文案多版本生成,配合活動調性",
+      "海報與封面設計初稿(已有個人風格 Skill,自動套用你的配色)",
+      "內容月曆規劃:節期、活動、系列貼文排程",
+      "圖片生成與去背、尺寸自動適配各平台"
+    ],
+    "tools": ["個人設計風格 Skill", "Canva 連接器", "Magic Studio"]
+  },
+  {
+    "key": "philosophy", "name": "哲學思考", "color": "var(--lavender)",
+    "doing": "閱讀、思辨、寫作",
+    "uses": [
+      "蘇格拉底式對話:讓 AI 持續追問,逼出論證漏洞",
+      "難讀文本的伴讀:分段解釋、給反例、連結其他思想家",
+      "論證結構圖:把一篇文章拆成前提與結論的骨架",
+      "信仰與哲學的對話:護教論證的正反方演練"
+    ],
+    "tools": ["Claude 長對話", "論證地圖", "閱讀筆記整理"]
+  }
+]
+</script>
+
+<!-- ==================== 週報資料 ====================
+  每週由排程任務在 reports 陣列「最前面」插入一筆,格式如下:
+  {
+    "week": "YYYY-MM-DD",
+    "items": [
+      { "title": "...", "summary": "...",
+        "domains": ["music"|"coffee"|"faith"|"governance"|"kids"|"team"|"health"|"social"|"philosophy"|"frontier"],
+        "use": "對 Bernard 的具體用法",
+        "links": [{"label": "...", "url": "..."}] }
+    ]
+  }
+================================================== -->
+<script type="application/json" id="weekly-reports">
+{
+  "reports": [
+    {
+      "week": "2026-06-11",
+      "items": [
+        {
+          "title": "Klang.io 推出 Transcription Studio:多樂器同時採譜",
+          "summary": "號稱全球首個能同時轉譜多種樂器的 AI 採譜工具,整首詩歌錄音可拆成各樂器譜面。",
+          "domains": ["music"],
+          "use": "練團錄音直接出各聲部譜;音控課示範各樂器在編曲中的角色。",
+          "links": [{"label": "MusicRadar 報導", "url": "https://www.musicradar.com/music-tech/klang-io-says-transcription-studio-is-the-worlds-first-ai-music-tool-that-can-transcribe-multiple-instruments-simultaneously"}, {"label": "Klang.io", "url": "https://klang.io/"}]
+        },
+        {
+          "title": "AI 採譜精準度大躍進:Stem 分離後可達 ~98%",
+          "summary": "2026 年採譜工具普遍先做音源分離再轉譜,單一樂器精準度從八成跳到近九成八,複音(和弦、對位)處理成熟。",
+          "domains": ["music"],
+          "use": "吉他工具的下一步:把任何詩歌 YouTube 連結變成和弦譜 + 指板位置。",
+          "links": [{"label": "AI Tools Digest 評比", "url": "https://www.aitoolsdigest.com/blog/ai-music-transcription-tools-2026"}]
+        },
+        {
+          "title": "Suno「Voices」人聲風格生成上線",
+          "summary": "三月推出的聲音風格功能,可用指定聲音特質生成完整歌曲,惟人聲克隆準確度評價兩極。",
+          "domains": ["music", "social"],
+          "use": "活動宣傳配樂、兒少課程主題曲 demo;正式敬拜使用前需思考版權與神學立場。",
+          "links": [{"label": "2026 AI 音樂生成工具比較", "url": "https://www.aisingerapp.com/blog/best-ai-song-generators-2026"}]
+        },
+        {
+          "title": "Apple WWDC:多 AI Extensions 系統,Claude 首次成為 iPhone 選項",
+          "summary": "iOS 27 開放第三方 AI 接入 Siri 體系,Claude 可直接在 iPhone 系統層使用;Gemini 3.5 Pro 也預計六月發布。",
+          "domains": ["frontier"],
+          "use": "手機上語音喚起 Claude 處理排班、回訊草稿,服事現場不用開電腦。",
+          "links": [{"label": "Crescendo AI News", "url": "https://www.crescendo.ai/news/latest-ai-news-and-updates"}]
+        },
+        {
+          "title": "Curipod:互動式課程投影片生成",
+          "summary": "輸入主題自動生成含投票、問答、繪圖互動的課堂投影片,2026 年教育工具榜常客。",
+          "domains": ["kids"],
+          "use": "大班活動課(MODE_C)的互動環節:現場投票、搶答,孩子用平板參與。",
+          "links": [{"label": "Edcafe 教育 AI 工具榜", "url": "https://www.edcafe.ai/blog/ai-tools-for-content-creation-in-education"}]
+        },
+        {
+          "title": "Canva Magic Studio 深化教育場景",
+          "summary": "用提示詞直接生成投影片、圖表與學習單;研究指出教師備課時間可省 60–80%。",
+          "domains": ["kids", "social"],
+          "use": "你已接 Canva 連接器:主日學學習單、教會活動視覺可一條龍生成並套用個人風格。",
+          "links": [{"label": "教育內容 AI 工具 2026", "url": "https://www.eklavvya.com/blog/ai-driven-educational-content-creation"}]
+        },
+        {
+          "title": "Guidde:操作教學影片自動生成",
+          "summary": "錄一次操作流程,AI 自動剪輯、配旁白、產字幕,號稱快 11 倍。",
+          "domains": ["team", "governance"],
+          "use": "音控台操作 SOP、投影軟體教學:錄一次,新同工永遠有影片可看。",
+          "links": [{"label": "Guidde 教育影片工具", "url": "https://www.guidde.com/knowledge-hub/best-ai-video-creation-tools-education-2026"}]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+const DOMAINS = JSON.parse(document.getElementById('domains-data').textContent);
+const REPORTS = JSON.parse(document.getElementById('weekly-reports').textContent).reports;
+const FRONTIER = { key: 'frontier', name: '通用前沿', color: 'var(--plum)' };
+const ALL = [...DOMAINS, FRONTIER];
+const cmap = Object.fromEntries(ALL.map(d => [d.key, d]));
+
+let filter = 'all';
+let saved = JSON.parse(localStorage.getItem('aiRadarSaved') || '[]');
+
+/* ---- filter bar ---- */
+const bar = document.getElementById('filterBar');
+function chipEl(key, name, color) {
+  const b = document.createElement('button');
+  b.className = 'chip'; b.textContent = name; b.dataset.key = key;
+  b.onclick = () => { filter = key; render(); };
+  if (filter === key) { b.classList.add('active'); b.style.background = color || 'var(--text)'; }
+  return b;
+}
+function renderBar() {
+  bar.innerHTML = '';
+  bar.appendChild(chipEl('all', '全部', 'var(--text)'));
+  ALL.forEach(d => bar.appendChild(chipEl(d.key, d.name, d.color)));
+}
+
+/* ---- domain cards ---- */
+function renderDomains() {
+  const g = document.getElementById('domainGrid');
+  g.innerHTML = '';
+  DOMAINS.forEach(d => {
+    const c = document.createElement('div');
+    c.className = 'card' + (filter !== 'all' && filter !== d.key ? ' dim' : '');
+    c.style.setProperty('--dc', d.color);
+    c.innerHTML = `
+      <h3><span class="dot"></span>${d.name}</h3>
+      <div class="doing">${d.doing}</div>
+      <ul>${d.uses.map(u => `<li>${u}</li>`).join('')}</ul>
+      <div class="tools">${d.tools.map(t => `<span class="tool">${t}</span>`).join('')}</div>`;
+    g.appendChild(c);
+  });
+}
+
+/* ---- weekly reports ---- */
+function itemId(it) { return it.title; }
+function renderReports() {
+  const list = document.getElementById('reportList');
+  list.innerHTML = '';
+  if (!REPORTS.length) { list.innerHTML = '<p class="empty">尚無週報。</p>'; return; }
+  REPORTS.forEach((r, i) => {
+    const sec = document.createElement('div');
+    sec.className = 'report';
+    sec.innerHTML = `<div class="report-date"><span class="badge">第 ${REPORTS.length - i} 期</span>${r.week}</div>`;
+    const grid = document.createElement('div');
+    grid.className = 'items';
+    r.items.forEach(it => {
+      const match = filter === 'all' || it.domains.includes(filter);
+      const el = document.createElement('div');
+      el.className = 'item' + (match ? '' : ' dim');
+      const isSaved = saved.includes(itemId(it));
+      el.innerHTML = `
+        <button class="star ${isSaved ? 'on' : ''}" title="加入想試清單">${isSaved ? '★' : '☆'}</button>
+        <div class="tags">${it.domains.map(k => `<span class="tag" style="background:${(cmap[k]||{}).color || 'var(--slate)'}">${(cmap[k]||{}).name || k}</span>`).join('')}</div>
+        <h4>${it.title}</h4>
+        <p>${it.summary}</p>
+        <div class="use"><b>對你的用法</b> · ${it.use}</div>
+        <div class="links">${(it.links||[]).map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join('')}</div>`;
+      el.querySelector('.star').onclick = () => {
+        const id = itemId(it);
+        saved = saved.includes(id) ? saved.filter(s => s !== id) : [...saved, id];
+        localStorage.setItem('aiRadarSaved', JSON.stringify(saved));
+        render();
+      };
+      grid.appendChild(el);
+    });
+    sec.appendChild(grid);
+    list.appendChild(sec);
+  });
+}
+
+/* ---- saved list ---- */
+function renderSaved() {
+  const ul = document.getElementById('savedList');
+  ul.innerHTML = '';
+  if (!saved.length) { ul.innerHTML = '<li class="empty" style="border:none;background:none">還沒有收藏。在週報卡片右上點 ☆ 即可加入。</li>'; return; }
+  saved.forEach(id => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${id}</span><button class="rm" title="移除">✕</button>`;
+    li.querySelector('.rm').onclick = () => {
+      saved = saved.filter(s => s !== id);
+      localStorage.setItem('aiRadarSaved', JSON.stringify(saved));
+      render();
+    };
+    ul.appendChild(li);
+  });
+}
+
+function render() { renderBar(); renderDomains(); renderReports(); renderSaved(); }
+render();
+</script>
+</body>
+</html>

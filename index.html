@@ -401,6 +401,95 @@
 {
   "reports": [
     {
+      "week": "2026-06-18",
+      "items": [
+        {
+          "title": "Google NotebookLM 2.0:主動建庫與代理型研究",
+          "summary": "NotebookLM 是 Google 推出的「資料來源型 AI 研究助手」,使用者把文件、網頁、PDF 丟進去,它就只在這個資料庫裡回答問題,避免 AI 憑空捏造。六月八日推出的 2.0 版是一次大型升級:底層換上 Gemini 3.5,推理能力大幅提升;加入「主動建庫」功能,讓 AI 在對話中自動建議應補充的來源,不必自己預先想好所有資料;每個筆記本附帶安全雲端電腦,可執行程式碼並直接輸出圖表、Excel、Word 文件。最大意義是從「查詢工具」演變成「代理型研究夥伴」——可以主動規劃、蒐集、分析。對需要定期查考聖經背景、編寫課程大綱、整理多份會議文件的場景,這是目前市面上最接近「個人研究助理」的免費工具。",
+          "domains": ["kids", "faith", "governance", "team"],
+          "use": "把課程分配表、聖經段落、外展企劃同時放入一個 Notebook,讓 AI 生成跨文件的課程摘要與待辦清單。",
+          "links": [
+            {"label": "TechCrunch 報導", "url": "https://techcrunch.com/2026/06/08/notebooklms-new-update-will-help-you-build-source-repository-from-chat/"},
+            {"label": "Nerova 功能摘要", "url": "https://nerova.ai/news/google-notebooklm-june-8-2026-agentic-research-update"}
+          ]
+        },
+        {
+          "title": "Canva Magic Layers:AI 生成圖像可拆解為可編輯圖層",
+          "summary": "Canva 六月推出 Magic Layers,是 AI 2.0 升級的核心功能之一:過去 AI 生成的圖片只是一張不可拆解的點陣圖,Magic Layers 把 AI 生成結果自動分解為可獨立操作的設計圖層——背景、主體、文字層可以分別移動、替換、調色。同期更新還包括 Image to Video 現在支援人臉自然動態,不再有臉部變形問題;Magic Eraser 改善去除品質,不留陰影殘跡。Canva 將此系列定位為從「設計生成工具」擴張到「整個創作工作流的中心」,目前 Magic Layers 已有超過九百萬次使用。對同時要生產社群貼文、活動海報、兒主教材的場景,這種「全在同一個編輯器、AI 協助拆解再精修」的流程,能直接降低設計返工成本和工具切換摩擦。",
+          "domains": ["social", "kids"],
+          "use": "用 AI 生成活動主視覺後,用 Magic Layers 把主體圖層抽出套不同底色,一次產出 IG 方形、LINE 橫幅、印刷版三種尺寸。",
+          "links": [
+            {"label": "Canva 最新發布", "url": "https://www.canva.com/launches/"},
+            {"label": "Magic Studio 完整指南 2026", "url": "https://sawankr.com/courses/canva/canva-ai-features-2026-magic-studio-guide"}
+          ]
+        },
+        {
+          "title": "Meta SAM Audio:以自然語言描述定向分離任意音源",
+          "summary": "SAM Audio 是 Meta AI Research 推出的開源音訊分離工具,名稱延伸自圖像領域的 Segment Anything Model。傳統音源分離只能按固定分類拆軌(人聲、鼓、吉他、貝斯),SAM Audio 的突破在於「描述導向分離」:使用者用自然語言指定要提取的聲音,例如「只要踩鑣」「只要主唱」「只要鋼琴」,AI 就能定向萃取那個音軌,其餘聲音留在另一軌。對音控教學而言,這改變了「示範素材的製作方式」:過去需要原始多軌母帶才能示範各樂器的 EQ 效果,現在可以從任何現成混音後製取材。作為開源模型,它可透過 Hugging Face 在線試用,無需訂閱費用。對兼顧音控教學與樂手訓練的場景,這是工具層級的升級:把任何詩歌錄音版本變成可拆分的訓練素材,而不必依賴有無母帶。",
+          "domains": ["music"],
+          "use": "挑兩首常用詩歌混音版,用 SAM Audio 拆出人聲軌與吉他軌,作為 BGV 跟唱訓練與音控課 EQ 示範的教材。",
+          "links": [
+            {"label": "Bridge.audio 音樂 AI 工具評比", "url": "https://www.bridge.audio/blog/best-ai-tools-for-music-producers-in-2026/"}
+          ]
+        },
+        {
+          "title": "Asaph:依聖經主題自動生成敬拜歌單建議",
+          "summary": "Asaph 是近期在教會科技社群獲得關注的敬拜計畫 AI 工具,核心功能是根據每週講道段落或聖經主題,自動推薦能呼應主題的歌單組合,並分析現有曲庫中哪些情感色調或神學主題長期缺席。它的設計哲學是「學習特定會眾文化」:使用一段時間後能記住哪首歌在該會眾反應較好、哪種風格最適合特定季節,讓歌單建議越來越符合本地脈絡。相較於單純的曲庫搜尋,Asaph 提供「有論據的推薦」:為什麼選這首歌、它與經文的神學連結、這份歌單的情感弧線走向。對每月需要手工排定歌單的主領,它把「想半天卻想不出好搭配」這個耗能的創意前期工作自動化,留出更多時間深度預備各首歌的靈性帶領。",
+          "domains": ["music", "governance"],
+          "use": "每月排歌單時輸入當月講道系列段落,讓 Asaph 給出三份草稿,再依同工習慣與樂手強項篩選調整。",
+          "links": [
+            {"label": "The Lead Pastor:教會 AI 工具評比", "url": "https://theleadpastor.com/tools/best-church-ai-tools/"}
+          ]
+        },
+        {
+          "title": "前沿換代週:GPT-5.5 正式接替與 Microsoft MAI 自研模型",
+          "summary": "六月十二日,OpenAI 完成一次靜默模型替換:GPT-5.5(含高效能 Pro 版與速度優先的 Instant 版)正式取代 GPT-5.2 系列,成為 ChatGPT 的預設基礎。同一週,微軟在 Build 大會上發表自研的 MAI 系列首批模型:MAI-Code-1-Flash 專攻程式碼生成,MAI-Thinking-1 專攻推理問題,定位是更低成本的 API 選項,目的是降低對 OpenAI 的依賴。這兩件事合起來呈現 2026 年前沿模型競爭的新格局:換代速度加快到按月計算,各家都在同時發展「旗艦高能版」與「低成本快版」兩條線,競爭重點從基準測試排名轉向「能否嵌入使用者日常工作流」。對終端使用者的意義是:不需要做任何事,正在使用的服務就會自動變得更聰明、更快——這是最划算的免費升級。",
+          "domains": ["frontier"],
+          "use": "無需主動操作;若已訂閱 ChatGPT Plus,長文整理與多步推理任務今後自動受益。",
+          "links": [
+            {"label": "OpenAI 更新紀錄", "url": "https://releasebot.io/updates/openai"},
+            {"label": "Microsoft MAI 模型發布", "url": "https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html"}
+          ]
+        }
+      ],
+      "analysis": {
+        "topline": "五則中兩則值得主動投入(NotebookLM 2.0、Canva Magic Layers),兩則挑場景試(Asaph、SAM Audio),一則等平台自動受益(GPT-5.5)。判斷基準:與每月固定反覆事務的重疊度——課程設計、文宣製作、排歌單——以及不需新帳號、學習成本接近零的工具優先。",
+        "verdicts": [
+          {
+            "item": "Google NotebookLM 2.0",
+            "level": "invest",
+            "reason": "課程備課、聖經段落研究、會議文件彙整是每週反覆發生的事務;NotebookLM 2.0 的代理研究功能讓這三件事可以在同一個工作空間合併處理,不必在各個 PDF 和試算表之間跳來跳去。Google 帳號即可使用,上手成本幾乎為零。",
+            "practice": "建一個「兒主課程研究庫」Notebook:把課程分配表、六月後的聖經段落、過往備課記錄一起放進去,問 AI 下兩個月的主題摘要與缺漏分析。驗證點:生成的大綱是否確實省去翻查原始文件的時間。"
+          },
+          {
+            "item": "Canva Magic Layers",
+            "level": "invest",
+            "reason": "外展文宣每月都需要從主視覺衍生出多種尺寸和版本——這正是 Magic Layers 最直接解決的問題。你已有 Canva 帳號和個人設計風格 Skill,這是零額外成本的提速,不是新工具。",
+            "practice": "下次外展海報用 Magic Layers 試一次完整流程:AI 生成主視覺 → 拆出主體圖層 → 套個人配色 → 輸出三種尺寸。記錄花費時間,與過去手工做的時間對比。"
+          },
+          {
+            "item": "Asaph 敬拜歌單 AI",
+            "level": "try",
+            "reason": "每月排歌單是固定事務,Asaph 對應的正是「主題-歌單配對」這個費腦的前期步驟。但它需要先建立曲庫資料和使用習慣才能準確,前兩個月的建議品質可能需要較多手動校正。",
+            "practice": "先上免費試用版,輸入七月的講道段落和現有常用曲目清單,看生成的三份草稿有幾首是真正可用的。達到一半以上直接可用再考慮付費。"
+          },
+          {
+            "item": "Meta SAM Audio",
+            "level": "try",
+            "reason": "音控課和 BGV 訓練都需要分軌素材,SAM Audio 解決的正是「沒有多軌母帶也能做教材」的問題。但開源工具有一定操作門檻;若覺得複雜,Moises 等有介面的付費服務可能更快上手。",
+            "practice": "先在 Hugging Face 用現成 demo 介面試拆一首詩歌,不需要安裝任何東西。如果拆出來的音質符合教材需求,再決定是用 SAM Audio 本機版還是切回 Moises。"
+          },
+          {
+            "item": "GPT-5.5 + Microsoft MAI",
+            "level": "passive",
+            "reason": "這是平台換代,不是新功能;已在用 ChatGPT 的話自動受益。Microsoft MAI 目前是 API 層競爭,對非開發者幾乎無感知差異。",
+            "practice": "無需操作。若未來處理特別複雜的長文整理或多文件分析,觀察 ChatGPT 輸出品質是否有感提升,作為是否升級方案的參考。"
+          }
+        ],
+        "meta": "本期依上週後設建議,加入了行政與知識管理維度(NotebookLM 2.0)並降低純音樂生成比重。排班約束滿足自動化仍是最高頻未覆蓋的痛點,建議下期專搜「AI 排班工具」與「Google Sheets 自動化」方向,看是否有具體可落地的解法。"
+      }
+    },
+    {
       "week": "2026-06-11",
       "items": [
         {

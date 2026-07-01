@@ -401,54 +401,334 @@
 {
   "reports": [
     {
+      "week": "2026-07-01",
+      "items": [
+        {
+          "title": "AI 排班 × Google Sheets 自動化:回應上期後設的落地解法",
+          "summary": "上期後設點名要專搜「AI 排班工具」與「Google Sheets 自動化」,本則是初查結果(屬工具盤點,非單一新發表)。最貼你需求的是一個開源專案 volunteer-scheduler(Google Sheets 版):用 Google Apps Script 跑線性最佳化(linear optimization),把志工的可服事時段、技能、特殊限制(例如某人不能連兩週、某組合要避開)當成約束,自動求出「盡量滿足所有人條件」的排班表——這正是你敬拜團/影音/兒主每月手排最耗神的地方。另一路是現成平台 Unison,免費、專為非營利與教會設計,內建可服事時段登記、自動提醒與換班,不必自己維護試算表。兩者取向不同:前者你掌控演算法與資料、要會一點 Apps Script;後者省事但要把人搬進它的系統。以你已在寫 Apps Script(表單自動換月、敬拜服事表)的底子,開源 Sheets 版最貼合現有工作流。",
+          "domains": [
+            "governance",
+            "team"
+          ],
+          "use": "把一份實際的服事可用時段表當測資,套 Apps Script 線性最佳化排班器跑一次,對照你手排的結果差多少、有沒有漏掉的硬約束。",
+          "links": [
+            {
+              "label": "volunteer-scheduler(Google Sheets/Apps Script)",
+              "url": "https://github.com/schedule/volunteer-scheduler--google-sheets"
+            },
+            {
+              "label": "Unison:2026 志工排班完整指南",
+              "url": "https://unison.io/blog/the-complete-guide-to-volunteer-scheduling-software-in-2026/"
+            },
+            {
+              "label": "Cal.com:2026 志工排班軟體八選",
+              "url": "https://cal.com/blog/best-volunteer-scheduling-software"
+            }
+          ]
+        },
+        {
+          "title": "Claude 六月大更新:Artifacts 進 Claude Code、Azure Foundry 上架、企業閘道",
+          "summary": "你已擁有 Claude,值得知道六月它長出哪些能直接用的東西。一是 Artifacts 進了 Claude Code:把一次工作直接變成會即時更新的可分享網頁——PR 導覽、事件頁、儀表板、檢查清單都能一鍵成頁(Team/Enterprise 有私有分享與版本歷史 beta),等於你做的那些單檔工具(吉他工具、AI 雷達)有了官方等價的產出通道。二是 Claude 在微軟 Azure Foundry 正式上架,Opus 4.8 與 Haiku 4.5 可透過 Messages API 直接用,帶 Azure 原生身分/計費/治理。三是給組織的 Claude apps gateway(AWS Bedrock、Google Cloud):自架控制面、企業 SSO、集中政策、逐人成本追蹤與花費上限。Claude Code 本身也一批修:組織預設模型、可讀的 session 名稱、可點的檔案附件、背景 session 穩定性。整體方向是從「個人助手」往「可治理的團隊基礎設施」走。",
+          "domains": [
+            "governance",
+            "team",
+            "faith"
+          ],
+          "use": "下次用 Claude 做教會小工具或流程頁(如服事流程、控台開機 SOP),直接用 Artifacts 產成可分享網頁給同工,免另外架設。",
+          "links": [
+            {
+              "label": "Anthropic Claude 更新紀錄(Releasebot)",
+              "url": "https://releasebot.io/updates/anthropic/claude"
+            },
+            {
+              "label": "Anthropic Newsroom",
+              "url": "https://www.anthropic.com/news"
+            }
+          ]
+        },
+        {
+          "title": "AI 會議記錄免費工具成熟:Granola、Fireflies、tl;dv",
+          "summary": "同工會議、練團檢討、事工協調常留不下完整記錄,2026 的免費 AI 會議記錄已足堪日常(屬工具盤點)。Granola 走「無 bot」路線:在 Mac/Windows/iPhone 上把你隨手打的粗略筆記,配合裝置端轉錄,自動整理成有行動項的結構化摘要,免費方案就能開會時記;Fireflies 是派 bot 進線上會議錄音轉錄,把逐字稿與摘要丟進共享工作區,可標重點、指派待辦;tl;dv 支援 Google Meet/Zoom/Teams,歐洲團隊、GDPR 合規、提供 EU 資料落地且不拿客戶資料訓練,免費層即有不限次錄影與摘要。對你這種需要把口頭討論轉成可追蹤待辦的協調角色,關鍵不是轉錄本身,而是自動生出「誰負責什麼」的行動項清單,直接接進你的提醒系統。",
+          "domains": [
+            "governance",
+            "team"
+          ],
+          "use": "下次敬拜團或兒主同工會用 Granola 或 tl;dv 記一次,看自動生成的行動項能否直接搬進 macOS 提醒事項的 Bebe 清單。",
+          "links": [
+            {
+              "label": "tldv:2026 免費 AI 會議記錄實測",
+              "url": "https://tldv.io/blog/free-ai-note-taking/"
+            },
+            {
+              "label": "ClickUp:2026 免費會議筆記工具十選",
+              "url": "https://clickup.com/blog/ai-tools-for-meeting-notes/"
+            }
+          ]
+        },
+        {
+          "title": "前沿等待中:Gemini 3.5 Pro 由六月延到七月,2M token 與 Deep Think",
+          "summary": "Google 在五月 I/O 宣布 Gemini 3.5 Pro、原訂六月全面開放,但到六月底目標跳票:官方改口指向七月,理由是收到企業回饋後要再打磨品質。目前狀態是 Google 內部在用、少數企業客戶能透過 Vertex AI 預覽試,消費者版 Gemini app、AI Studio 公開選單、一般 API 都還沒有穩定版。規格看點:目標 2,000,000 token 上下文(約 150 萬字、五到八本長篇小說,是目前已announce的量產前沿模型中最大),以及 Deep Think 延伸推理模式(答題前多花時間評估,類似 OpenAI 的推理模式),主攻困難數學、多步邏輯、科學推理。對你的白話意義:還不用急著改流程,等它進消費者版與一般 API 再說;真正值得期待的是超長上下文——屆時可以把整季課程、整套音控技術文件一次餵進去做跨文件問答。",
+          "domains": [
+            "frontier"
+          ],
+          "use": "暫時觀望;待 Gemini 3.5 Pro 進消費者版後,測試把整季兒主教材或 Stage Setting 訊號路由全文件一次載入的跨文件問答。",
+          "links": [
+            {
+              "label": "Google 官方:Gemini 3.5",
+              "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/"
+            },
+            {
+              "label": "Analytics Insight:是否延到七月",
+              "url": "https://www.analyticsinsight.net/news/is-google-delaying-gemini-35-pro-launch-to-july-for-further-testing"
+            }
+          ]
+        }
+      ],
+      "analysis": {
+        "topline": "本期主軸是把上期欠的「排班自動化」補上,並盤點你已擁有的 Claude 六月新能力。四則裡,排班(governance/team)是最該動手的一則——它對應你每月手排的最高頻痛點,且你已有 Apps Script 底子;Claude Artifacts 是零成本的既有升級;會議記錄挑場景試;Gemini 3.5 Pro 觀望即可。",
+        "verdicts": [
+          {
+            "item": "AI 排班 × Google Sheets 自動化",
+            "level": "invest",
+            "reason": "每月手排敬拜/影音/兒主服事是你最耗神的固定事務,線性最佳化排班器正是把硬約束(可用時段、不連兩週、組合迴避)自動求解的對症解;你已在寫 Apps Script,採開源 Sheets 版能直接嵌現有工作流,不必搬人進新系統。",
+            "practice": "拿一個月的真實可用時段當測資,先讓排班器跑一版,人工檢查它有沒有違反任何硬約束、以及可讀性。達到「八成可用、只需微調」再正式導入某一組(建議先從影音或兒主單組試)。"
+          },
+          {
+            "item": "Claude 六月更新(Artifacts / Azure / Gateway)",
+            "level": "invest",
+            "reason": "零額外成本的既有升級。Artifacts 讓你做的教會小工具與流程頁有官方產出與分享通道,省去自己架設;你本來就重度用 Claude,直接受益。",
+            "practice": "下次做一份同工用的流程頁(如控台開機 SOP 或服事流程),用 Artifacts 產成可分享網頁,看同工是否能直接開來看、免你另外貼檔。"
+          },
+          {
+            "item": "AI 會議記錄(Granola/Fireflies/tl;dv)",
+            "level": "try",
+            "reason": "同工會議與練團檢討常留不下記錄,免費工具已足用;真正價值在自動生出行動項,能接你既有的提醒系統。但需注意隱私——教會敏感討論宜選不拿資料訓練、可本地/合規的選項(如 tl;dv 的 EU 落地或 Granola 的無 bot 本機)。",
+            "practice": "下次同工會錄一次,重點看自動生成的行動項清單能否直接搬進 Bebe 提醒清單;敏感內容場合先確認工具的資料政策。"
+          },
+          {
+            "item": "Gemini 3.5 Pro",
+            "level": "passive",
+            "reason": "尚未進消費者版與一般 API,現在無從主動使用;真正值得等的是 2M token 超長上下文帶來的整季/整套文件跨檔問答。",
+            "practice": "無需操作。留意它何時進 Gemini app 公開版,屆時再測整季教材或音控文件的一次性全載問答。"
+          }
+        ],
+        "meta": "排班痛點已從『待搜』推進到『有具體開源解法、待實測』,下期應追蹤實測結果與導入哪一組。連兩期偏重行政/教育/前沿,音樂連三期後可暫歇;長期空白領域(咖啡、健康、哲學)仍未有低成本 AI 切入點命中,下期可主動廣搜一輪,沒有就誠實留白、不硬湊。"
+      }
+    },
+    {
+      "week": "2026-06-25",
+      "items": [
+        {
+          "title": "Google ISTE 2026:Classroom 進駐 Gemini、教師版 NotebookLM 開放",
+          "summary": "六月下旬全球最大教育科技展 ISTE 2026,Google 的主軸是把 AI 綁進老師「已經在用」的工具裡,而不是再多一個新平台。三個對備課最有感的更新:一是 Gemini 裡新增 Classroom app,老師能在對話中安全帶入自己班級的實際脈絡(名單、進度、教材)請 AI 協助;二是「教師主導版 Guided Learning」,老師設定一個去干擾、對齊課綱的學習空間給學生,同時拿到學生進度的洞察;三是「教師版 NotebookLM」,把課程素材一鍵轉成互動閃卡、Podcast、測驗。對兒主而言最實際的是後者——你本來就在用 NotebookLM 讀 Drive 舊課程,現在能把一份聖經段落與教案直接生出給孩子的複習卡與問答,不必自己再排版。定位是「AI 幫老師設計參與感」,不是「AI 代替老師講課」。",
+          "domains": [
+            "kids",
+            "faith",
+            "team"
+          ],
+          "use": "把某一系列主日學教案丟進教師版 NotebookLM,生成孩子端的複習閃卡與三題問答,當作課後帶回或下週暖身。",
+          "links": [
+            {
+              "label": "Google 教育 ISTE 2026 更新",
+              "url": "https://blog.google/products-and-platforms/products/education/iste-2026-educator-updates/"
+            }
+          ]
+        },
+        {
+          "title": "Microsoft 365 Education:Unit Plans in Teach 自動生成對齊課綱的單元教案",
+          "summary": "微軟六月的教育更新一次端出多項 AI 功能,老師端最突出的是 Teams for Education 裡新的 Unit Plans in Teach 模組:輸入主題與對象,大型語言模型直接生成一份對齊國家/地區課綱的完整「單元計畫」——不是單堂投影片,而是跨數週的教學骨架(目標、節奏、評量點)。同批還有給學生的 AI 使用守則(Student AI Guidelines)、作業裡的學習分組、Windows 版 Learning Zone。它與 Google 那套的差別在管理取向:微軟強調「受管控的課堂 AI」,把權限、資料界線做進 IT 後台,適合機構統一治理。對教會兒主這種要跨月規劃整季課程的場景,Unit Plans 的價值在於先給你一個有結構的季度骨架,再逐週填內容,取代從空白頁開始想的耗能前期。",
+          "domains": [
+            "kids",
+            "team"
+          ],
+          "use": "規劃下一季兒主系列時,先用類似的單元計畫生成器(或直接用 Gemini/Claude)產出一份 8 週骨架,再逐週細化。",
+          "links": [
+            {
+              "label": "Windows News:M365 Education 六月更新解析",
+              "url": "https://windowsnews.ai/article/classroom-ai-gets-managed-inside-microsoft-365-educations-june-2026-update.430964"
+            }
+          ]
+        },
+        {
+          "title": "Canva Grow 2.0:AI 廣告生成與一鍵跨平台發佈(6/25 Cannes Lions 發表)",
+          "summary": "六月二十五日 Canva 在坎城創意節發表 Grow 2.0,把「做廣告—發佈—看成效—再優化」整條行銷流收進單一 AI 工作流。它會抓取你的品牌資訊、產品圖、品牌色與受眾訊號,快速生成靜態與影片廣告初稿;可從 Canva 直接推送到 Meta、TikTok、LinkedIn;AI Ad Tagging 自動替每支廣告打結構化標籤,分析是哪些主題、格式、訊息在帶動成效;再依實際數據自動生成「刷新版」變體。這是把 Canva 從設計工具往「行銷成效平台」再推一階。對教會場景要誠實看:核心是商業投放,你多半不跑付費廣告;但「一個主視覺自動衍生多平台多尺寸、且會依互動數據建議下一版」這個能力,對活動宣傳的社群貼文排版仍可借用,只是不必碰它的投放與計價那一半。",
+          "domains": [
+            "social"
+          ],
+          "use": "外展活動主視覺定稿後,借 Grow 2.0 的變體生成一次產出 IG/LINE/限動多尺寸;付費投放功能略過不用。",
+          "links": [
+            {
+              "label": "Canva 官方:Grow 2.0",
+              "url": "https://www.canva.com/newsroom/news/canva-grow/"
+            },
+            {
+              "label": "Capital Brief 報導",
+              "url": "https://www.capitalbrief.com/briefing/canva-launches-new-ai-marketing-platform-17f32907-6a26-4c0a-acdf-cd1fd5b32f06/"
+            }
+          ]
+        },
+        {
+          "title": "AI Stem 分離進入標準工作流:AudioShake 與 LALAL.AI Andromeda",
+          "summary": "接續前兩期的採譜/分軌主題,補一則工具層盤點(屬市場現況,非單一發表事件):2026 年 stem 分離已從實驗功能變成專業製作的常規前置步驟。AudioShake 主打把混音拆成各樂器 stem 供混音、母帶或沉浸式音訊使用,常被用來替只有成品混音、沒有母帶的現場錄音重新處理;LALAL.AI 換上新一代神經網路 Andromeda,主打更乾淨的人聲分離、跨曲目更一致、處理更快;Soundverse 則能拆到六軌(人聲/鼓/貝斯/吉他/伴奏等)。對音控教學與 BGV 訓練的意義沒變但更成熟了:任何一首詩歌成品都能拆成教材級分軌,不必依賴有無多軌母帶。與上期的 Meta SAM Audio(描述導向分離)互補——SAM Audio 靈活但需技術門檻,這幾家有現成介面、上手更快。",
+          "domains": [
+            "music"
+          ],
+          "use": "挑一首常用詩歌成品,用 LALAL.AI 或 AudioShake 拆出人聲與吉他軌,當音控課 EQ 示範與跟唱練習教材。",
+          "links": [
+            {
+              "label": "Soundverse:2026 最佳 stem 分離工具評比",
+              "url": "https://www.soundverse.ai/blog/article/best-ai-stem-separation-tools-for-music-production"
+            },
+            {
+              "label": "AudioShake",
+              "url": "https://www.audioshake.ai/"
+            },
+            {
+              "label": "LALAL.AI Stem Splitter",
+              "url": "https://www.lalal.ai/stem-splitter/"
+            }
+          ]
+        },
+        {
+          "title": "OpenAI GPT-5.6(Sol/Terra/Luna)上線,GPT-4.5 於 6/26 自 ChatGPT 退役",
+          "summary": "六月二十六日 OpenAI 一邊上新、一邊除役。新的 GPT-5.6 分三線:Sol 是主打前沿推理與代理任務的旗艦;Terra 是均衡日常款,官方稱效能接近 GPT-5.5 但便宜一半(API 每百萬 token 約 2.5/15 美元輸入/輸出);Luna 是最快最省的入門款(約 1/6 美元)。同日 GPT-4.5 從 ChatGPT(含自訂 GPT)下架,既有對話自動遷移到 GPT-5.5,此次退役只影響 ChatGPT、API 端不變。這延續 2026 年前沿的節奏:換代按月計、每家都同時養「旗艦高能」與「低成本快版」兩條線,競爭重點是嵌不嵌得進日常工作流。對終端使用者的白話結論不變——你不必做任何事,在用的服務會自動變聰明變快;唯一要留意的是若你有把某個舊模型寫進慣用流程,注意它可能被靜默替換。",
+          "domains": [
+            "frontier"
+          ],
+          "use": "無需操作;若訂閱 ChatGPT,長文整理與多步推理今後自動受益。留意慣用的舊模型名稱是否已被替換。",
+          "links": [
+            {
+              "label": "OpenAI 更新紀錄(Releasebot)",
+              "url": "https://releasebot.io/updates/openai"
+            }
+          ]
+        }
+      ],
+      "analysis": {
+        "topline": "本期五則裡,兩則可主動投入(ISTE 教師版 NotebookLM、AI 排班見下週補齊方向),兩則挑場景試(M365 Unit Plans、stem 分離),一則平台自動受益(GPT-5.6)。判斷基準同前:與你每月反覆事務的重疊度(備課、文宣、排班),以及不必新帳號、學習成本近零者優先。Canva Grow 2.0 雖是大發表,但核心是付費投放,對教會只取設計衍生那一半。",
+        "verdicts": [
+          {
+            "item": "Google ISTE 2026 教師版 NotebookLM",
+            "level": "invest",
+            "reason": "你本來就在用 NotebookLM 讀 Drive 舊課程,教師版把「素材→孩子端閃卡/測驗」這一步自動化,正好接上兒主備課流,Google 帳號即用、零額外成本。",
+            "practice": "拿一份已完成的主日學教案丟進去,生成孩子端複習閃卡與三題問答。驗證點:生成內容是否可直接用、還是要大改。"
+          },
+          {
+            "item": "Microsoft 365 Unit Plans in Teach",
+            "level": "try",
+            "reason": "跨月規劃整季課程是固定痛點,單元計畫生成器對應的正是季度骨架這一層。但你不在 M365 生態,實際可借的是概念——用手邊的 Gemini/Claude 複製同樣的「先骨架後細化」流程。",
+            "practice": "下一季兒主系列開排前,先請 AI 產一份 8 週單元骨架(目標/節奏/評量點),看能省下多少從零發想的時間。"
+          },
+          {
+            "item": "AI Stem 分離(AudioShake/LALAL Andromeda)",
+            "level": "try",
+            "reason": "音控課與 BGV 訓練都要分軌素材,這解決沒有母帶也能做教材的問題,且比上期的 SAM Audio 有現成介面、上手更快。",
+            "practice": "先用免費額度拆一首詩歌的人聲與吉他軌,聽音質是否達教材需求,再決定用哪一家或切回 Moises。"
+          },
+          {
+            "item": "Canva Grow 2.0",
+            "level": "try",
+            "reason": "你已有 Canva 與個人設計 Skill,可借用它的多平台變體生成加速社群圖;但它的主體(付費廣告投放與計價)對教會用不到,別被行銷定位帶著走。",
+            "practice": "下次活動宣傳試用一次變體生成,只取多尺寸輸出,記錄比手工排版省多少時間。"
+          },
+          {
+            "item": "OpenAI GPT-5.6 + GPT-4.5 退役",
+            "level": "passive",
+            "reason": "平台換代非新功能,自動受益;唯一要注意是舊模型可能被靜默替換,若寫進慣用流程需留意。",
+            "practice": "無需操作。若近期發現 ChatGPT 輸出風格或速度有變,多半是換代所致,非你設定跑掉。"
+          }
+        ],
+        "meta": "本期補足行政/知識管理維度(教育兩則)與音樂工具成熟度;仍待覆蓋的最高頻痛點是「排班約束滿足自動化」,已列為下週(7/01)主打並完成初查。音樂領域連兩期偏重,下期後可暫緩,改補健康/咖啡/哲學等長期空白領域看有無低成本切入點。"
+      }
+    },
+    {
       "week": "2026-06-18",
       "items": [
         {
           "title": "Google NotebookLM 2.0:主動建庫與代理型研究",
           "summary": "NotebookLM 是 Google 推出的「資料來源型 AI 研究助手」,使用者把文件、網頁、PDF 丟進去,它就只在這個資料庫裡回答問題,避免 AI 憑空捏造。六月八日推出的 2.0 版是一次大型升級:底層換上 Gemini 3.5,推理能力大幅提升;加入「主動建庫」功能,讓 AI 在對話中自動建議應補充的來源,不必自己預先想好所有資料;每個筆記本附帶安全雲端電腦,可執行程式碼並直接輸出圖表、Excel、Word 文件。最大意義是從「查詢工具」演變成「代理型研究夥伴」——可以主動規劃、蒐集、分析。對需要定期查考聖經背景、編寫課程大綱、整理多份會議文件的場景,這是目前市面上最接近「個人研究助理」的免費工具。",
-          "domains": ["kids", "faith", "governance", "team"],
+          "domains": [
+            "kids",
+            "faith",
+            "governance",
+            "team"
+          ],
           "use": "把課程分配表、聖經段落、外展企劃同時放入一個 Notebook,讓 AI 生成跨文件的課程摘要與待辦清單。",
           "links": [
-            {"label": "TechCrunch 報導", "url": "https://techcrunch.com/2026/06/08/notebooklms-new-update-will-help-you-build-source-repository-from-chat/"},
-            {"label": "Nerova 功能摘要", "url": "https://nerova.ai/news/google-notebooklm-june-8-2026-agentic-research-update"}
+            {
+              "label": "TechCrunch 報導",
+              "url": "https://techcrunch.com/2026/06/08/notebooklms-new-update-will-help-you-build-source-repository-from-chat/"
+            },
+            {
+              "label": "Nerova 功能摘要",
+              "url": "https://nerova.ai/news/google-notebooklm-june-8-2026-agentic-research-update"
+            }
           ]
         },
         {
           "title": "Canva Magic Layers:AI 生成圖像可拆解為可編輯圖層",
           "summary": "Canva 六月推出 Magic Layers,是 AI 2.0 升級的核心功能之一:過去 AI 生成的圖片只是一張不可拆解的點陣圖,Magic Layers 把 AI 生成結果自動分解為可獨立操作的設計圖層——背景、主體、文字層可以分別移動、替換、調色。同期更新還包括 Image to Video 現在支援人臉自然動態,不再有臉部變形問題;Magic Eraser 改善去除品質,不留陰影殘跡。Canva 將此系列定位為從「設計生成工具」擴張到「整個創作工作流的中心」,目前 Magic Layers 已有超過九百萬次使用。對同時要生產社群貼文、活動海報、兒主教材的場景,這種「全在同一個編輯器、AI 協助拆解再精修」的流程,能直接降低設計返工成本和工具切換摩擦。",
-          "domains": ["social", "kids"],
+          "domains": [
+            "social",
+            "kids"
+          ],
           "use": "用 AI 生成活動主視覺後,用 Magic Layers 把主體圖層抽出套不同底色,一次產出 IG 方形、LINE 橫幅、印刷版三種尺寸。",
           "links": [
-            {"label": "Canva 最新發布", "url": "https://www.canva.com/launches/"},
-            {"label": "Magic Studio 完整指南 2026", "url": "https://sawankr.com/courses/canva/canva-ai-features-2026-magic-studio-guide"}
+            {
+              "label": "Canva 最新發布",
+              "url": "https://www.canva.com/launches/"
+            },
+            {
+              "label": "Magic Studio 完整指南 2026",
+              "url": "https://sawankr.com/courses/canva/canva-ai-features-2026-magic-studio-guide"
+            }
           ]
         },
         {
           "title": "Meta SAM Audio:以自然語言描述定向分離任意音源",
           "summary": "SAM Audio 是 Meta AI Research 推出的開源音訊分離工具,名稱延伸自圖像領域的 Segment Anything Model。傳統音源分離只能按固定分類拆軌(人聲、鼓、吉他、貝斯),SAM Audio 的突破在於「描述導向分離」:使用者用自然語言指定要提取的聲音,例如「只要踩鑣」「只要主唱」「只要鋼琴」,AI 就能定向萃取那個音軌,其餘聲音留在另一軌。對音控教學而言,這改變了「示範素材的製作方式」:過去需要原始多軌母帶才能示範各樂器的 EQ 效果,現在可以從任何現成混音後製取材。作為開源模型,它可透過 Hugging Face 在線試用,無需訂閱費用。對兼顧音控教學與樂手訓練的場景,這是工具層級的升級:把任何詩歌錄音版本變成可拆分的訓練素材,而不必依賴有無母帶。",
-          "domains": ["music"],
+          "domains": [
+            "music"
+          ],
           "use": "挑兩首常用詩歌混音版,用 SAM Audio 拆出人聲軌與吉他軌,作為 BGV 跟唱訓練與音控課 EQ 示範的教材。",
           "links": [
-            {"label": "Bridge.audio 音樂 AI 工具評比", "url": "https://www.bridge.audio/blog/best-ai-tools-for-music-producers-in-2026/"}
+            {
+              "label": "Bridge.audio 音樂 AI 工具評比",
+              "url": "https://www.bridge.audio/blog/best-ai-tools-for-music-producers-in-2026/"
+            }
           ]
         },
         {
           "title": "Asaph:依聖經主題自動生成敬拜歌單建議",
           "summary": "Asaph 是近期在教會科技社群獲得關注的敬拜計畫 AI 工具,核心功能是根據每週講道段落或聖經主題,自動推薦能呼應主題的歌單組合,並分析現有曲庫中哪些情感色調或神學主題長期缺席。它的設計哲學是「學習特定會眾文化」:使用一段時間後能記住哪首歌在該會眾反應較好、哪種風格最適合特定季節,讓歌單建議越來越符合本地脈絡。相較於單純的曲庫搜尋,Asaph 提供「有論據的推薦」:為什麼選這首歌、它與經文的神學連結、這份歌單的情感弧線走向。對每月需要手工排定歌單的主領,它把「想半天卻想不出好搭配」這個耗能的創意前期工作自動化,留出更多時間深度預備各首歌的靈性帶領。",
-          "domains": ["music", "governance"],
+          "domains": [
+            "music",
+            "governance"
+          ],
           "use": "每月排歌單時輸入當月講道系列段落,讓 Asaph 給出三份草稿,再依同工習慣與樂手強項篩選調整。",
           "links": [
-            {"label": "The Lead Pastor:教會 AI 工具評比", "url": "https://theleadpastor.com/tools/best-church-ai-tools/"}
+            {
+              "label": "The Lead Pastor:教會 AI 工具評比",
+              "url": "https://theleadpastor.com/tools/best-church-ai-tools/"
+            }
           ]
         },
         {
           "title": "前沿換代週:GPT-5.5 正式接替與 Microsoft MAI 自研模型",
           "summary": "六月十二日,OpenAI 完成一次靜默模型替換:GPT-5.5(含高效能 Pro 版與速度優先的 Instant 版)正式取代 GPT-5.2 系列,成為 ChatGPT 的預設基礎。同一週,微軟在 Build 大會上發表自研的 MAI 系列首批模型:MAI-Code-1-Flash 專攻程式碼生成,MAI-Thinking-1 專攻推理問題,定位是更低成本的 API 選項,目的是降低對 OpenAI 的依賴。這兩件事合起來呈現 2026 年前沿模型競爭的新格局:換代速度加快到按月計算,各家都在同時發展「旗艦高能版」與「低成本快版」兩條線,競爭重點從基準測試排名轉向「能否嵌入使用者日常工作流」。對終端使用者的意義是:不需要做任何事,正在使用的服務就會自動變得更聰明、更快——這是最划算的免費升級。",
-          "domains": ["frontier"],
+          "domains": [
+            "frontier"
+          ],
           "use": "無需主動操作;若已訂閱 ChatGPT Plus,長文整理與多步推理任務今後自動受益。",
           "links": [
-            {"label": "OpenAI 更新紀錄", "url": "https://releasebot.io/updates/openai"},
-            {"label": "Microsoft MAI 模型發布", "url": "https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html"}
+            {
+              "label": "OpenAI 更新紀錄",
+              "url": "https://releasebot.io/updates/openai"
+            },
+            {
+              "label": "Microsoft MAI 模型發布",
+              "url": "https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html"
+            }
           ]
         }
       ],
@@ -495,77 +775,154 @@
         {
           "title": "Klang.io 推出 Transcription Studio:多樂器同時採譜",
           "summary": "Klang.io 是長期深耕「音訊轉樂譜」的德國公司,新推出的 Transcription Studio 號稱是全球第一個能在同一份錄音裡同時辨識多種樂器、並分別輸出各自譜面的工具。它的運作分兩層:先用音源分離模型把混音拆成人聲、吉他、貝斯、鼓等獨立音軌,再對每一軌做音高與節奏偵測,輸出五線譜、簡譜或 MIDI。過去的採譜工具一次只能處理一種樂器,遇到完整編曲的詩歌就力不從心;這次的突破在於「整首歌進去、整套分譜出來」,對需要幫整個樂團準備譜面的人來說,是工作流程等級的改變,而不只是單點功能的進步。",
-          "domains": ["music"],
+          "domains": [
+            "music"
+          ],
           "use": "練團錄音直接出各聲部譜;音控課示範各樂器在編曲中的角色。",
-          "links": [{"label": "MusicRadar 報導", "url": "https://www.musicradar.com/music-tech/klang-io-says-transcription-studio-is-the-worlds-first-ai-music-tool-that-can-transcribe-multiple-instruments-simultaneously"}, {"label": "Klang.io", "url": "https://klang.io/"}]
+          "links": [
+            {
+              "label": "MusicRadar 報導",
+              "url": "https://www.musicradar.com/music-tech/klang-io-says-transcription-studio-is-the-worlds-first-ai-music-tool-that-can-transcribe-multiple-instruments-simultaneously"
+            },
+            {
+              "label": "Klang.io",
+              "url": "https://klang.io/"
+            }
+          ]
         },
         {
           "title": "AI 採譜精準度大躍進:Stem 分離後可達 ~98%",
           "summary": "2026 年 AI 採譜領域的共同趨勢,是把「音源分離」變成轉譜前的標準前置步驟:先把混音拆成獨立樂器音軌,再對單一音軌做多音高偵測(Multi-Pitch Estimation,讓 AI 同時「聽見」多個音)。評測顯示,單一樂器的轉譜精準度因此從約八成跳升到接近 98%;過去最棘手的複音內容——和弦、對位、多樂器齊奏——如今也能穩定處理。另一個成熟方向是即時視覺化:音訊一邊播放,MIDI 音符或譜面一邊浮現,方便邊聽邊校對。商業模式多為免費額度+訂閱制,免費版約可轉 30–60 秒,月費落在 10–25 美元,入門門檻不高,適合先試再決定是否付費。",
-          "domains": ["music"],
+          "domains": [
+            "music"
+          ],
           "use": "吉他工具的下一步:把任何詩歌 YouTube 連結變成和弦譜 + 指板位置。",
-          "links": [{"label": "AI Tools Digest 評比", "url": "https://www.aitoolsdigest.com/blog/ai-music-transcription-tools-2026"}]
+          "links": [
+            {
+              "label": "AI Tools Digest 評比",
+              "url": "https://www.aitoolsdigest.com/blog/ai-music-transcription-tools-2026"
+            }
+          ]
         },
         {
           "title": "Suno「Voices」人聲風格生成上線",
           "summary": "Suno 是目前最主流的文字生成音樂服務之一:輸入一句描述,幾分鐘內產出含人聲、編曲、混音的完整歌曲。三月上線的「Voices」功能更進一步,讓使用者指定聲音特質來影響生成歌曲的人聲風格,等於把「寫歌」與「找歌手」合併成一個步驟。不過社群實測評價兩極:風格化的聲音表現尚可,要精準克隆特定人聲仍不穩定。整體來看,AI 生成音樂已從玩具走向「快速共創工具」——擅長打草稿、做 demo、生成替代版本、在音訊與可編輯譜面之間搭橋;但版權歸屬與正式場合的使用倫理,仍是每個團隊要自己想清楚的題目。",
-          "domains": ["music", "social"],
+          "domains": [
+            "music",
+            "social"
+          ],
           "use": "活動宣傳配樂、兒少課程主題曲 demo;正式敬拜使用前需思考版權與神學立場。",
-          "links": [{"label": "2026 AI 音樂生成工具比較", "url": "https://www.aisingerapp.com/blog/best-ai-song-generators-2026"}]
+          "links": [
+            {
+              "label": "2026 AI 音樂生成工具比較",
+              "url": "https://www.aisingerapp.com/blog/best-ai-song-generators-2026"
+            }
+          ]
         },
         {
           "title": "Apple WWDC:多 AI Extensions 系統,Claude 首次成為 iPhone 選項",
           "summary": "今年 WWDC 的核心轉向是「系統層的多 AI 架構」:iOS 27 推出 AI Extensions 機制,Siri 不再綁定單一模型,使用者可以把助理引擎換成 Gemini、Claude 等第三方 AI——這是 Claude 第一次成為 iPhone 的系統級選項。對產業的意義是,手機正式從「裝 AI App」進入「挑 AI 引擎」的時代,語音喚起、跨 App 操作、系統整合都會跟著開放。同一週的其他大事:Google 確認 Gemini 3.5 Pro 預計六月發布;微軟在 Build 大會發表自研的 MAI 系列模型,主打推理能力與更低的 token 成本。前沿模型的競爭正從「誰最聰明」轉向「誰嵌得進你的日常裝置與工作流」。",
-          "domains": ["frontier"],
+          "domains": [
+            "frontier"
+          ],
           "use": "手機上語音喚起 Claude 處理排班、回訊草稿,服事現場不用開電腦。",
-          "links": [{"label": "Crescendo AI News", "url": "https://www.crescendo.ai/news/latest-ai-news-and-updates"}]
+          "links": [
+            {
+              "label": "Crescendo AI News",
+              "url": "https://www.crescendo.ai/news/latest-ai-news-and-updates"
+            }
+          ]
         },
         {
           "title": "Curipod:互動式課程投影片生成",
           "summary": "Curipod 是專為課堂互動設計的 AI 投影片工具:輸入主題與年齡層,自動生成一整份含暖身投票、開放問答、學生繪圖、文字雲等互動環節的投影片;學生用手機或平板掃 QR code 進入,答案即時投到大螢幕上。它的設計哲學不是「AI 幫老師講課」,而是「AI 幫老師把參與感設計進課程」——生成的每一頁都是一個互動點,老師的角色從講述者變成討論主持人。在 2026 年的教育工具評比中,它常被列為互動課堂類首選;免費版已可使用核心功能。對節奏快、注意力短的兒少場景,這種「全員即時參與」的形式特別有效。",
-          "domains": ["kids"],
+          "domains": [
+            "kids"
+          ],
           "use": "大班活動課(MODE_C)的互動環節:現場投票、搶答,孩子用平板參與。",
-          "links": [{"label": "Edcafe 教育 AI 工具榜", "url": "https://www.edcafe.ai/blog/ai-tools-for-content-creation-in-education"}]
+          "links": [
+            {
+              "label": "Edcafe 教育 AI 工具榜",
+              "url": "https://www.edcafe.ai/blog/ai-tools-for-content-creation-in-education"
+            }
+          ]
         },
         {
           "title": "Canva Magic Studio 深化教育場景",
           "summary": "Canva 把旗下 AI 功能整合成 Magic Studio:用文字提示直接生成簡報、海報、圖表與學習單的初稿,再用 Magic Edit(改圖)、Magic Write(改文案)、自動去背、一鍵改尺寸等工具細修。對教育與事工現場的意義在於「從空白頁到可用初稿」的時間被大幅壓縮——研究指出善用這類工具的教師,例行備課時間可省下六到八成,把時間留給真正需要人的部分:引導、陪伴、處理特殊狀況。由於它是平台級功能,簡報、社群貼文、教材可以共用同一套品牌素材與風格;對同時管理多種視覺產出的人,維持視覺一致性的成本幾乎歸零。",
-          "domains": ["kids", "social"],
+          "domains": [
+            "kids",
+            "social"
+          ],
           "use": "你已接 Canva 連接器:主日學學習單、教會活動視覺可一條龍生成並套用個人風格。",
-          "links": [{"label": "教育內容 AI 工具 2026", "url": "https://www.eklavvya.com/blog/ai-driven-educational-content-creation"}]
+          "links": [
+            {
+              "label": "教育內容 AI 工具 2026",
+              "url": "https://www.eklavvya.com/blog/ai-driven-educational-content-creation"
+            }
+          ]
         },
         {
           "title": "Guidde:操作教學影片自動生成",
           "summary": "Guidde 解決的是「操作教學」這類最枯燥的文件工作:開著它的瀏覽器擴充,把流程實際操作一遍,它就自動截取每個步驟、生成標註截圖、配上 AI 旁白與字幕,輸出一支可分享的教學影片加圖文 SOP,官方號稱比手工製作快 11 倍。這類工具的價值在於把「知識交接的成本」壓到趨近於零:過去寫一份控台開機流程、投影軟體操作手冊要花一個下午,現在錄一次就同時有影片版與文件版,新進同工隨時可以重看、不必反覆口頭教學。對人員會輪替、需要持續訓練志工的團隊,這是投資報酬率最高的一類 AI 工具。",
-          "domains": ["team", "governance"],
+          "domains": [
+            "team",
+            "governance"
+          ],
           "use": "音控台操作 SOP、投影軟體教學:錄一次,新同工永遠有影片可看。",
-          "links": [{"label": "Guidde 教育影片工具", "url": "https://www.guidde.com/knowledge-hub/best-ai-video-creation-tools-education-2026"}]
+          "links": [
+            {
+              "label": "Guidde 教育影片工具",
+              "url": "https://www.guidde.com/knowledge-hub/best-ai-video-creation-tools-education-2026"
+            }
+          ]
         }
       ],
       "analysis": {
         "topline": "七則中三則值得主動投入(Guidde、Canva Magic Studio、Stem 分離工具),一則等系統更新即可被動受益(Apple 多 AI),Curipod 與 Klang.io 挑場景使用,Suno Voices 可略過。判斷基準有兩個:這項能力與「每週實際反覆發生的事務」重疊多少,以及現在上手的成本有多低。",
         "verdicts": [
-          { "item": "Guidde:操作教學影片", "level": "invest",
+          {
+            "item": "Guidde:操作教學影片",
+            "level": "invest",
             "reason": "音控與投影是輪替最頻繁的服事位置,等於每年都要重教一輪同樣的操作;國中生小幫手訓練的課綱裡也包含投影片操作與音控基礎。這是少數能直接從負責人身上把重複教學時間拿走的工具。",
-            "practice": "先錄三支:控台開機與基本設定、直播軟體操作、投影流程。放進同工群組釘選,之後新人報到一律「先看影片再實作」,你只負責驗收。" },
-          { "item": "Canva Magic Studio", "level": "invest",
+            "practice": "先錄三支:控台開機與基本設定、直播軟體操作、投影流程。放進同工群組釘選,之後新人報到一律「先看影片再實作」,你只負責驗收。"
+          },
+          {
+            "item": "Canva Magic Studio",
+            "level": "invest",
             "reason": "每月外展固定要產出活動 DM、電子 DM、抽獎聯等文宣,而 Canva 連接器與個人設計風格 Skill 都已就緒——這是零新學習成本的提速,不是新工具。",
-            "practice": "下次外展文宣試一條龍:提示生成初稿 → 套個人風格 → 一鍵改尺寸出 IG/LINE/列印三版,並把成品存成品牌模板,之後每月重複使用。" },
-          { "item": "Stem 分離與採譜", "level": "invest",
+            "practice": "下次外展文宣試一條龍:提示生成初稿 → 套個人風格 → 一鍵改尺寸出 IG/LINE/列印三版,並把成品存成品牌模板,之後每月重複使用。"
+          },
+          {
+            "item": "Stem 分離與採譜",
+            "level": "invest",
             "reason": "人聲訓練學員的常見卡點(抓不到 key、和聲編排、音準)正是拆軌練習能解的;混音課程也一直需要分軌教材。用途在「訓練」,比「採譜」本身更貼合現況。",
-            "practice": "用 Moises 拆 2–3 首常用詩歌:給 BGV 學員只留人聲軌跟唱、給音控課做單軌 EQ 前後對比素材。先訂一個月驗證有感再續。" },
-          { "item": "Curipod:互動課堂", "level": "try",
+            "practice": "用 Moises 拆 2–3 首常用詩歌:給 BGV 學員只留人聲軌跟唱、給音控課做單軌 EQ 前後對比素材。先訂一個月驗證有感再續。"
+          },
+          {
+            "item": "Curipod:互動課堂",
+            "level": "try",
             "reason": "主日學主力年齡層沒有自己的裝置、外展檢討的方向是實體闖關制,所以不適合主日學本體;但國中生小幫手有手機、成人裝備課需要參與感,這兩個場景很合。",
-            "practice": "免費版先做一份小幫手訓練的 10 分鐘互動段落(投票+搶答),實測一次看現場反應,再決定是否常態化到音控課等成人課程。" },
-          { "item": "Klang.io 多樂器採譜", "level": "try",
+            "practice": "免費版先做一份小幫手訓練的 10 分鐘互動段落(投票+搶答),實測一次看現場反應,再決定是否常態化到音控課等成人課程。"
+          },
+          {
+            "item": "Klang.io 多樂器採譜",
+            "level": "try",
             "reason": "團隊的工作格式是和弦譜+YouTube 連結,沒有「全套五線譜分譜」的常規需求;它解決的是偶發的特殊編曲場合,不是每週的事。",
-            "practice": "不訂閱。遇到需要弦樂或鍵盤聲部譜的特殊場合,用免費額度單次處理即可。" },
-          { "item": "Apple 多 AI 架構", "level": "passive",
+            "practice": "不訂閱。遇到需要弦樂或鍵盤聲部譜的特殊場合,用免費額度單次處理即可。"
+          },
+          {
+            "item": "Apple 多 AI 架構",
+            "level": "passive",
             "reason": "事務多半在手機上協調,系統層能直接喚起 Claude 之後,語音草擬訊息、查排班都不必開電腦。它是基礎建設,不需要任何學習投資。",
-            "practice": "iOS 27 正式版釋出後,把預設助理切換成 Claude,先從「口述 → 生成提醒訊息草稿」這一個動作開始養成習慣。" },
-          { "item": "Suno Voices", "level": "skip",
+            "practice": "iOS 27 正式版釋出後,把預設助理切換成 Claude,先從「口述 → 生成提醒訊息草稿」這一個動作開始養成習慣。"
+          },
+          {
+            "item": "Suno Voices",
+            "level": "skip",
             "reason": "正式敬拜使用 AI 生成歌曲牽涉版權與神學立場,團隊尚未討論;活動配樂用現成詩歌已足夠。它不解決目前存在的任何問題。",
-            "practice": "暫不投入。若未來想碰,先和同工開一次「AI 生成內容在敬拜中的使用原則」的對話,有共識再試。" }
+            "practice": "暫不投入。若未來想碰,先和同工開一次「AI 生成內容在敬拜中的使用原則」的對話,有共識再試。"
+          }
         ],
         "meta": "後設觀察:本期選材偏音樂與教育工具,但實際最大的反覆成本在行政自動化(排班、表單追蹤、預算對帳)。未來幾期若把蒐集方向加入「行政與工作流自動化」並降低音樂生成類比重,命中率會更高。"
       }

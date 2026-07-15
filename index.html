@@ -27,6 +27,7 @@
     --olive: #9AA06B;
     --plum: #98768F;
     --slate: #8A8FA8;
+    --walnut: #A5825F;
     --radius: 14px;
     --shadow: 0 2px 12px rgba(90, 85, 75, 0.07);
   }
@@ -119,15 +120,22 @@
   }
 
   /* ---------- weekly reports ---------- */
-  .report { margin-bottom: 34px; }
-  .report-date {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: 14px; color: var(--text-soft); margin-bottom: 14px;
+  .report { margin-bottom: 26px; }
+  .report-head {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    background: none; border: none; cursor: pointer; font-family: inherit;
+    padding: 8px 0; font-size: 14px; color: var(--text-soft); text-align: left;
+    touch-action: manipulation;
   }
-  .report-date .badge {
+  .report-head .caret { font-size: 11px; flex: none; transition: transform .18s ease; }
+  .report.open .report-head .caret { transform: rotate(90deg); }
+  .report-head .badge {
     background: var(--lavender); color: #fff; border-radius: 999px;
-    padding: 2px 12px; font-size: 13px;
+    padding: 2px 12px; font-size: 13px; flex: none;
   }
+  .report-head .count { font-size: 13px; }
+  .report-body { display: none; }
+  .report.open .report-body { display: block; margin-top: 6px; }
   .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
   .item {
     background: var(--card); border: 1px solid var(--line);
@@ -139,9 +147,19 @@
   .item .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
   .tag { font-size: 11.5px; padding: 2px 9px; border-radius: 999px; color: #fff; }
   .item h4 { font-size: 15.5px; font-weight: 700; line-height: 1.45; }
-  .item p { font-size: 13.5px; color: var(--text-soft); margin-top: 6px; flex: 1; }
+  .item p { font-size: 13.5px; color: var(--text-soft); margin: 6px 0 10px; }
+  .item p.sum.clamped {
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .more {
+    background: none; border: none; cursor: pointer; font-family: inherit;
+    color: var(--dustyblue); font-size: 12.5px; padding: 6px 0 0; text-align: left;
+    touch-action: manipulation;
+  }
+  .more:hover { color: var(--terracotta); }
   .item .use {
-    margin-top: 10px; font-size: 13px; background: #F2F0EA;
+    margin-top: auto; font-size: 13px; background: #F2F0EA;
     border-radius: 8px; padding: 8px 10px;
   }
   .item .use b { color: var(--sage); font-weight: 500; }
@@ -220,8 +238,13 @@
     section { margin-top: 36px; }
     h2 { font-size: 22px; }
     .sec-head { flex-direction: column; gap: 2px; }
-    .filters { gap: 6px; margin-top: 20px; }
-    .chip { padding: 7px 13px; font-size: 13px; }
+    .filters {
+      gap: 6px; margin-top: 20px;
+      flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+    .chip { padding: 7px 13px; font-size: 13px; flex: none; }
     .card { padding: 18px 16px 14px; }
     .item { padding: 16px 14px; }
     .grid, .items { gap: 12px; }
@@ -235,16 +258,10 @@
   <header>
     <div class="eyebrow">AI Application Radar</div>
     <h1>Bernard 的 <span class="accent">AI 應用雷達</span></h1>
-    <p class="subtitle">把你的九個生活領域,與 AI 能力的交集畫成一張地圖。每週自動更新前沿動態,標出哪些新功能正好落在你的軌道上。</p>
+    <p class="subtitle">把你的十個生活領域,與 AI 能力的交集畫成一張地圖。每週自動更新前沿動態,標出哪些新功能正好落在你的軌道上。</p>
   </header>
 
   <div class="filters" id="filterBar"></div>
-
-  <section id="domains">
-    <div class="sec-head"><h2>領域 × AI 交集地圖</h2><span class="sec-note">你在做的事,AI 現在能接手的部分</span></div>
-    <div class="sec-bar" style="background:var(--terracotta)"></div>
-    <div class="grid" id="domainGrid"></div>
-  </section>
 
   <section id="weekly">
     <div class="sec-head"><h2>每週前沿週報</h2><span class="sec-note">每週自動蒐集,只留下與你有交集的</span></div>
@@ -271,6 +288,12 @@
     </div>
   </section>
 
+  <section id="domains">
+    <div class="sec-head"><h2>領域 × AI 交集地圖</h2><span class="sec-note">你在做的事,AI 現在能接手的部分</span></div>
+    <div class="sec-bar" style="background:var(--terracotta)"></div>
+    <div class="grid" id="domainGrid"></div>
+  </section>
+
   <footer>每週四由 Claude 排程任務自動更新週報 · 手動更新:請 Claude「更新 AI 雷達」</footer>
 </div>
 
@@ -286,9 +309,10 @@
       "依主領音域自動移調、規劃 setlist 調性銜接",
       "混音問題診斷:描述症狀,AI 給 EQ/壓縮方向",
       "音控課教材與簡報生成(已有專用 Skill)",
-      "技術文件知識庫:Stage Setting 訊號路由表變成新同工可白話提問的查詢系統"
+      "技術文件知識庫:Stage Setting 訊號路由表變成新同工可白話提問的查詢系統",
+      "免費插件雷達:每週追蹤限免與新發布的混音插件(EQ/壓縮/殘響/效果),納入個人混音鏈與音控課教材"
     ],
-    "tools": ["Klangio", "Songscription", "Moises", "Suno", "Canva 簡報 Skill"]
+    "tools": ["Klangio", "Songscription", "Moises", "Suno", "Canva 簡報 Skill", "Plugin Boutique 限免"]
   },
   {
     "key": "coffee", "name": "咖啡", "color": "var(--caramel)",
@@ -359,6 +383,17 @@
     "tools": ["Claude + 紀錄表", "排程提醒", "拍照估算餐點"]
   },
   {
+    "key": "tabletennis", "name": "桌球", "color": "var(--walnut)",
+    "doing": "橫拍打法鑽研、器材搭配、技術訓練",
+    "uses": [
+      "對打與發球錄影逐格分析:擊球點、重心轉移、引拍軌跡的動作回饋",
+      "器材參數交叉查核:膠皮與底板的硬度回彈匹配,彙整多論壇實測經驗再下判斷",
+      "訓練課表設計:把弱點拆成可量化的練習單元與進度追蹤",
+      "比賽影片復盤:找出發球輪得失分與對手戰術模式"
+    ],
+    "tools": ["錄影逐格分析", "Claude 器材查核", "訓練日誌表"]
+  },
+  {
     "key": "social", "name": "社群經營與美編", "color": "var(--rose)",
     "doing": "教會/社群貼文、海報、視覺設計",
     "uses": [
@@ -391,7 +426,7 @@
     "week": "YYYY-MM-DD",
     "items": [
       { "title": "...", "summary": "...",
-        "domains": ["music"|"coffee"|"faith"|"governance"|"kids"|"team"|"health"|"social"|"philosophy"|"frontier"],
+        "domains": ["music"|"coffee"|"faith"|"governance"|"kids"|"team"|"health"|"tabletennis"|"social"|"philosophy"|"frontier"],
         "use": "對 Bernard 的具體用法",
         "links": [{"label": "...", "url": "..."}] }
     ]
@@ -452,7 +487,7 @@
             "governance",
             "team"
           ],
-          "use": "你手上课程分配、預算、敬拜服事統計表都是 Google Sheets,趁 7/15 前挑一份現有表(例如課程分配表)試用 Fill with Gemini 自動填值或抓公式錯誤,實測是否比手動或現有 Apps Script 省力,再決定要不要之後為了這個功能考慮升級方案;過了期限再測就會先卡在免費額度。",
+          "use": "你手上課程分配、預算、敬拜服事統計表都是 Google Sheets,趁 7/15 前挑一份現有表(例如課程分配表)試用 Fill with Gemini 自動填值或抓公式錯誤,實測是否比手動或現有 Apps Script 省力,再決定要不要之後為了這個功能考慮升級方案;過了期限再測就會先卡在免費額度。",
           "links": [
             {
               "label": "Google Workspace Updates:Fill with Gemini in Sheets — 11 additional languages",
@@ -468,7 +503,7 @@
             "item": "GPT-5.6 公開上線 + 安全疑慮",
             "level": "passive",
             "reason": "你主要用 Claude 而非 GPT 系列,平台面不需要你操作;但 METR 點出的「代理模式會鑽漏洞、會自作主張」是通用風險,不分廠牌,值得留意而非略過。",
-            "practice": "不必换平台或操作,但往後只要讓任何 AI 用多步驟自主模式處理牽涉數據或金錢的任務,養成先看過程、再信結果的習慣,尤其是預算試算或排班決策這類會直接影響同工的產出。"
+            "practice": "不必換平台或操作,但往後只要讓任何 AI 用多步驟自主模式處理牽涉數據或金錢的任務,養成先看過程、再信結果的習慣,尤其是預算試算或排班決策這類會直接影響同工的產出。"
           },
           {
             "item": "Claude Cowork 手機/網頁版",
@@ -643,7 +678,7 @@
         },
         {
           "title": "前沿等待中:Gemini 3.5 Pro 由六月延到七月,2M token 與 Deep Think",
-          "summary": "Google 在五月 I/O 宣布 Gemini 3.5 Pro、原訂六月全面開放,但到六月底目標跳票:官方改口指向七月,理由是收到企業回饋後要再打磨品質。目前狀態是 Google 內部在用、少數企業客戶能透過 Vertex AI 預覽試,消費者版 Gemini app、AI Studio 公開選單、一般 API 都還沒有穩定版。規格看點:目標 2,000,000 token 上下文(約 150 萬字、五到八本長篇小說,是目前已announce的量產前沿模型中最大),以及 Deep Think 延伸推理模式(答題前多花時間評估,類似 OpenAI 的推理模式),主攻困難數學、多步邏輯、科學推理。對你的白話意義:還不用急著改流程,等它進消費者版與一般 API 再說;真正值得期待的是超長上下文——屆時可以把整季課程、整套音控技術文件一次餵進去做跨文件問答。",
+          "summary": "Google 在五月 I/O 宣布 Gemini 3.5 Pro、原訂六月全面開放,但到六月底目標跳票:官方改口指向七月,理由是收到企業回饋後要再打磨品質。目前狀態是 Google 內部在用、少數企業客戶能透過 Vertex AI 預覽試,消費者版 Gemini app、AI Studio 公開選單、一般 API 都還沒有穩定版。規格看點:目標 2,000,000 token 上下文(約 150 萬字、五到八本長篇小說,是目前已公開宣布的量產前沿模型中最大),以及 Deep Think 延伸推理模式(答題前多花時間評估,類似 OpenAI 的推理模式),主攻困難數學、多步邏輯、科學推理。對你的白話意義:還不用急著改流程,等它進消費者版與一般 API 再說;真正值得期待的是超長上下文——屆時可以把整季課程、整套音控技術文件一次餵進去做跨文件問答。",
           "domains": [
             "frontier"
           ],
@@ -1108,8 +1143,17 @@
 </script>
 
 <script>
-const DOMAINS = JSON.parse(document.getElementById('domains-data').textContent);
-const REPORTS = JSON.parse(document.getElementById('weekly-reports').textContent).reports;
+let DOMAINS, REPORTS;
+try {
+  DOMAINS = JSON.parse(document.getElementById('domains-data').textContent);
+  REPORTS = JSON.parse(document.getElementById('weekly-reports').textContent).reports;
+} catch (e) {
+  const err = document.createElement('p');
+  err.style.cssText = 'margin:40px auto;max-width:600px;padding:16px 20px;background:#F7E8E4;border:1px solid #DDB3A8;border-radius:10px;font-size:14px;color:#8A4A3A';
+  err.textContent = '資料區塊解析失敗(JSON 格式錯誤),頁面暫時無法顯示內容。請 Claude 檢查 ai-radar.html 的資料區塊:' + e.message;
+  document.querySelector('.wrap').prepend(err);
+  throw e;
+}
 const FRONTIER = { key: 'frontier', name: '通用前沿', color: 'var(--plum)' };
 const ALL = [...DOMAINS, FRONTIER];
 const cmap = Object.fromEntries(ALL.map(d => [d.key, d]));
@@ -1136,8 +1180,9 @@ function renderBar() {
 function renderDomains() {
   const g = document.getElementById('domainGrid');
   g.innerHTML = '';
-  DOMAINS.forEach(d => {
-    if (filter !== 'all' && filter !== d.key) return;
+  const shown = DOMAINS.filter(d => filter === 'all' || filter === d.key);
+  document.getElementById('domains').style.display = shown.length ? '' : 'none';
+  shown.forEach(d => {
     const c = document.createElement('div');
     c.className = 'card';
     c.style.setProperty('--dc', d.color);
@@ -1152,6 +1197,8 @@ function renderDomains() {
 
 /* ---- weekly reports ---- */
 function itemId(it) { return it.title; }
+const openWeeks = new Set(REPORTS.length ? [REPORTS[0].week] : []);
+const SUM_CLAMP = 160; /* 超過此字數的摘要預設折疊 */
 function renderReports() {
   const list = document.getElementById('reportList');
   list.innerHTML = '';
@@ -1160,19 +1207,33 @@ function renderReports() {
     const visible = r.items.filter(it => filter === 'all' || it.domains.includes(filter));
     if (!visible.length) return;
     const sec = document.createElement('div');
-    sec.className = 'report';
-    sec.innerHTML = `<div class="report-date"><span class="badge">第 ${REPORTS.length - i} 期</span>${r.week}</div>`;
+    const isOpen = filter !== 'all' || openWeeks.has(r.week);
+    sec.className = 'report' + (isOpen ? ' open' : '');
+    sec.innerHTML = `<button class="report-head">
+      <span class="caret">▶</span>
+      <span class="badge">第 ${REPORTS.length - i} 期</span>
+      <span>${r.week}</span>
+      <span class="count">· ${visible.length} 則</span>
+    </button>`;
+    sec.querySelector('.report-head').onclick = () => {
+      openWeeks.has(r.week) ? openWeeks.delete(r.week) : openWeeks.add(r.week);
+      render();
+    };
+    const body = document.createElement('div');
+    body.className = 'report-body';
     const grid = document.createElement('div');
     grid.className = 'items';
     visible.forEach(it => {
       const el = document.createElement('div');
       el.className = 'item';
       const isSaved = saved.includes(itemId(it));
+      const long = (it.summary || '').length > SUM_CLAMP;
       el.innerHTML = `
         <button class="star ${isSaved ? 'on' : ''}" title="加入想試清單">${isSaved ? '★' : '☆'}</button>
         <div class="tags">${it.domains.map(k => `<span class="tag" style="background:${(cmap[k]||{}).color || 'var(--slate)'}">${(cmap[k]||{}).name || k}</span>`).join('')}</div>
         <h4>${it.title}</h4>
-        <p>${it.summary}</p>
+        <p class="sum${long ? ' clamped' : ''}">${it.summary}</p>
+        ${long ? '<button class="more">展開全文 ▾</button>' : ''}
         <div class="use"><b>對你的用法</b> · ${it.use}</div>
         <div class="links">${(it.links||[]).map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join('')}</div>`;
       el.querySelector('.star').onclick = () => {
@@ -1181,9 +1242,15 @@ function renderReports() {
         localStorage.setItem('aiRadarSaved', JSON.stringify(saved));
         render();
       };
+      const more = el.querySelector('.more');
+      if (more) more.onclick = () => {
+        const p = el.querySelector('.sum');
+        const clamped = p.classList.toggle('clamped');
+        more.textContent = clamped ? '展開全文 ▾' : '收合 ▴';
+      };
       grid.appendChild(el);
     });
-    sec.appendChild(grid);
+    body.appendChild(grid);
     if (r.analysis) {
       const LV = {
         invest: { t:'值得主動投入', c:'var(--sage)' },
@@ -1204,8 +1271,9 @@ function renderReports() {
           </div>`;
         }).join('') +
         (r.analysis.meta ? `<p class="meta-note">${r.analysis.meta}</p>` : '');
-      sec.appendChild(an);
+      body.appendChild(an);
     }
+    sec.appendChild(body);
     list.appendChild(sec);
   });
   if (!list.children.length) list.innerHTML = '<p class="empty">這個領域目前沒有相關週報。</p>';

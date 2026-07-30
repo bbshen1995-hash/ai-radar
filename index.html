@@ -436,6 +436,139 @@
 {
   "reports": [
     {
+      "week": "2026-07-30",
+      "items": [
+        {
+          "title": "Claude Opus 5 上線:效力可調三段,價格砍半逼近旗艦水準",
+          "summary": "Anthropic 於 7/24 發表 Claude Opus 5,對外定位是「逼近 Fable 5 前沿智能,價格只要一半」。最大新功能是「effort 效力切換」,可在低/中/高三段之間調整模型花多少力氣處理一個任務,讓使用者自己在成本與品質之間取捨;預設與最大都支援百萬 token 上下文、12.8 萬輸出 token,預設就開啟思考模式,且能在對話中途新增或移除工具而不打斷 prompt cache。目前已成為 Claude Max 方案的預設模型,在 Pro 方案裡則是最強選項。",
+          "domains": [
+            "frontier"
+          ],
+          "use": "你日常已經在用 Claude Pro/Max,現在的預設或最強模型已經換成 Opus 5,不需要額外設定;可以留意一下對話介面裡的 effort 切換選項,遇到排班衝突分析、財報試算這類需要仔細推理的任務刻意調到 high,單純查資料或整理格式這種輕量任務調到 low,省下的等待時間和額度可能比你想的明顯。",
+          "links": [
+            {
+              "label": "Anthropic 官方:Introducing Claude Opus 5",
+              "url": "https://www.anthropic.com/news/claude-opus-5"
+            },
+            {
+              "label": "Fortune:Anthropic debuts Claude Opus 5",
+              "url": "https://fortune.com/2026/07/24/anthropic-debuts-claude-opus-5-with-feature-that-lets-users-toggle-between-cost-and-capability/"
+            }
+          ]
+        },
+        {
+          "title": "Claude for Nonprofits 上線:非營利團隊方案折75%",
+          "summary": "Anthropic 本月推出 Claude for Nonprofits 專案,針對美國 501(c)(3) 及「國際對等組織」提供 Team/Enterprise 方案最高 75% 折扣(Team 座位每人每月約從 8 美元起),並附贈 Anthropic 與 GivingTuesday 合作的免費「AI Fluency for Nonprofits」課程,以及 1.5 億美元規模的 Claude Corps 落地協助計畫。申請方式是直接到官網頁面送出組織資料審核,目前公開資訊沒有明確列出台灣教會這類「國際對等組織」的認定標準與所需文件,實際是否符合資格需要送一次申請才會知道。",
+          "domains": [
+            "governance",
+            "frontier"
+          ],
+          "use": "如果教會未來想讓不只你一人固定用 Claude(例如影音同工、行政同工也常態需要),團隊方案分攤下來可能比大家各自訂閱 Pro 划算;但「國際對等組織」的資格認定不確定,建議找空檔先送一次申請試探審核結果,不要預設一定會過或一定不會過。",
+          "links": [
+            {
+              "label": "Anthropic:Claude for Nonprofits",
+              "url": "https://claude.com/solutions/nonprofits"
+            },
+            {
+              "label": "Charity Charge:Claude for Nonprofits 完整說明",
+              "url": "https://www.charitycharge.com/nonprofit-resources/claude-for-nonprofits/"
+            }
+          ]
+        },
+        {
+          "title": "ChurchScheduling.com Ezer AI:文字生成無衝突排班表",
+          "summary": "ChurchScheduling.com 是專為教會事工設計的排班平台,核心賣點是「Ezer AI」排班引擎:用一般英文描述排班規則(誰跟誰不能同天、誰每月上限幾週等),AI 就直接生成一份數學上無衝突的完整排班表,不只是給一個空白表格讓人工填。系統會自動發簡訊通知同工確認或婉拒,一旦有人婉拒,會依技能自動找下一位可用人選遞補,也支援多堂區共用同工池與統一帳務。目前公開資訊沒有列出明確定價,需要實際申請才知道費用與是否支援中文規則描述。",
+          "domains": [
+            "team",
+            "governance"
+          ],
+          "use": "這直接對到你排班最大的痛點:各人限制(主領與小幫手分開、志翔盡量與青少服事同日、月禪不便小幫手等)目前全靠人工套用。可以先申請免費試用,把這些限制寫成規則丟給 Ezer AI 產生一版草稿,跟你自己排的月排班矩陣比對缺漏與衝突清單品質;如果準確度夠,再評估要不要把資料從 Google Sheets 搬過去(這是比較大的決定,值得先小規模試,不要一次全搬)。",
+          "links": [
+            {
+              "label": "Church Volunteer Scheduling:Ezer AI 功能介紹",
+              "url": "https://churchscheduling.com/features/"
+            },
+            {
+              "label": "The Lead Pastor:17 Best AI Volunteer Management Tools 2026",
+              "url": "https://theleadpastor.com/tools/best-ai-volunteer-management-tools/"
+            }
+          ]
+        },
+        {
+          "title": "AI 影片剪輯工具鎖定教會市場,自然語言指令抓精華片段",
+          "summary": "多款 AI 影片剪輯工具本季集中往教會場景靠攏:Choppity 可用「找出福音信息重點」「找出呼召片段」這類自然語言指令分析長影片,並自動追蹤講員讓畫面置中不因走動而失焦;Descript 的 AI Clip Maker 自動抓出一段講道裡最精彩的片段,轉成直式短片;OpusClip、ChurchSocial 則主打一鍵剪輯後直接發佈到 FB/IG/YouTube/TikTok。多數都有免費層級可先試用,但這些工具主要面向英文語境開發,中文語音辨識與字幕的準確度未經實測,不能預設跟英文內容一樣好用。",
+          "domains": [
+            "social"
+          ],
+          "use": "大都會外展或主日敬拜錄影後的社群短片剪輯,目前應該是人工作業;可以挑一支既有影片,拿 Choppity 或 Descript 的免費層級試跑一次自然語言指令(例如「找出兒童反應最熱烈的片段」),重點檢查中文語音辨識準不準、自動字幕能不能用,再判斷是否值得固定排進社群素材產製流程。",
+          "links": [
+            {
+              "label": "Choppity:11 Best AI Clip Makers for Churches",
+              "url": "https://www.choppity.com/blog/best-ai-clip-maker-for-churches/"
+            },
+            {
+              "label": "OpusClip for Churches",
+              "url": "https://www.opus.pro/business/church"
+            }
+          ]
+        },
+        {
+          "title": "本週三款新免費外掛:串流音質檢查、隨機多效果器、延遲效果",
+          "summary": "Bedroom Producers Blog 本週報導三款新發佈的免費外掛:Boomer Hotel 的 NULLIFY 是串流音質檢查工具,能模擬 Spotify/YouTube 等平台的編碼壓縮,讓你在發佈前預覽母帶經過串流壓縮後的實際音質變化(用優惠碼免費使用至 8/31);Friendgineer Labs 的 Chance 是免費隨機多效果器,支援 macOS 與 Windows;Greer Studios 的 Signature Delay 則是免費 Windows 延遲效果外掛。三款都是 VST3/AU 格式,可直接裝進 Logic 使用。",
+          "domains": [
+            "music"
+          ],
+          "use": "主日直播錄音上傳 YouTube 或串流平台前,可以先用 NULLIFY 檢查母帶壓縮後音質有沒有明顯劣化,當作發佈前最後一道把關;Chance 跟 Signature Delay 則可以裝進 Logic,下次混音課直接當免費效果器示範素材,不用額外編列預算。",
+          "links": [
+            {
+              "label": "Bedroom Producers Blog:NULLIFY 串流音質檢查外掛",
+              "url": "https://bedroomproducersblog.com/2026/07/28/boomer-hotel-nullify/"
+            },
+            {
+              "label": "Bedroom Producers Blog:Friendgineer Labs Chance",
+              "url": "https://bedroomproducersblog.com/2026/07/23/friendgineer-labs-chance/"
+            }
+          ]
+        }
+      ],
+      "analysis": {
+        "topline": "本期挑 5 則,刻意避開這三週已經反覆報過的主題(前沿模型軍備競賽、Canva AI 2.0/Code 2.0、桌球動作分析 App、一般性會議記錄工具),改聚焦兩則過去沒挑過的「組織層級」發現:Claude for Nonprofits 團隊折扣、ChurchScheduling.com 的 Ezer AI 排班引擎,這兩則影響的不只你個人工作流,而是整個敬拜團/教會的資源分配與最高價值痛點(約束滿足排班)。判斷基準維持「與反覆事務的重疊度」+「上手成本」:免費外掛與 Opus 5 的 effort 切換上手成本最低,直接可用;Ezer AI 排班、Claude for Nonprofits 申請、AI 剪輯工具的中文準確度都需要先小規模實測才知道能不能用。",
+        "verdicts": [
+          {
+            "item": "Claude Opus 5(effort 效力切換)",
+            "level": "try",
+            "reason": "你已經在用 Claude Pro/Max,模型本身已自動升級不需要動作;但 effort 三段切換是新增的主動可控項,對需要仔細推理的排班衝突分析、財報試算這類任務,調高 effort 可能明顯提升品質,值得養成習慣去用而不是放著預設不管。",
+            "practice": "下次做排班衝突分析或財報試算這類任務時,留意對話介面的 effort 選項調到 high;查資料、整理格式等輕量任務維持預設或調低,兩三次之後比較有感差異再決定固定用法。"
+          },
+          {
+            "item": "Claude for Nonprofits(團隊方案 75% 折扣)",
+            "level": "try",
+            "reason": "如果未來教會有多位同工需要常態使用 AI(不只你一人),團隊方案分攤下來可能比個人各自訂閱 Pro 划算,且附贈的 AI Fluency 課程對同工團隊上手也有幫助;但台灣教會是否符合「國際對等組織」資格完全不確定,不宜預設會過。",
+            "practice": "找空檔到 claude.com/solutions/nonprofits 送一次申請,用教會現有的立案文件試探審核結果;若通過再評估要不要把哪些同工的個人訂閱整合進團隊方案,若沒過就當作已排除的選項,不用重複嘗試。"
+          },
+          {
+            "item": "ChurchScheduling.com Ezer AI 排班引擎",
+            "level": "try",
+            "reason": "直接命中你自述「約束滿足靠人工」這個最高價值待自動化痛點,自然語言描述規則生成無衝突排班表如果真的準,能省下每月排班矩陣人工比對的時間;但實際準確度、中文規則支援與定價都未經驗證,且牽涉要不要把排班資料搬出 Google Sheets 是個不小的決定。",
+            "practice": "先申請免費試用帳號,把現有的個人限制規則(主領與小幫手分開等)寫成文字丟給 Ezer AI,拿產出的草稿跟你手動排的版本比對衝突與缺漏,小規模驗證有感再考慮要不要正式搬遷,不要一次到位。"
+          },
+          {
+            "item": "AI 影片剪輯工具(Choppity / Descript Clip Maker 等)",
+            "level": "try",
+            "reason": "對到大都會外展、主日敬拜錄影後製作社群短片這個現有人工流程,自然語言指令抓精華片段如果好用能省下不少剪輯時間;但這批工具主要面向英文語境,中文語音辨識與字幕準確度是未知數,不能預設跟宣傳頁面一樣好用。",
+            "practice": "挑一支既有的活動或敬拜錄影,用 Choppity 或 Descript 免費層級跑一次「找出反應最熱烈片段」之類的指令,重點檢查中文辨識與字幕品質,準確度夠再考慮排進固定的社群素材流程。"
+          },
+          {
+            "item": "免費外掛(NULLIFY / Chance / Signature Delay)",
+            "level": "try",
+            "reason": "零成本、格式支援 Logic,尤其 NULLIFY 補上「發佈前檢查串流壓縮後音質」這個你目前流程裡沒有的把關步驟,對直播錄音上架前的品管有直接幫助。",
+            "practice": "下次主日直播錄音要上傳前,先跑一次 NULLIFY 看壓縮後音質變化大不大,有感的話固定排進上架前檢查清單;Chance 跟 Signature Delay 則等下次混音課需要效果器示範素材時再裝。"
+          }
+        ],
+        "meta": "本期咖啡、健康、哲學依規則維持「命中才報」,廣搜後未找到夠格切入點故略過;搜尋額度優先給了「組織層級而非個人層級」的兩則發現(Nonprofits 折扣、Ezer AI 排班),這兩則都需要實際送出申請或試用才能驗證,建議下次追蹤時回頭確認結果。"
+      }
+    },
+    {
       "week": "2026-07-23",
       "items": [
         {

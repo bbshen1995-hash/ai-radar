@@ -439,6 +439,16 @@
       "week": "2026-09-10",
       "items": [
         {
+          "title": "GPT-6 Astra上線:電腦操作快2倍、資安能力躍升",
+          "summary": "OpenAI 從 9 月 3 日起分階段釋出 GPT-6 Astra,號稱旗下最強模型,ChatGPT 的電腦操作(computer use)速度比前代快將近 2 倍,在軟體工程、專業工作與科學任務上都達到業界最佳表現,也更擅長長時間維持在任務範圍內、理解使用者意圖、執行多步驟工作流程。資安能力大幅躍升,具備自行找出未知安全漏洞並開發攻擊方法的能力,因此公開版對進階資安任務(如撰寫概念驗證攻擊程式)設有較嚴格的拒答限制,通過審核的企業才能拿到限制較少的版本。開放對象含 ChatGPT Plus/Pro/Business/Enterprise、API 與 AWS,API 定價每百萬輸入 10 美元、輸出 50 美元,與 Claude 目前主力模型定價打平。",
+          "domains": ["frontier"],
+          "use": "你的主力工具是 Claude 全家桶(Code、Chat、Cowork)而非 ChatGPT,這則對你來說主要是產業風向球:代理型模型在電腦操作與多步驟工作流程上的進展速度,關係到你未來評估要不要為特定任務(例如大量批次資料整理)額外引入其他模型的判斷基準,不需要現在就申請或切換。",
+          "links": [
+            {"label": "OpenAI:GPT-6 Astra 官方發布", "url": "https://openai.com/index/gpt-6-astra/"},
+            {"label": "CNBC:OpenAI announces rollout of GPT-6 Astra", "url": "https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html"}
+          ]
+        },
+        {
           "title": "Claude Fable 5.1上線,快取讀取價砍75%",
           "summary": "Anthropic 於 9 月 1 日同時推出 Claude Fable 5.1 與 Mythos 5.1(同一顆模型、安全防護層級不同)。最直接的變化是快取讀取(cache read)價格從基礎輸入價的 0.1 倍降到 0.025 倍,等於長對話重複讀取既有上下文的成本砍掉四分之三;輸入輸出價格本身不變。新增功能包含每則訊息可調整思考強度、可讀的工具呼叫進度更新。也有三項破壞性變更:強制指定某個工具(tool_choice=any 或指定工具名)現在會直接回傳錯誤,因為思考功能改為預設開啟;舊模型無法讀取 5.1 的思考區塊,若對話中途切換模型,思考內容會被靜默丟棄。",
           "domains": ["frontier"],
@@ -477,8 +487,14 @@
         }
       ],
       "analysis": {
-        "topline": "本期挑 4 則:1 則前沿(模型更新)、1 則音樂免費工具、1 則桌球(命中才報,確有新發現)、1 則行政文件工具。判斷基準維持與反覆事務的重疊度加上手成本。這週控台與周邊(方向 f)廣搜過 Behringer WING、Yamaha DM3/DM7、Allen & Heath SQ/Avantis、Waves SoundGrid,查到的都是數個月前的舊韌體(WING 3.1 是 2025 年 11 月、DM3/DM7 是 2024 年底),沒有找到本週新發表或新韌體,故本期略過硬體類別不硬填。教育/課程設計方向這週搜到的多是「年度整理型」評測文章而非本週新事件,同樣選擇不納入。",
+        "topline": "本期挑 5 則:1 則本季最大前沿模型發布(GPT-6 Astra)、1 則 Claude 模型更新、1 則音樂免費工具、1 則桌球(命中才報,確有新發現)、1 則行政文件工具。frontier 領域收錄跨領域重大發布本身,不要求直接對應你目前使用的工具;其餘領域仍維持與反覆事務的重疊度加上手成本作為判斷基準。這週控台與周邊(方向 f)廣搜過 Behringer WING、Yamaha DM3/DM7、Allen & Heath SQ/Avantis、Waves SoundGrid,查到的都是數個月前的舊韌體(WING 3.1 是 2025 年 11 月、DM3/DM7 是 2024 年底),沒有找到本週新發表或新韌體,故本期略過硬體類別不硬填。教育/課程設計方向這週搜到的多是「年度整理型」評測文章而非本週新事件,同樣選擇不納入。",
         "verdicts": [
+          {
+            "item": "GPT-6 Astra",
+            "level": "passive",
+            "reason": "你的工作流全部建立在 Claude 生態系,沒有立即理由切換到 ChatGPT,但這是本季最大的前沿模型發布,電腦操作與多步驟工作流程的進展速度值得留意,會影響你未來評估代理型工具的參考基準。",
+            "practice": "不用申請或改用,持續留意 Anthropic 是否推出對應的電腦操作能力更新,兩邊技術水準若明顯拉開差距再重新評估。"
+          },
           {
             "item": "Claude Fable 5.1 快取降價",
             "level": "passive",
@@ -504,7 +520,7 @@
             "practice": "先在 Personalization Settings 設一次固定用繁中回覆的自訂指令,之後找一份現成的課程大綱或會議記錄,試著請 Gemini 直接轉成投影片初稿,評估比手動搬移省下多少時間。"
           }
         ],
-        "meta": "本期選材偏向「你已經在用的生態系裡新增的功能」(Claude、Logic、Google 文件),而非要你換平台的重量級工具,呼應資源預算協議裡不硬推高切換成本方案的原則。"
+        "meta": "本期選材分兩類:Fable 5.1、Geminate、SportArc、Gemini Workspace 是「你已經在用的生態系裡新增的功能」;GPT-6 Astra 則是產業級前沿新聞,收錄理由是規模本身而非直接可用,兩類判斷基準不同但都在 frontier 領域的定義範圍內,不刻意迴避跟你目前工具無關的重大發布。"
       }
     },
     {

@@ -436,6 +436,78 @@
 {
   "reports": [
     {
+      "week": "2026-09-10",
+      "items": [
+        {
+          "title": "Claude Fable 5.1上線,快取讀取價砍75%",
+          "summary": "Anthropic 於 9 月 1 日同時推出 Claude Fable 5.1 與 Mythos 5.1(同一顆模型、安全防護層級不同)。最直接的變化是快取讀取(cache read)價格從基礎輸入價的 0.1 倍降到 0.025 倍,等於長對話重複讀取既有上下文的成本砍掉四分之三;輸入輸出價格本身不變。新增功能包含每則訊息可調整思考強度、可讀的工具呼叫進度更新。也有三項破壞性變更:強制指定某個工具(tool_choice=any 或指定工具名)現在會直接回傳錯誤,因為思考功能改為預設開啟;舊模型無法讀取 5.1 的思考區塊,若對話中途切換模型,思考內容會被靜默丟棄。",
+          "domains": ["frontier"],
+          "use": "你自己就是這個模型的重度使用者(Claude Code、Chat、Cowork 都在用),快取讀取降價 75% 對你長時間、多輪查證型的對話直接降低有效成本,間接緩解你在資源預算協議裡記錄的撞週用量上限問題;唯一要注意的是若 AgentMeter 或其他自寫腳本有呼叫 API 並強制指定工具,需要確認沒有用到 tool_choice=any 這個已失效的參數。",
+          "links": [
+            {"label": "Claude Platform Docs:Fable 5.1 更新內容", "url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1"},
+            {"label": "tech-ish:Anthropic releases Claude Fable 5.1 and Mythos 5.1", "url": "https://tech-ish.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-mythos-5-1-here-is-what-changed/"}
+          ]
+        },
+        {
+          "title": "免費效果器 Geminate:單軌變雙軌厚度",
+          "summary": "Witch Pig 於 9 月 9 日推出免費效果器 Geminate,屬於「doubler/mimic」類型,功能是讓單軌錄音聽起來像做過雙軌疊錄,增加聲音的寬度與厚度。介面只有三個旋鈕:Dynamics 控制音量隨機變化、Pitch 控制微幅走音或升高音高、Timing 控制延遲時間的隨機變化幅度,轉越右效果越明顯,可以做到很細微或很誇張的效果。支援 AU 與 VST3 格式,macOS 與 Windows 皆可用,確認完全免費、沒有訂閱或功能閹割。",
+          "domains": ["music"],
+          "use": "錄敬拜團 demo 或人聲訓練教材時,單軌人聲或木吉他不想花時間真的錄兩軌疊音,可以直接掛這顆效果器做出類似雙軌的寬度感,對應你在 Logic 混音教學時常需要示範「加厚」手法的場景。",
+          "links": [
+            {"label": "Bedroom Producers Blog:Witch Pig Geminate 免費上線", "url": "https://bedroomproducersblog.com/2026/09/09/witch-pig-geminate/"}
+          ]
+        },
+        {
+          "title": "桌球 AI 教練 App:3D 動作比對＋自動剪輯",
+          "summary": "一款桌球/羽球/網球通用的 AI 教練 App,原先以 PingPi 名稱在搜尋結果中出現,但目前 App Store 上架名稱已是「SportArc: AI Coach & Auto Cut」,6 天前才更新到 2.0.1 版,判斷是同一產品改名或重新上架,這點來源本身有點混亂,先誠實標註。功能包含:AI 分析揮拍動作並給文字回饋、把動作轉成 3D 模型可多角度檢視與前後比對、自動偵測影片中的來回球並剪掉停頓做成精華片段、依運動項目與目標排練習菜單。基本功能免費,進階訂閱月費 14.99 美元或年費 99.99 美元,支援 iPhone/iPad/Mac(M1 以上)。",
+          "domains": ["tabletennis"],
+          "use": "你平常會錄自己打球的影片做動作分析,這款 App 的 3D 動作比對剛好對應「看自己這次跟上次揮拍軌跡差在哪」的需求,免費版可以先試自動剪輯與基礎回饋,若真的常用再評估月費值不值得,不必一開始就訂閱。",
+          "links": [
+            {"label": "App Store:SportArc AI Coach & Auto Cut", "url": "https://apps.apple.com/us/app/pingpi-ai-table-tennis-coach/id6768219425"}
+          ]
+        },
+        {
+          "title": "Gemini Workspace擴大:自訂指令＋一鍵轉簡報",
+          "summary": "Google 從 9 月 2 日起(最長 15 天陸續生效)把 Gemini 的「自訂指令」功能從原本只在 Docs 可用,擴大到 Drive 問答、Chat 問答,以及 Slides、Sheets、Gmail 的 Gemini 側邊欄,等於只要設定一次個人化偏好(例如固定用繁體中文回覆、固定用哪些角色稱呼),所有這些介面都會套用,不必每次重複下指令。同一波更新也擴大了「直接從素材產生內容」的能力,例如把一份提案文件直接轉成投影片,或用多個專案檔案生成客戶洞察簡報,分階段從 9/1 到 9/21 陸續開放給不同網域。",
+          "domains": ["governance", "team"],
+          "use": "你手上兒主課程大綱、會議記錄、事工提案都是 Google 文件,設定一次自訂指令(例如固定要求繁體中文、固定格式)之後在 Sheets 排班表跟 Slides 简報都能沿用;也可以試試看把一份課程大綱文件直接請 Gemini 轉成投影片初稿,省下手動搬移文字的時間,再自己微調視覺。",
+          "links": [
+            {"label": "Google Workspace Updates:自訂指令擴大到更多應用程式", "url": "https://workspaceupdates.googleblog.com/2026/09/custom-instructions-for-gemini-in-Workspace-now-available-in-more-apps.html"}
+          ]
+        }
+      ],
+      "analysis": {
+        "topline": "本期挑 4 則:1 則前沿(模型更新)、1 則音樂免費工具、1 則桌球(命中才報,確有新發現)、1 則行政文件工具。判斷基準維持與反覆事務的重疊度加上手成本。這週控台與周邊(方向 f)廣搜過 Behringer WING、Yamaha DM3/DM7、Allen & Heath SQ/Avantis、Waves SoundGrid,查到的都是數個月前的舊韌體(WING 3.1 是 2025 年 11 月、DM3/DM7 是 2024 年底),沒有找到本週新發表或新韌體,故本期略過硬體類別不硬填。教育/課程設計方向這週搜到的多是「年度整理型」評測文章而非本週新事件,同樣選擇不納入。",
+        "verdicts": [
+          {
+            "item": "Claude Fable 5.1 快取降價",
+            "level": "passive",
+            "reason": "這是平台端自動生效的價格與模型調整,不需要你改變任何使用方式就能受益,快取讀取降 75% 直接對應你長對話、多輪查證的使用型態。",
+            "practice": "不用做什麼,唯一要做的是確認 AgentMeter 或任何自寫串接 API 的腳本沒有用到已失效的 tool_choice=any 參數,若沒有自寫串接則完全不受影響。"
+          },
+          {
+            "item": "Witch Pig Geminate",
+            "level": "try",
+            "reason": "完全免費、格式與你現有 Logic 環境相容,直接對應混音教學裡「示範加厚音色」的場景,上手成本幾乎是零。",
+            "practice": "下載後裝進 Logic,下次混音示範挑一軌人聲或木吉他,對比原始單軌與掛上 Geminate 後的寬度差異給學員聽。"
+          },
+          {
+            "item": "SportArc AI Coach",
+            "level": "try",
+            "reason": "免費版就有 3D 動作比對與自動剪輯,直接對應你錄影做動作分析的既有習慣,訂閱與否可以先用免費版驗證有沒有實際幫助再決定。",
+            "practice": "下次練球錄一段影片匯入 App,先用免費功能看 3D 動作比對跟自動剪輯是否比你現在手動剪片、肉眼比對更有效率,有感再考慮訂閱。"
+          },
+          {
+            "item": "Gemini Workspace 自訂指令＋轉簡報",
+            "level": "try",
+            "reason": "你的排班表、課程大綱、會議記錄都在 Google 文件生態系,設定一次自訂指令就能跨 Sheets/Slides/Gmail 沿用,「文件轉簡報」也對應你偶爾要把大綱轉成投影片的行政需求。",
+            "practice": "先在 Personalization Settings 設一次固定用繁中回覆的自訂指令,之後找一份現成的課程大綱或會議記錄,試著請 Gemini 直接轉成投影片初稿,評估比手動搬移省下多少時間。"
+          }
+        ],
+        "meta": "本期選材偏向「你已經在用的生態系裡新增的功能」(Claude、Logic、Google 文件),而非要你換平台的重量級工具,呼應資源預算協議裡不硬推高切換成本方案的原則。"
+      }
+    },
+    {
       "week": "2026-09-03",
       "items": [
         {

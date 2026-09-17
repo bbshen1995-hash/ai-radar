@@ -6,14 +6,15 @@
 <meta name="theme-color" content="#F5F4F0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="AI 雷達">
-<title>Bernard 的 AI 應用雷達</title>
+<meta name="apple-mobile-web-app-title" content="新知雷達">
+<title>Bernard 的新知雷達</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F5F4F0;
     --card: #FDFCFA;
+    --soft: #F2F0EA;
     --text: #3A3A3A;
     --text-soft: #6B6862;
     --line: #E5E2DB;
@@ -33,13 +34,10 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--bg); color: var(--text);
     font-family: 'DM Sans', 'Noto Sans TC', -apple-system, sans-serif;
-    font-weight: 400;
-    line-height: 1.65;
-    padding-bottom: 80px;
-    -webkit-text-size-adjust: 100%;
+    font-weight: 400; line-height: 1.65;
+    padding-bottom: 80px; -webkit-text-size-adjust: 100%;
   }
   .wrap {
     max-width: 1080px; margin: 0 auto;
@@ -48,206 +46,189 @@
 
   /* ---------- header ---------- */
   header { padding: 56px 0 8px; }
-  .eyebrow {
-    font-size: 13px; letter-spacing: 3px; color: var(--terracotta);
-    text-transform: uppercase; margin-bottom: 10px;
-  }
-  h1 {
-    font-family: 'DM Serif Display', 'Noto Serif TC', serif;
-    font-size: clamp(30px, 5vw, 44px);
-    font-weight: 700; line-height: 1.25;
-  }
+  .eyebrow { font-size: 13px; letter-spacing: 3px; color: var(--terracotta); text-transform: uppercase; margin-bottom: 10px; }
+  h1 { font-family: 'DM Serif Display', 'Noto Serif TC', serif; font-size: clamp(30px, 5vw, 44px); font-weight: 700; line-height: 1.25; }
   h1 .accent { color: var(--sage); }
-  .subtitle { color: var(--text-soft); margin-top: 12px; max-width: 620px; font-weight: 300; }
+  .subtitle { color: var(--text-soft); margin-top: 12px; max-width: 640px; font-weight: 300; }
 
-  /* ---------- filter chips ---------- */
-  .filters {
-    display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0 10px;
-    position: sticky; top: 0; z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
+  /* ---------- toolbar ---------- */
+  .toolbar {
+    position: sticky; top: 0; z-index: 10; margin: 26px 0 6px; padding: 10px 0;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    padding: 10px 0;
   }
+  .search {
+    width: 100%; max-width: 420px; font-family: inherit; font-size: 15px;
+    border: 1px solid var(--line); background: var(--card); color: var(--text);
+    border-radius: 999px; padding: 8px 16px; margin-bottom: 8px; min-height: 38px;
+  }
+  .search:focus { outline: 2px solid color-mix(in srgb, var(--sage) 50%, white); outline-offset: 1px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
-    border: 1px solid var(--line); background: var(--card);
-    border-radius: 999px; padding: 8px 16px; font-size: 14px;
-    cursor: pointer; color: var(--text-soft); font-family: inherit;
-    transition: all .18s ease;
-    min-height: 38px; touch-action: manipulation;
+    border: 1px solid var(--line); background: var(--card); border-radius: 999px;
+    padding: 7px 15px; font-size: 14px; cursor: pointer; color: var(--text-soft);
+    font-family: inherit; transition: all .18s ease; min-height: 36px; touch-action: manipulation;
+    white-space: nowrap;
   }
   .chip:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
   .chip.active { color: #fff; border-color: transparent; }
 
   /* ---------- sections ---------- */
   section { margin-top: 48px; }
-  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
-  h2 {
-    font-family: 'DM Serif Display', 'Noto Serif TC', serif;
-    font-size: 26px; font-weight: 700;
-  }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+  h2 { font-family: 'DM Serif Display', 'Noto Serif TC', serif; font-size: 26px; font-weight: 700; }
   .sec-note { color: var(--text-soft); font-size: 14px; font-weight: 300; }
-  .sec-bar { width: 46px; height: 4px; border-radius: 2px; margin: 10px 0 24px; }
+  .sec-bar { width: 46px; height: 4px; border-radius: 2px; margin: 10px 0 20px; }
+  .subsec { margin-top: 26px; }
+  .subsec > h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .subsec > h3 small { font-size: 13px; color: var(--text-soft); font-weight: 300; }
+  .issue-meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; color: var(--text-soft); }
+  .badge { background: var(--lavender); color: #fff; border-radius: 999px; padding: 2px 12px; font-size: 13px; flex: none; }
+  .empty { color: var(--text-soft); font-size: 14px; font-weight: 300; }
+  .legacy-note { font-size: 13px; color: var(--text-soft); background: var(--soft); border-radius: 8px; padding: 8px 12px; margin: 10px 0 14px; }
 
-  /* ---------- domain grid ---------- */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
-  .card {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 22px 22px 18px;
-    box-shadow: var(--shadow); position: relative; overflow: hidden;
-  }
-  .card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
-    background: var(--dc, var(--sage));
-  }
-  .card h3 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-  .card h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dc); flex: none; }
-  .card .doing { font-size: 13px; color: var(--text-soft); margin: 6px 0 12px; font-weight: 300; }
-  .card ul { list-style: none; }
-  .card li {
-    font-size: 14px; padding: 5px 0 5px 18px; position: relative;
-    border-bottom: 1px dashed var(--line);
-  }
-  .card li:last-child { border-bottom: none; }
-  .card li::before {
-    content: ''; position: absolute; left: 2px; top: 13px;
-    width: 6px; height: 6px; border-radius: 50%; background: var(--dc); opacity: .65;
-  }
-  .tools { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
-  .tool {
-    font-size: 12px; padding: 3px 10px; border-radius: 999px;
-    background: color-mix(in srgb, var(--dc) 13%, white); color: var(--text);
-    border: 1px solid color-mix(in srgb, var(--dc) 30%, white);
-  }
-
-  /* ---------- weekly reports ---------- */
-  .report { margin-bottom: 26px; }
-  .report-head {
-    display: flex; align-items: center; gap: 10px; width: 100%;
-    background: none; border: none; cursor: pointer; font-family: inherit;
-    padding: 8px 0; font-size: 14px; color: var(--text-soft); text-align: left;
-    touch-action: manipulation;
-  }
-  .report-head .caret { font-size: 11px; flex: none; transition: transform .18s ease; }
-  .report.open .report-head .caret { transform: rotate(90deg); }
-  .report-head .badge {
-    background: var(--lavender); color: #fff; border-radius: 999px;
-    padding: 2px 12px; font-size: 13px; flex: none;
-  }
-  .report-head .count { font-size: 13px; }
-  .report-body { display: none; }
-  .report.open .report-body { display: block; margin-top: 6px; }
+  /* ---------- item cards ---------- */
   .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+  .items.big { grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); }
   .item {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 18px;
-    box-shadow: var(--shadow);
-    display: flex; flex-direction: column;
-    position: relative;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; position: relative;
   }
-  .item .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .item.big { border-top: 5px solid var(--dc, var(--terracotta)); }
+  .item.big h4 { font-size: 18px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; padding-right: 30px; }
   .tag { font-size: 11.5px; padding: 2px 9px; border-radius: 999px; color: #fff; }
+  .etag { font-size: 11.5px; padding: 1px 9px; border-radius: 999px; color: var(--text-soft); background: var(--soft); border: 1px solid var(--line); }
+  .etag.ext { border-style: dashed; }
   .item h4 { font-size: 15.5px; font-weight: 700; line-height: 1.45; }
-  .item p { font-size: 13.5px; color: var(--text-soft); margin: 6px 0 10px; }
-  .item p.sum.clamped {
-    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  .item .lead { font-size: 14px; color: var(--text); margin: 6px 0 4px; }
+  .item p.sum { font-size: 13.5px; color: var(--text-soft); margin: 6px 0 10px; }
+  .item p.sum.clamped { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .detail { display: none; margin-top: 8px; }
+  .item.expanded .detail { display: block; }
+  .f { margin-top: 10px; }
+  .f b { display: block; font-size: 12.5px; color: var(--sage); font-weight: 500; letter-spacing: .5px; }
+  .f p { font-size: 13.5px; color: var(--text-soft); margin-top: 2px; white-space: pre-line; }
+  .dates { font-size: 12px; color: var(--text-soft); margin-top: 10px; }
+  .verdict-in { margin-top: 10px; font-size: 13px; background: var(--soft); border-radius: 8px; padding: 8px 10px; }
   .more {
-    background: none; border: none; cursor: pointer; font-family: inherit;
-    color: var(--dustyblue); font-size: 12.5px; padding: 6px 0 0; text-align: left;
-    touch-action: manipulation;
+    background: none; border: none; cursor: pointer; font-family: inherit; color: var(--dustyblue);
+    font-size: 12.5px; padding: 8px 0 0; text-align: left; touch-action: manipulation; align-self: flex-start;
   }
   .more:hover { color: var(--terracotta); }
-  .item .use {
-    margin-top: auto; font-size: 13px; background: #F2F0EA;
-    border-radius: 8px; padding: 8px 10px;
-  }
+  .item .use { margin-top: auto; font-size: 13px; background: var(--soft); border-radius: 8px; padding: 8px 10px; }
   .item .use b { color: var(--sage); font-weight: 500; }
-  .item .links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .item .links a {
-    font-size: 12.5px; color: var(--dustyblue); text-decoration: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--dustyblue) 40%, white);
-  }
-  .item .links a:hover { color: var(--terracotta); }
+  .links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a { font-size: 12.5px; color: var(--dustyblue); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--dustyblue) 40%, white); }
+  .links a:hover { color: var(--terracotta); }
   .star {
-    background: none; border: none; cursor: pointer; font-size: 19px;
-    color: #C9C5BB; line-height: 1;
-    position: absolute; top: 8px; right: 8px;
-    padding: 8px; touch-action: manipulation;
+    background: none; border: none; cursor: pointer; font-size: 19px; color: #C9C5BB; line-height: 1;
+    position: absolute; top: 8px; right: 8px; padding: 8px; touch-action: manipulation;
   }
-  .item .tags { padding-right: 30px; }
+  .star.on { color: var(--caramel); }
+  .lv { display: inline-block; font-size: 11.5px; color: #fff; border-radius: 999px; padding: 2px 10px; margin-right: 8px; vertical-align: 1px; }
 
-  /* ---------- analysis block ---------- */
-  .analysis {
-    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 20px 22px 14px; margin-top: 14px;
-    border-top: 5px solid var(--lavender);
-  }
-  .analysis h4 { font-family:'DM Serif Display','Noto Serif TC',serif; font-size: 19px; }
+  /* ---------- deep dive ---------- */
+  .deep { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--teal); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
+  .deep h4 { font-family: 'DM Serif Display', 'Noto Serif TC', serif; font-size: 20px; margin: 4px 0 6px; }
+  .deep .body p { font-size: 14px; color: var(--text); margin-top: 10px; }
+  .deep .body.clamped { max-height: 9.5em; overflow: hidden; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
+
+  /* ---------- brief list ---------- */
+  .brief-list { list-style: none; display: grid; gap: 10px; }
+  .brief { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 44px 12px 14px; position: relative; }
+  .brief-head { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
+  .brief b { font-size: 14.5px; }
+  .brief p { font-size: 13.5px; color: var(--text-soft); }
+  .brief .lim { font-size: 12.5px; margin-top: 3px; }
+  .acc { font-size: 11.5px; padding: 1px 9px; border-radius: 999px; background: color-mix(in srgb, var(--caramel) 16%, white); border: 1px solid color-mix(in srgb, var(--caramel) 35%, white); }
+  .dl { font-size: 12px; color: var(--rose); font-weight: 500; }
+  .brief .star { top: 4px; right: 4px; }
+
+  /* ---------- tracking ---------- */
+  .track-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 12px; }
+  .track { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .track.hit { border-color: color-mix(in srgb, var(--terracotta) 55%, white); }
+  .track h4 { font-size: 15px; margin: 4px 0; }
+  .track p { font-size: 13px; color: var(--text-soft); }
+  .track p b { color: var(--text); font-weight: 500; }
+  .st { font-size: 11.5px; padding: 1px 9px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); color: var(--text-soft); }
+  .st.hit { background: var(--terracotta); color: #fff; border-color: transparent; }
+  .upd { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--terracotta); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .upd b { font-size: 14.5px; }
+  .upd p { font-size: 13.5px; color: var(--text-soft); margin-top: 3px; }
+
+  /* ---------- notes ---------- */
+  .note { margin-top: 26px; font-size: 13px; color: var(--text-soft); border-left: 3px solid var(--lavender); padding: 2px 0 2px 12px; }
+  .note p + p { margin-top: 6px; }
+  .note b { color: var(--text); font-weight: 500; }
+  .corr { margin-top: 14px; font-size: 13px; color: var(--text-soft); background: color-mix(in srgb, var(--rose) 10%, white); border-radius: 8px; padding: 8px 12px; }
+
+  /* ---------- legacy analysis ---------- */
+  .analysis { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px 14px; margin-top: 14px; border-top: 5px solid var(--lavender); }
+  .analysis h4 { font-family: 'DM Serif Display', 'Noto Serif TC', serif; font-size: 19px; }
   .analysis .topline { font-size: 14px; color: var(--text-soft); margin: 6px 0 4px; }
   .verdict { padding: 12px 0; border-bottom: 1px dashed var(--line); }
   .verdict:last-of-type { border-bottom: none; }
   .verdict b { font-size: 14.5px; }
-  .lv {
-    display: inline-block; font-size: 11.5px; color: #fff; border-radius: 999px;
-    padding: 2px 10px; margin-right: 8px; vertical-align: 1px;
-  }
   .verdict p { font-size: 13.5px; color: var(--text-soft); margin-top: 4px; }
-  .verdict .practice {
-    margin-top: 7px; font-size: 13px; background: #F2F0EA; border-radius: 8px; padding: 7px 10px;
-  }
+  .verdict .practice { margin-top: 7px; font-size: 13px; background: var(--soft); border-radius: 8px; padding: 7px 10px; }
   .verdict .practice b { color: var(--caramel); font-weight: 500; font-size: 13px; }
-  .analysis .meta-note {
-    margin: 12px 0 6px; font-size: 13px; color: var(--text-soft);
-    border-left: 3px solid var(--lavender); padding-left: 10px;
-  }
-  .star.on { color: var(--caramel); }
+  .analysis .meta-note { margin: 12px 0 6px; font-size: 13px; color: var(--text-soft); border-left: 3px solid var(--lavender); padding-left: 10px; }
 
-  /* ---------- saved list ---------- */
+  /* ---------- archive ---------- */
+  .report { margin-bottom: 14px; }
+  .report-head {
+    display: flex; align-items: center; gap: 10px; width: 100%; background: none; border: none; cursor: pointer;
+    font-family: inherit; padding: 8px 0; font-size: 14px; color: var(--text-soft); text-align: left; touch-action: manipulation; flex-wrap: wrap;
+  }
+  .report-head .caret { font-size: 11px; flex: none; transition: transform .18s ease; }
+  .report.open .report-head .caret { transform: rotate(90deg); }
+  .report-body { display: none; padding: 4px 0 18px; }
+  .report.open .report-body { display: block; }
+  .result-group { margin-bottom: 22px; }
+  .result-group > p { font-size: 13px; color: var(--text-soft); margin-bottom: 8px; }
+
+  /* ---------- saved ---------- */
   #savedList { list-style: none; }
   #savedList li {
-    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    padding: 10px 14px; margin-bottom: 8px; font-size: 14px;
-    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px;
+    font-size: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px;
   }
-  #savedList .rm {
-    background: none; border: none; color: var(--rose); cursor: pointer;
-    font-size: 14px; padding: 8px; margin: -8px; touch-action: manipulation;
-  }
-  .empty { color: var(--text-soft); font-size: 14px; font-weight: 300; }
+  #savedList .rm { background: none; border: none; color: var(--rose); cursor: pointer; font-size: 14px; padding: 8px; margin: -8px; touch-action: manipulation; }
 
-  /* ---------- existing setup ---------- */
-  .setup { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 12px; }
-  .setup div {
-    background: color-mix(in srgb, var(--sage) 8%, white);
-    border: 1px solid color-mix(in srgb, var(--sage) 22%, white);
-    border-radius: 10px; padding: 12px 14px; font-size: 13.5px;
-  }
-  .setup div b { display: block; font-weight: 700; margin-bottom: 2px; }
-  .setup div span { color: var(--text-soft); font-weight: 300; }
+  /* ---------- watchlist ---------- */
+  details.watch { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 0 16px; margin-bottom: 10px; }
+  details.watch summary { cursor: pointer; padding: 12px 0; font-weight: 500; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; list-style: none; }
+  details.watch summary::-webkit-details-marker { display: none; }
+  details.watch summary::before { content: '▶'; font-size: 10px; color: var(--text-soft); transition: transform .18s ease; }
+  details.watch[open] summary::before { transform: rotate(90deg); }
+  details.watch summary .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  details.watch summary small { color: var(--text-soft); font-weight: 300; font-size: 12.5px; }
+  .watch-body { padding: 0 0 14px; font-size: 13.5px; color: var(--text-soft); }
+  .watch-body ul { list-style: none; margin-top: 6px; }
+  .watch-body li { padding: 4px 0 4px 14px; position: relative; border-bottom: 1px dashed var(--line); }
+  .watch-body li:last-child { border-bottom: none; }
+  .watch-body li::before { content: ''; position: absolute; left: 2px; top: 12px; width: 5px; height: 5px; border-radius: 50%; background: var(--dc); }
+  .rules { font-size: 13.5px; color: var(--text-soft); background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 14px; }
+  .rules li { margin: 4px 0 4px 18px; }
 
   footer { margin-top: 64px; text-align: center; color: var(--text-soft); font-size: 12.5px; font-weight: 300; }
 
-  /* ---------- responsive ---------- */
-  @media (hover: none) {
-    .chip:hover { transform: none; box-shadow: none; }
-  }
+  @media (hover: none) { .chip:hover { transform: none; box-shadow: none; } }
   @media (max-width: 640px) {
     header { padding: 32px 0 4px; }
     .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
     section { margin-top: 36px; }
     h2 { font-size: 22px; }
     .sec-head { flex-direction: column; gap: 2px; }
-    .filters {
-      gap: 6px; margin-top: 20px;
-      flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
+    .search { max-width: 100%; }
+    .filters { gap: 6px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .filters::-webkit-scrollbar { display: none; }
-    .chip { padding: 7px 13px; font-size: 13px; flex: none; }
-    .card { padding: 18px 16px 14px; }
+    .chip { padding: 6px 12px; font-size: 13px; flex: none; }
     .item { padding: 16px 14px; }
-    .grid, .items { gap: 12px; }
+    .items, .items.big, .track-list { gap: 12px; }
+    .deep { padding: 16px; }
     body { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
   }
 </style>
@@ -256,185 +237,550 @@
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">AI Application Radar</div>
-    <h1>Bernard 的 <span class="accent">AI 應用雷達</span></h1>
-    <p class="subtitle">把你的十個生活領域,與 AI 能力的交集畫成一張地圖。每週自動更新前沿動態,標出哪些新功能正好落在你的軌道上。</p>
+    <div class="eyebrow">Interest &amp; Work Radar</div>
+    <h1>Bernard 的 <span class="accent">新知雷達</span></h1>
+    <p class="subtitle">以你的興趣與工作項目為核心，每週整理重要更新、新發佈與值得理解的新知。AI 是其中一個領域，其他領域不必與 AI 有關。</p>
   </header>
 
-  <div class="filters" id="filterBar"></div>
+  <div class="toolbar">
+    <input class="search" id="search" type="search" placeholder="搜尋所有期數：標題、內容、品牌…" aria-label="搜尋所有期數">
+    <div class="filters" id="filterBar"></div>
+  </div>
 
-  <section id="weekly">
-    <div class="sec-head"><h2>每週前沿週報</h2><span class="sec-note">每週自動蒐集,只留下與你有交集的</span></div>
+  <section id="results" hidden>
+    <div class="sec-head"><h2>搜尋結果</h2><span class="sec-note" id="resultNote"></span></div>
+    <div class="sec-bar" style="background:var(--dustyblue)"></div>
+    <div id="resultList"></div>
+  </section>
+
+  <section id="latest">
+    <div class="sec-head"><h2>本期</h2><span class="issue-meta" id="latestMeta"></span></div>
+    <div class="sec-bar" style="background:var(--terracotta)"></div>
+    <div id="latestBody"></div>
+  </section>
+
+  <section id="tracking">
+    <div class="sec-head"><h2>追蹤清單</h2><span class="sec-note">你在等的事件與觸發條件。有進展時會出現在當期的「追蹤有變化」</span></div>
+    <div class="sec-bar" style="background:var(--terracotta)"></div>
+    <div class="track-list" id="trackList"></div>
+  </section>
+
+  <section id="archive">
+    <div class="sec-head"><h2>舊期</h2><span class="sec-note">依日期收合；上方搜尋框可跨期查找</span></div>
     <div class="sec-bar" style="background:var(--lavender)"></div>
-    <div id="reportList"></div>
+    <div id="archiveList"></div>
   </section>
 
   <section id="saved">
-    <div class="sec-head"><h2>想試清單</h2><span class="sec-note">點 ★ 收藏,存在這台電腦的瀏覽器裡</span></div>
+    <div class="sec-head"><h2>收藏</h2><span class="sec-note">點 ☆ 收藏，存在這台裝置的瀏覽器裡</span></div>
     <div class="sec-bar" style="background:var(--caramel)"></div>
     <ul id="savedList"></ul>
   </section>
 
-  <section id="have">
-    <div class="sec-head"><h2>你已經擁有的 AI 配置</h2><span class="sec-note">在 Claude 裡可直接喚起,不必另找工具</span></div>
+  <section id="watch">
+    <div class="sec-head"><h2>選材規則與關注名單</h2><span class="sec-note">每週搜尋依這份名單出發</span></div>
     <div class="sec-bar" style="background:var(--sage)"></div>
-    <div class="setup">
-      <div><b>主日學課程產生器</b><span>讀 Drive 舊課程 → 大綱 → Slides,支援三種年齡模式</span></div>
-      <div><b>音控課簡報 Skill</b><span>恩典蟲敬拜音樂分享室專用 Canva 簡報</span></div>
-      <div><b>個人設計風格指南</b><span>海報、貼文、簡報自動套用你的美學</span></div>
-      <div><b>吉他學習工具</b><span>guitar-tool.html — 指板/和弦/調性系統</span></div>
-      <div><b>Canva 連接器</b><span>生成設計、品牌模板、匯出</span></div>
-      <div><b>Gmail / 日曆 / Drive</b><span>信件分類草稿、排程、檔案讀寫</span></div>
-    </div>
+    <div class="rules" id="rulesBox"></div>
+    <div id="watchList"></div>
   </section>
 
-  <section id="domains">
-    <div class="sec-head"><h2>領域 × AI 交集地圖</h2><span class="sec-note">你在做的事,AI 現在能接手的部分</span></div>
-    <div class="sec-bar" style="background:var(--terracotta)"></div>
-    <div class="grid" id="domainGrid"></div>
-  </section>
-
-  <footer>每週四由 Claude 排程任務自動更新週報 · 手動更新:請 Claude「更新 AI 雷達」</footer>
+  <footer>每週四由 Claude 排程自動更新 · 2026-09-14 起由「AI 應用雷達」改版為新知雷達，舊期保留原格式</footer>
 </div>
 
-<!-- ==================== 領域資料 ==================== -->
-<script type="application/json" id="domains-data">
-[
-  {
-    "key": "music", "name": "音樂與敬拜音控", "color": "var(--terracotta)",
-    "doing": "吉他、敬拜團、音控訓練、混音課程",
-    "uses": [
-      "錄音自動採譜成譜面或 MIDI,整理詩歌和弦譜",
-      "Stem 分離:把詩歌拆成人聲/鼓/貝斯,做練團分軌與音控教材",
-      "依主領音域自動移調、規劃 setlist 調性銜接",
-      "混音問題診斷:描述症狀,AI 給 EQ/壓縮方向",
-      "音控課教材與簡報生成(已有專用 Skill)",
-      "技術文件知識庫:Stage Setting 訊號路由表變成新同工可白話提問的查詢系統",
-      "免費插件雷達:每週追蹤限免與新發布的混音插件(EQ/壓縮/殘響/效果),納入個人混音鏈與音控課教材"
-    ],
-    "tools": ["Klangio", "Songscription", "Moises", "Suno", "Canva 簡報 Skill", "Plugin Boutique 限免"]
+<!-- ==================== 設定：領域、事件標籤、關注名單 ==================== -->
+<script type="application/json" id="radar-config">
+{
+  "version": "2026-09-14",
+  "rules": [
+    "重要性與行動分開判斷：重大消息即使暫時用不上也可進「本週值得知道」；限時資源再急也不佔頭條。",
+    "頭條 1 到 3 則，頭條加主文每期最多 10 則，是上限不是配額，寧缺勿濫。",
+    "每則主文寫足五項：發生什麼、為何值得知道、跟你的關係、未確認與限制、來源與日期。",
+    "器材與工具類附採用判定（值得主動投入／挑場景試／被動受益／可略過）；歌曲、書籍、賽事、研究只說明為何值得看。",
+    "廠商自述不寫成實測結論；效能與價格註明比較條件；事件、發表、截止、查核日期分開標。",
+    "沒有新事件的知識文章標「延伸閱讀」，不包裝成當週新聞。",
+    "健康條目寫清楚原本怎麼說、新證據是什麼、修正了哪部分、適用哪些人；一篇反向研究不標成翻案。",
+    "得獎沖煮法註明比賽用的豆子、水與器材條件。免費插件分清永久免費、限時領取、訂閱內可用與試用。",
+    "閱讀不自動產生待辦；只有你明確要求追蹤的事件才進追蹤清單。"
+  ],
+  "domains": [
+    {
+      "key": "ai", "name": "AI 與數位工作", "color": "var(--plum)", "freq": "每週核心",
+      "scope": "Anthropic、OpenAI、Google 等公司的模型、產品與功能更新；方案、額度、定價與可靠性變動；桌面代理、文件與簡報工具。重點是能否完成實務、會改變哪些限制，不只是模型排名。",
+      "watch": ["Anthropic：Claude、Claude Code、方案與額度", "OpenAI：ChatGPT、Codex、方案與額度", "Google：Gemini、Google Workspace", "Apple 與 Microsoft 的系統層 AI 功能", "你在用的平台之間的整合與相容性"]
+    },
+    {
+      "key": "instrument", "name": "樂器", "color": "var(--terracotta)", "freq": "每週核心",
+      "scope": "吉他、Bass、效果器、鍵盤、鍵盤音色與音源的新品、韌體與重大新知。例子：TONEX Board 這類整合型新品。",
+      "watch": ["IK Multimedia：TONEX 系列（含 Tone Model 生態）", "Line 6：HX 系列", "Strymon、Meris、Walrus Audio", "Morningstar（MIDI 控制器）", "Gretsch、Fender、Lindy Fralin", "鍵盤：Nord、Yamaha、Roland、Korg 舞台鍵盤（待你指定）", "音源：Spectrasonics Omnisphere 與鍵盤音色包", "Bass：主要品牌新品（待你指定）"]
+    },
+    {
+      "key": "pa", "name": "PA 系統", "color": "var(--dustyblue)", "freq": "每週核心",
+      "scope": "控台、擴充卡、stage box、喇叭、DI 與訊號盒、IEM、網路音訊、量測與校正。例子：WING MADI Card 這類既有系統的擴充路徑。",
+      "watch": ["Behringer 與 Midas：WING 全系列、擴充卡、stage box、韌體", "Allen & Heath、Yamaha、Soundcraft、DiGiCo 等控台", "Waves：SoundGrid 伺服器、授權模式", "網路音訊：Dante、AVB 與 Milan、AES67", "監聽與無線：Shure、Sennheiser、MIPRO、Behringer P16", "介面：Universal Audio（Apollo、Volt）、RME", "喇叭：Genelec 與主要 PA 喇叭品牌", "DI：Radial", "量測與校正：Smaart、Sonarworks SoundID"]
+    },
+    {
+      "key": "plugin", "name": "插件", "color": "var(--caramel)", "freq": "每週，放在短訊",
+      "scope": "免費與限免插件，以及授權、訂閱、舊用戶升級權益的變動。你已在用的品牌優先。",
+      "watch": ["Universal Audio（UAD 原生插件、Spark）", "Plugin Alliance", "Waves", "其次：Bedroom Producers Blog、Plugin Boutique 的免費動態"]
+    },
+    {
+      "key": "production", "name": "錄音製作與直播投影", "color": "var(--teal)", "freq": "常態",
+      "scope": "錄音、混音、現場播放、直播與投影軟體的重大功能、整合或必要修正；分軌分離、採譜、音訊處理的新能力。",
+      "watch": ["Apple：Logic Pro、MainStage", "Renewed Vision：ProPresenter", "OBS Studio", "分軌播放：MultiTracks、Loop Community", "分軌分離與和弦採譜工具"]
+    },
+    {
+      "key": "design", "name": "設計與教學工具", "color": "var(--rose)", "freq": "常態",
+      "scope": "海報、投影片、教材與互動教學工具的重要更新；中文排版與字型、可編輯輸出、3D 與互動內容。",
+      "watch": ["Canva", "Google 簡報、文件、試算表", "中文字型：Google Fonts、思源與 Noto 系列", "網頁 3D 與互動：Three.js 等"]
+    },
+    {
+      "key": "worship", "name": "敬拜與教學資源", "color": "var(--lavender)", "freq": "有重要發佈才收",
+      "scope": "關注團隊的新歌、官方樂譜、分軌、鍵盤音色包；兒少與成人教材、教師資源的新版本。重點是可教性與團隊能不能操作，不收泛教會新聞。",
+      "watch": ["Hillsong、Bethel Music、Elevation Worship", "樂手教學內容：David Hislop（Bethel）、E. Edwards（Elevation）", "兒少主日學教材與教師資源（待你指定出版方）", "成人陪讀與門訓教材（待你指定）"]
+    },
+    {
+      "key": "tabletennis", "name": "桌球", "color": "var(--sage)", "freq": "常態",
+      "scope": "器材新品、限量與聯名、復刻或系列改版，選手與賽事動態，技術與訓練分析。不要求有新科技或 AI。例子：樊振東限量底板。",
+      "watch": ["Victas：丹羽系列、V>15 與 V>22 膠皮", "Donic：Bluestar 系列", "Butterfly、Nittaku、DHS 等主要品牌", "選手：丹羽孝希、樊振東、馬龍、Patrick Franziska、徐孝元", "MLTT 與 WTT 賽事"]
+    },
+    {
+      "key": "coffee", "name": "咖啡", "color": "var(--walnut)", "freq": "常態；沒有新事件就標延伸閱讀",
+      "scope": "主要廠家與你關注對象的新產品；得獎的新沖煮方式；有價值的比較與研究。名單是主要廠家，不代表市佔排名。",
+      "watch": ["磨豆機：DF64 系列、泰摩（Timemore）", "義式機：Lelit、Rancilio、Breville、De'Longhi、Gaggia", "手沖：HARIO、Fellow、川流", "賽事：世界咖啡師大賽（WBC）、世界沖煮大賽（WBrC）", "沖煮研究：萃取與壓力等同儕審查研究"]
+    },
+    {
+      "key": "health", "name": "健康", "color": "var(--olive)", "freq": "有新證據才收",
+      "scope": "新學說、新證據，以及既有說法的修正或翻案。例子：生酮、168 間歇性斷食的後續修正。",
+      "watch": ["生酮飲食", "168 與其他間歇性斷食", "咖啡因與睡眠", "阻力訓練、減脂與增肌（Recomp）"]
+    },
+    {
+      "key": "creators", "name": "創作者與思想", "color": "var(--slate)", "freq": "低頻精選",
+      "scope": "你關注的音樂人、作者與學者的新作品、書籍、研究與正式論辯，含神學與哲學。追具體對象，不擴成泛娛樂或人文新聞；晨間哲學已有的主題不重複。",
+      "watch": ["音樂人名單（待你指定）", "作者與學者名單（待你指定）", "教會論、教會制度史、釋經方法的新書與研究"]
+    }
+  ],
+  "tags": {
+    "new": { "name": "新品／新版本" },
+    "capability": { "name": "能力／相容性" },
+    "access": { "name": "授權／取得方式" },
+    "evidence": { "name": "新方法／新證據" }
   },
-  {
-    "key": "coffee", "name": "咖啡", "color": "var(--caramel)",
-    "doing": "手沖、品飲、可能的烘焙探索",
-    "uses": [
-      "沖煮紀錄表格化,AI 分析參數與風味的關聯",
-      "「太酸/太澀」對話式診斷,建議調整研磨度、水溫、比例",
-      "風味描述詞彙練習:對照風味輪,把感受寫成精確語言",
-      "豆單與烘焙曲線資料整理比較"
-    ],
-    "tools": ["Claude + 試算表", "拍照辨識豆袋資訊", "沖煮日誌 App"]
+  "access": {
+    "free": "永久免費",
+    "claim": "限時領取",
+    "subscription": "訂閱內可用",
+    "trial": "試用",
+    "sale": "限時折扣"
   },
-  {
-    "key": "faith", "name": "信仰與神學", "color": "var(--dustyblue)",
-    "doing": "讀經、靈修、講道或分享預備",
-    "uses": [
-      "經文背景與原文字義研究(需自行查證出處)",
-      "跨譯本比較、平行經文與主題串珠",
-      "講章/分享大綱腦力激盪,聽眾角度的回饋",
-      "靈修筆記整理成可分享的短文"
-    ],
-    "tools": ["Claude 研經對話", "Logos AI", "STEP Bible + AI 整理"]
-  },
-  {
-    "key": "governance", "name": "教會治理", "color": "var(--slate)",
-    "doing": "會議、章程制度、事工規劃",
-    "uses": [
-      "會議錄音轉逐字稿,自動整理決議與待辦",
-      "章程、辦法、SOP 草擬與條文一致性檢查",
-      "預算管理:預算 vs 實際支出自動對帳、半年度結算,設備汰換週期提醒",
-      "公告、週報、通知信的草稿生成"
-    ],
-    "tools": ["錄音轉寫 + Claude 摘要", "Docs 範本", "Gmail 草稿連接器"]
-  },
-  {
-    "key": "kids", "name": "兒少教學", "color": "var(--sage)",
-    "doing": "兒童主日學、分齡課程設計",
-    "uses": [
-      "教案與課程大綱生成(已有主日學 Skill,讀舊課程保持系列感)",
-      "互動問答、遊戲、勞作點子,依年齡層自動調整難度",
-      "課程插圖與學習單生成",
-      "同一個故事改寫成低年級/高年級兩種版本",
-      "注音歌詞投影片:歌詞貼上→自動注音→套版輸出,兒主敬拜不再手工標注音",
-      "教材資源庫:課程分配表自動追進度、催收授課附註;給老師群的通知信草稿"
-    ],
-    "tools": ["主日學 Skill", "Curipod", "MagicSchool", "Canva Magic Studio"]
-  },
-  {
-    "key": "team", "name": "團隊管理", "color": "var(--teal)",
-    "doing": "同工團隊、服事排班、培訓交接",
-    "uses": [
-      "敏感訊息草擬:提醒、感謝、調整職務的措辭斟酌",
-      "服事意願表單→月排班表:把表單回覆自動彙整成排班矩陣,並遵守個人限制(主領與小幫手分開、盡量與青少服事同日…)",
-      "新同工訓練手冊與交接文件,從零散筆記整理成冊",
-      "一對一關懷談話前的準備與紀錄整理"
-    ],
-    "tools": ["Claude 草稿對話", "日曆連接器", "Guidde 教學影片"]
-  },
-  {
-    "key": "health", "name": "健康生活", "color": "var(--olive)",
-    "doing": "作息、飲食、運動習慣",
-    "uses": [
-      "飲食/運動紀錄丟給 AI 做週回顧,找出模式",
-      "習慣設計:把目標拆成可執行的微習慣與提醒",
-      "外食選擇的即時營養粗估",
-      "作息調整實驗的紀錄與分析(非醫療診斷)"
-    ],
-    "tools": ["Claude + 紀錄表", "排程提醒", "拍照估算餐點"]
-  },
-  {
-    "key": "tabletennis", "name": "桌球", "color": "var(--walnut)",
-    "doing": "橫拍打法鑽研、器材搭配、技術訓練",
-    "uses": [
-      "對打與發球錄影逐格分析:擊球點、重心轉移、引拍軌跡的動作回饋",
-      "器材參數交叉查核:膠皮與底板的硬度回彈匹配,彙整多論壇實測經驗再下判斷",
-      "訓練課表設計:把弱點拆成可量化的練習單元與進度追蹤",
-      "比賽影片復盤:找出發球輪得失分與對手戰術模式"
-    ],
-    "tools": ["錄影逐格分析", "Claude 器材查核", "訓練日誌表"]
-  },
-  {
-    "key": "social", "name": "社群經營與美編", "color": "var(--rose)",
-    "doing": "教會/社群貼文、海報、視覺設計",
-    "uses": [
-      "貼文文案多版本生成,配合活動調性",
-      "海報與封面設計初稿(已有個人風格 Skill,自動套用你的配色)",
-      "內容月曆規劃:節期、活動、系列貼文排程",
-      "圖片生成與去背、尺寸自動適配各平台"
-    ],
-    "tools": ["個人設計風格 Skill", "Canva 連接器", "Magic Studio"]
-  },
-  {
-    "key": "philosophy", "name": "哲學思考", "color": "var(--lavender)",
-    "doing": "閱讀、思辨、寫作、大量資訊的解析",
-    "uses": [
-      "底層思考框架:面對大量知識要解析時,先用第一性原理、心智模型、抽象階梯拆出結構再下判斷——讓 AI 陪你練「怎麼想」,而不是只給答案",
-      "知識網絡建構:零散輸入整理成概念地圖與卡片盒筆記,AI 幫你找出概念間的連結與缺口",
-      "蘇格拉底式對話:讓 AI 持續追問,逼出論證漏洞",
-      "難讀文本的伴讀:分段解釋、給反例、連結其他思想家",
-      "論證結構圖:把一篇文章拆成前提與結論的骨架",
-      "信仰與哲學的對話:護教論證的正反方演練"
-    ],
-    "tools": ["Claude 長對話", "心智模型庫", "論證地圖", "卡片盒筆記"]
+  "legacy": {
+    "map": {
+      "frontier": ["ai"], "governance": ["ai"], "team": ["ai"],
+      "music": ["instrument", "pa", "plugin", "production"],
+      "coffee": ["coffee"], "health": ["health"], "tabletennis": ["tabletennis"],
+      "kids": ["worship", "design"], "social": ["design"],
+      "faith": ["creators", "worship"], "philosophy": ["creators"]
+    },
+    "names": {
+      "frontier": "通用前沿", "music": "音樂與音控", "coffee": "咖啡", "faith": "信仰與神學",
+      "governance": "教會治理", "kids": "兒少教學", "team": "團隊管理", "health": "健康生活",
+      "tabletennis": "桌球", "social": "社群與美編", "philosophy": "哲學思考"
+    }
   }
-]
+}
 </script>
 
-<!-- ==================== 週報資料 ====================
-  每週由排程任務在 reports 陣列「最前面」插入一筆,格式如下:
-  {
-    "week": "YYYY-MM-DD",
-    "items": [
-      { "title": "...", "summary": "...",
-        "domains": ["music"|"coffee"|"faith"|"governance"|"kids"|"team"|"health"|"tabletennis"|"social"|"philosophy"|"frontier"],
-        "use": "對 Bernard 的具體用法",
-        "links": [{"label": "...", "url": "..."}] }
-    ]
-  }
-================================================== -->
+<!-- ==================== 追蹤清單 ==================== -->
+<script type="application/json" id="tracking-data">
+{
+  "items": [
+    {
+      "id": "claude-plan",
+      "name": "Claude 方案與額度變動",
+      "domain": "ai",
+      "trigger": "任何週額度、五小時額度、定價或方案公告",
+      "why": "9/14 起週額度加成縮小，影響訂閱與分工決策",
+      "stop_when": "不再訂閱 Claude",
+      "since": "2026-09-11",
+      "status": "等待中",
+      "last_checked": "2026-09-17",
+      "history": [
+        {
+          "date": "2026-09-14",
+          "text": "9/14 起，Claude Code 的週額度由暫時加成 50% 改為永久加成 25%，五小時上限不變。對原本享有加成的付費用戶，週額度實際少約 17%。"
+        }
+      ]
+    },
+    {
+      "id": "codex-plan",
+      "name": "Codex 與 ChatGPT 方案變動",
+      "domain": "ai",
+      "trigger": "任何額度、定價或方案公告",
+      "why": "雙訂閱比較的基準",
+      "stop_when": "不再訂閱 ChatGPT",
+      "since": "2026-09-11",
+      "status": "等待中",
+      "last_checked": "2026-09-17",
+      "history": []
+    },
+    {
+      "id": "wing-firmware",
+      "name": "WING 韌體大版本",
+      "domain": "pa",
+      "trigger": "新增功能或改動工作流的版本；純錯誤修正不報，除非影響現場穩定",
+      "why": "教會主系統",
+      "stop_when": "教會換控台",
+      "since": "2026-09-11",
+      "status": "等待中",
+      "last_checked": "2026-09-17",
+      "history": []
+    },
+    {
+      "id": "soundgrid-license",
+      "name": "Waves SoundGrid 授權模式",
+      "domain": "pa",
+      "trigger": "授權、訂閱或價格變動",
+      "why": "控台擴充路徑的成本前提",
+      "stop_when": "決定不走 SoundGrid",
+      "since": "2026-09-11",
+      "status": "等待中",
+      "last_checked": "2026-09-17",
+      "history": []
+    },
+    {
+      "id": "soundid-sale",
+      "name": "SoundID Reference 促銷",
+      "domain": "pa",
+      "trigger": "喇叭校正版大幅降價",
+      "why": "家用監聽校正的待購項",
+      "stop_when": "購入或放棄",
+      "since": "2026-09-11",
+      "status": "已命中",
+      "last_checked": "2026-09-17",
+      "history": [
+        {
+          "date": "2026-09-14",
+          "text": "觸發條件成立。秋季特價 9/7 至 9/22，喇叭加耳機版 179 美元（原價 249），Apollo 監聽校正外掛 50 美元（原價 79）。詳見本期短訊。"
+        }
+      ]
+    },
+    {
+      "id": "hx-stomp-tw",
+      "name": "HX Stomp 台灣售價與後繼機",
+      "domain": "instrument",
+      "trigger": "公司貨調價，或 Line 6 公告後繼機種",
+      "why": "小盤升級評估",
+      "stop_when": "購入或改變方案",
+      "since": "2026-09-11",
+      "status": "等待中",
+      "last_checked": "2026-09-17",
+      "history": []
+    },
+    {
+      "id": "tonex-board-fw",
+      "name": "TONEX Board 韌體補齊",
+      "domain": "instrument",
+      "trigger": "USB 錄音介面韌體（原訂 10/01）與桌面編輯器（原訂第四季）實際釋出",
+      "why": "評估時的否決理由之一是韌體未齊",
+      "stop_when": "兩項都釋出",
+      "since": "2026-09-14",
+      "status": "等待中",
+      "last_checked": "2026-09-17",
+      "history": []
+    },
+    {
+      "id": "tigerair-2027-summer",
+      "name": "台灣虎航 2027 夏季班表開賣",
+      "domain": "",
+      "trigger": "開賣公告或開放訂位，預估 2026 年 11 至 12 月",
+      "why": "2027 年 6 月北海道行程",
+      "stop_when": "機票訂妥",
+      "since": "2026-09-11",
+      "status": "等待中",
+      "last_checked": "2026-09-14",
+      "history": []
+    }
+  ]
+}
+</script>
+
+<!-- ==================== 週報資料（新一期插入 reports 陣列最前面） ==================== -->
 <script type="application/json" id="weekly-reports">
 {
   "reports": [
+    {
+      "week": "2026-09-17",
+      "schema": 2,
+      "range": {
+        "from": "2026-09-13",
+        "to": "2026-09-17"
+      },
+      "items": [
+        {
+          "tier": "headline",
+          "domain": "design",
+          "tags": ["new", "capability", "access"],
+          "extended": false,
+          "title": "Google Pics 上線 Slides／文件：內嵌修圖，但排除免費帳號",
+          "lead": "Google 把 AI 修圖工具直接嵌進簡報與文件，點一下圖片就能編輯，不必跳去別的網站。免費 Google 帳號用不到，要看你的方案等級。",
+          "what": "Google Pics 於 2026-09-01 正式上線。它是獨立網頁工具（pics.new），也內嵌在 Google 文件與簡報裡。點選一張圖片，編輯面板就直接浮在文件上方，不必離開頁面。官方定位是 Workspace 版的生圖與修圖工具，正面對打 Canva。",
+          "why": "你常用 Google 簡報做主日學投影片、用 Canva 做海報。這次 Google 把生圖修圖能力搬進你已經在用的文件工具裡，理論上能省掉來回 Canva 的一道手續。",
+          "relation": "背景檔記錄你常做 Canva 海報與 Google 簡報教材。你的 Google 帳號是免費版，還是已訂閱 AI Pro 或 Workspace 商用方案，本次查證查不到紀錄。這直接決定用不用得到。",
+          "limits": "官方列的資格是 AI Pro／Ultra 訂閱戶，或 Workspace Business Standard 以上方案。免費帳號與最低階的 Business Starter 不含。部分來源說個人版 AI Pro「已可訂閱但啟用可能延遲」，另有來源說德國個人帳號被排除。地區與帳號類型的實際生效範圍，查到的說法不完全一致，台灣個人帳號現況未逐一驗證。",
+          "dates": { "published": "2026-09-01", "checked": "2026-09-17" },
+          "verdict": { "level": "try", "practice": "先查自己的 Google 帳號是不是 AI Pro／Ultra 或 Workspace Business Standard 以上；符合的話，下次編主日學投影片時直接點簡報裡的圖片試一次內嵌修圖面板，不符合就先略過。" },
+          "links": [
+            { "label": "Google Workspace Blog", "url": "https://workspace.google.com/blog/product-announcements/google-pics-brings-pro-level-ai-image-creation-and-editing-to-google-workspace" },
+            { "label": "Google Docs 編輯器說明：Pics 適用範圍", "url": "https://support.google.com/docs/answer/17256710?hl=en" }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "coffee",
+          "tags": ["evidence"],
+          "extended": true,
+          "title": "2026 WBrC 亞軍配方：幾何濾杯與「透明度金字塔」沖煮理念",
+          "lead": "6 月世界沖煮大賽的亞軍配方這幾週才被整理成文章。核心主張是沖煮只負責「選擇」風味，不是製造風味，濾杯設計則走向更精準控制流速的幾何結構。",
+          "what": "2026 年世界沖煮大賽於 6/25-27 在比利時布魯塞爾舉行，亞軍是 Simon Gautherin。他的理念叫「透明度金字塔」：生豆決定風味、烘焙釋放風味、沖煮選擇風味、水質突出風味。他與其他選手在區域賽場採用的濾杯強調精準控流，是幾何結構、先進合成材料、保溫性高的款式，不是市售川流或 V60 常見的形狀。",
+          "limits": "本則是比賽結束近三個月後才出現的整理文章，非本週新事件，故標延伸閱讀。冠軍是馬來西亞選手 Nas Jaafar，他的「Switch 底座兩段式萃取」配方已在 9/14 那期報過。這則補的是亞軍的沖煮理念與濾杯趨勢，兩者可對照但不是同一組數據。文章未附選手實際使用的豆種與烘焙度細節。",
+          "dates": { "event": "2026-06-25", "checked": "2026-09-17" },
+          "links": [
+            { "label": "2026 WBrC 亞軍配方解密", "url": "https://shop.cozyhousecoffee.com/blog/posts/blogposts2026-wbrc-simon-gautherin-clarity-pyramid" }
+          ]
+        }
+      ],
+      "tracking_updates": [],
+      "note": {
+        "topline": "本期只涵蓋 9/13 至 9/17 四天，新事件稀少：主文 1 則、延伸閱讀 1 則。主文 Google Pics 其實 9/1 就上線，是前兩期漏掉的消息，這次補上；延伸閱讀是 6 月賽事的後續整理文章，非本週新聞。追蹤清單 7 項本週查核皆無新進展，只更新查核日；虎航班表這項本週未查（預估開賣期在 11-12 月，還沒到）。",
+        "searched": "跨領域大新聞（科技、AI、音樂產業）；AI 領域 Anthropic／OpenAI／Google／Apple 系統層動態；樂器領域 TONEX、Line 6、Strymon、Meris、Walrus、Nord／Roland／Yamaha／Korg 鍵盤；PA 領域 WING 韌體、Waves SoundGrid 授權、UA／RME／Genelec／Radial、Shure／Sennheiser／MIPRO；插件領域 UA／Plugin Alliance／Waves 與 Bedroom Producers Blog 免費動態；製作與投影領域 Logic／MainStage／ProPresenter／OBS；設計領域 Canva／Google 簡報；敬拜領域 Hillsong／Bethel／Elevation 新歌；桌球領域丹羽孝希／樊振東與品牌新品；咖啡領域 DF64／Lelit／Rancilio／Breville 與 WBrC 後續；健康領域生酮與 168 斷食新研究；追蹤清單 7 項逐一查核。",
+        "skipped": "WING 韌體最新仍是 2025 年底的 3.0／3.1，區間內無新版本；Line 6／Strymon／Meris／Walrus 區間內查無新品發表；Nord／Roland／Yamaha／Korg 鍵盤查無區間內新品；Waves SoundGrid 授權模式查無 2026 年變動公告；UA／RME／Genelec／Radial 查無區間內新硬體；Shure／Sennheiser／MIPRO 查無區間內新品；Hillsong／Bethel／Elevation 查無區間內新歌發布；丹羽孝希／樊振東本週查無新聞、其他品牌限量款也查無區間內消息；生酮與 168 斷食查無區間內新研究；DF64 Gen 2.7 出貨期落在 9 月底至 10 月中，屬既有預購狀態非本週事件，故不收；UA 對 macOS 27 的相容性仍是「測試中、有小顯示問題」，與 9/14 那期已報的狀態相同、無實質新進展，故不重報；HX Stomp 台灣代理最新報價查無資料，只查到美元定價；Bedroom Producers Blog 本週有多款免費插件（Korg Prophecy 模擬器、相位對齊濾波器、光電壓縮器、人聲音高偏移等），但性質偏合成器與人聲處理，跟你 UA／Plugin Alliance／Waves 為主的鏈路關聯低，故未收；蘋果 9/9 發表會（iPhone 18 Pro、摺疊機 iPhone Duo、新任執行長 John Ternus 接棒）在區間外且與你的樂器／PA／設計工具無直接關係，故不收。"
+      },
+      "corrections": []
+    },
+    {
+      "week": "2026-09-14",
+      "schema": 2,
+      "range": {
+        "from": "2026-09-03",
+        "to": "2026-09-14"
+      },
+      "items": [
+        {
+          "tier": "headline",
+          "domain": "ai",
+          "also": [
+            "production"
+          ],
+          "tags": [
+            "capability"
+          ],
+          "title": "macOS 27 今天釋出：升級會移除 Rosetta，UA 尚未列入支援",
+          "lead": "Apple 在 9/9 發表會宣布 iOS 27 與 macOS 27 Golden Gate 於 9/14 釋出。升級時 Rosetta 2 會被自動移除，而 UA 官方相容清單目前只列到 macOS 26。",
+          "what": "Apple 9/9 秋季發表會宣布，iOS 27 與 macOS 27 Golden Gate 於 9/14 正式釋出。同場發表 iPhone 18 Pro 與 Pro Max，9/18 上市。摺疊機 iPhone Duo 10/23 上市，另有 Apple Watch Series 12 與 AirPods 5。\nmacOS 27 不再支援 Intel Mac，也是最後一版支援 Rosetta 2 的系統。Rosetta 2 是讓 Intel 版軟體在 Apple 晶片上執行的轉譯層。升級時它會被自動移除，需要的人得手動重裝。到明年秋天的 macOS 28，除了遊戲例外，Rosetta 2 就大致終止。",
+          "why": "音訊環境最怕的是外掛與驅動。Logic、Pro Tools、Ableton 早已原生支援 Apple 晶片。風險在只有 Intel 版的舊外掛，升級後會因為 Rosetta 被移除而開不起來。\nUniversal Audio 的官方相容頁目前只列到 macOS Tahoe 26。頁面註明未列出的系統屬於未測試、不支援。",
+          "relation": "你家裡的 Apollo Twin X 綁 UA 軟體。Logic 的混音與教學也掛著 UA、Waves、Plugin Alliance 的外掛。建議主力機先不升級，等 UA 把 macOS 27 列進支援清單。\n想提早準備，可以先用 Rosetta Check 這類工具掃一次外掛，找出只有 Intel 版的。明年的 macOS 28 才是真正期限，今年先把清單列出來就夠。",
+          "limits": "WING Edit、MainStage 與 Waves 對 macOS 27 的相容狀態，這次沒有查到官方說明。UA 相容頁顯示約半年前更新，可能近期就會改。你的幾台 Mac 用的是哪一代晶片，這次沒有核對。",
+          "dates": {
+            "event": "2026-09-14",
+            "published": "2026-09-09",
+            "checked": "2026-09-14"
+          },
+          "links": [
+            {
+              "label": "MacRumors：9/9 發表會全整理",
+              "url": "https://www.macrumors.com/2026/09/09/apple-september-2026-event-recap/"
+            },
+            {
+              "label": "gearnews：macOS 27 與 Rosetta 2 對外掛的影響",
+              "url": "https://www.gearnews.com/apple-rosetta-2-macos-27-golden-gate-tech/"
+            },
+            {
+              "label": "Universal Audio：作業系統相容資訊",
+              "url": "https://help.uaudio.com/hc/en-us/articles/210208926-Latest-macOS-Windows-Operating-System-Compatibility-Information"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "instrument",
+          "tags": [
+            "new"
+          ],
+          "title": "TONEX Board 上市：USB 介面與編輯器等韌體補齊",
+          "lead": "IK Multimedia 9/3 推出 TONEX Board 地板機，官方未稅價 999.99 美元。USB 錄音介面要等 10/1 的韌體，完整桌面編輯器排在第四季。",
+          "what": "TONEX Board 是 IK 第一台整合型地板機。雙訊號路徑最多同時跑 4 個 Tone Model，兩條鏈共 12 個效果格，可選效果 76 種。\n配備 5 吋觸控螢幕、6 顆可按壓旋鈕、可拆成兩組單聲道的立體聲效果迴路，以及兩組立體聲輸出，其中一組是平衡 XLR。出廠內建 2,000 個 Premium Tone Model。",
+          "why": "這是 IK 第一次正面對上 Neural DSP Quad Cortex、Line 6 Helix Stadium 與 Fender Tone Master Pro。\n韌體時程是重點。4 進 2 出的 USB 錄音介面與 ToneNET 預設分享 10/1 上線，完整即時桌面編輯器排在第四季。早買的人要跟著平台一起成熟約 90 天。",
+          "relation": "你 9/7 已評估過，結論是不進 2026 至 2027 的器材窗口。當時的三條理由是：音色來源你已持有、效果段是 AmpliTube 移植、全新機沒有二手且韌體未齊。\n這則消息沒有推翻那個結論。兩顆 TONEX One 仍是你的音色核心，韌體進度已放進追蹤清單。",
+          "limits": "售價有出入。IK 官方稿為未稅 999.99 美元與 999.99 歐元，gearnews 寫 1,099 歐元，可能是含稅價。台灣代理與售價沒有查到。規格與時程出自廠商發佈，還沒有長期實測。",
+          "dates": {
+            "event": "2026-09-03",
+            "published": "2026-09-03",
+            "checked": "2026-09-14"
+          },
+          "verdict": {
+            "level": "skip",
+            "practice": "維持 9/7 的結論，不必重評。10/1 韌體出來後看 USB 介面是否穩定，第四季編輯器上線後再看評測。"
+          },
+          "links": [
+            {
+              "label": "Audio News Room：TONEX Board 發佈細節",
+              "url": "https://audionewsroom.net/2026/09/ik-multimedia-tonex-board-the-all-in-one-tonex-rig-youve-been-waiting-for.html"
+            },
+            {
+              "label": "Guitar World：TONEX Board",
+              "url": "https://www.guitarworld.com/gear/amp-modeler-pedals/ik-multimedia-tonex-board"
+            },
+            {
+              "label": "gearnews：TONEX Board 與同級機比較",
+              "url": "https://www.gearnews.com/ik-multimedia-tonex-board-guitar/"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "coffee",
+          "tags": [
+            "evidence"
+          ],
+          "extended": true,
+          "title": "2026 世界沖煮冠軍配方：Switch 底座的兩段式萃取",
+          "lead": "馬來西亞選手 Nas Jaafar 拿下 2026 世界沖煮大賽冠軍。他用 UFO V3 濾杯加 Switch 底座，前段滴濾、後段浸泡，2 分 10 秒完成。",
+          "what": "比賽在布魯塞爾舉行，屬於 2026 年世界咖啡大賽。第三方整理的配方如下。\n豆子是巴拿馬 Finca Nuguo 的藝伎，海拔 1,700 公尺，厭氧日曬。粉 15 克、水 200 毫升，粉水比 1:13.3，水溫 92 度，中細研磨。磨豆機轉速壓到 580 RPM 以減少細粉，水質 50 ppm、鎂鈣平衡。\n步驟：0:00 注水 100 克讓它滴濾；0:58 關閉 Switch；1:00 注入剩下的 100 克；2:00 打開 Switch；2:10 完成。",
+          "why": "這個配方把滴濾與浸泡拆成兩段。前段取乾淨度，後段用浸泡補甜感與厚度，結構用市售器材就能重現。\n比賽條件跟日常差很多：烘焙後第 3 天就沖、熱風烘焙、特調水、高價藝伎。能帶回家的主要是兩段式的時間結構，其餘參數很難照搬。",
+          "relation": "你手沖用川流濾杯和 Fellow Stagg EKG 溫控壺，也曾考慮 HARIO V60 Switch。這個兩段式結構可以直接在 Switch 上試。\n你的豆子多是中淺焙非洲豆，可以先沿用原本的粉水比，只借用「前段滴濾、後段關閥浸泡」的切換時間。",
+          "limits": "官方公告頁沒有列配方，細節出自 beanbook 的整理，沒有跟選手本人的發表逐項核對。比賽月份的來源不一致，官方頁寫 6 月，另一來源寫 5 月。這是上半年的賽事，本期第一次搜咖啡領域，所以列為延伸閱讀。",
+          "dates": {
+            "event": "2026 年上半年",
+            "checked": "2026-09-14"
+          },
+          "links": [
+            {
+              "label": "World Coffee Championships：2026 世界沖煮冠軍",
+              "url": "https://wcc.coffee/latest-news/wbrc-winners"
+            },
+            {
+              "label": "beanbook：冠軍配方整理",
+              "url": "https://beanbook.app/recipes/nas-jaafar--2026-world-brewers-cup-champion-recipe__8eb5912b-3b5b-4a6c-9824-2f1a78c68aad"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "design",
+          "tags": [
+            "capability"
+          ],
+          "title": "Canva 百項套件更新：簡報可自動產生講者備忘",
+          "lead": "Canva 9/3 整理今年累積的 100 多項套件更新。跟你最相關的是簡報一鍵放映、自動產生講者備忘，以及試算表資料用提示轉成圖表放進簡報。",
+          "what": "Canva 表示今年以來在文件、簡報、試算表、白板、網站上累計推出 100 多項更新，正陸續對全球用戶開通。\n文中舉的功能有：白板一鍵轉成文件、文件的通欄橫幅與拖放圖片、試算表資料用 AI 提示轉成圖表並直接放進文件或簡報、簡報一鍵放映與自動產生講者備忘、白板的跟隨協作者，以及網站最多 20 個區段的自訂導覽。",
+          "why": "Canva 想讓一個專案從腦力激盪到簡報都留在同一個檔案裡。官方數字是每月有超過一億人用 Canva 簡報，文件已成為第三常用的格式。",
+          "relation": "你常用 Canva 做海報和課程簡報。自動產生講者備忘可以拿主日學投影片試一次，但產出的口吻要對照你既有的口白規範逐頁修改。\n試算表轉圖表可以用在排班或預算類的簡報。",
+          "limits": "這是官方整理文，沒有逐項功能清單，也沒有說明中文字型或中文排版是否改進。各功能在你的帳號是否已開通，這次沒有確認。",
+          "dates": {
+            "published": "2026-09-03",
+            "checked": "2026-09-14"
+          },
+          "verdict": {
+            "level": "passive",
+            "practice": "下次做主日學投影片時，試一次自動產生講者備忘，比較改寫時間是否比從零寫短。"
+          },
+          "links": [
+            {
+              "label": "Canva Newsroom：Big updates just landed in the Visual Suite",
+              "url": "https://www.canva.com/newsroom/news/visual-suite-100-updates/"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "pa",
+          "tags": [
+            "access"
+          ],
+          "access": "sale",
+          "title": "Sonarworks 秋季特價：SoundID 喇叭版 179 美元",
+          "lead": "SoundID Reference 喇叭加耳機版由 249 降到 179 美元，Apollo 監聽校正外掛由 79 降到 50 美元。特價到 9/22 下午 3:59（台灣時間）。",
+          "limits": "Sonarworks 官方商店價，不能疊加折扣碼。第三方經銷有各自規定。",
+          "dates": {
+            "published": "2026-09-07",
+            "deadline": "2026-09-22",
+            "checked": "2026-09-14"
+          },
+          "links": [
+            {
+              "label": "Sonarworks：2026 秋季特價價目",
+              "url": "https://support.sonarworks.com/hc/en-us/articles/4410101986450-Sonarworks-Store-Autumn-Sale-2026"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "ai",
+          "tags": [
+            "capability"
+          ],
+          "title": "Codex 桌面版 9/1 更新後，有人專案清單消失",
+          "lead": "26.831.21537 版更新後，有使用者的專案側欄變成「No projects」，對話還在但與專案脫鉤。磁碟上的專案檔看來完好，有人從資料夾重新加回。",
+          "limits": "目前只見論壇個案回報，OpenAI 沒有在該串回應，影響範圍不明。",
+          "dates": {
+            "event": "2026-09-01",
+            "checked": "2026-09-14"
+          },
+          "links": [
+            {
+              "label": "OpenAI 開發者論壇：更新後專案消失",
+              "url": "https://community.openai.com/t/openai-chatgpt-codex-desktop-app-update-v26-831-21537-sep-1-2026-wiped-projects/1394486"
+            }
+          ]
+        }
+      ],
+      "deep": {
+        "domain": "health",
+        "title": "生酮與 168：兩篇 2026 年研究各自改了什麼",
+        "body": "過去對生酮與 168 的主流說法是：減重效果主要來自少吃，飲食型態本身的額外好處有限。今年兩篇研究沒有推翻這個骨架，但各自補上一塊。\n\n第一篇是華盛頓大學醫學院 8 月底發表在 Cell Metabolism 的試驗。42 位有肥胖、前期糖尿病與脂肪肝的受試者，分成生酮、地中海、植物性低脂三組，吃四到五個月。三組體重都掉了約一成，但肝臟脂肪降幅不同：生酮組 67%，另外兩組 45%。\n\n生酮組約一半的人脫離前期糖尿病，地中海組是 29%，植物性低脂組是 7%。生酮組吃的脂肪最多，血脂與膽固醇卻沒有上升。\n\n它修正的是「體重掉一樣多，效果就一樣」這個假設。在同樣減重一成的前提下，肝臟脂肪與血糖指標出現差別。適用範圍要注意：受試者都已有脂肪肝與前期糖尿病，只有 42 人，時間不到半年。\n\n第二篇是西班牙格拉納達大學 7 月發表在 Clinical Nutrition 的試驗。99 位過重或肥胖的成人先全部接受地中海飲食衛教，再分成四組：進食窗 12 小時以上的對照組、早段 8 小時、晚段 8 小時、自選 8 小時。介入 12 週，之後追蹤一年。\n\n一年後，早段與晚段兩組保住的減重都明顯多於對照組，兩者效果相近。整個計畫裡，限時進食的人平均比單純接受飲食衛教的人多減 3 到 4 公斤，約三分之一的人在計畫結束後自己繼續做。\n\n它回應的是「168 一定要早吃才有效」的說法，這個試驗裡早晚兩種時段都有效。新聞稿沒有說明各組熱量是否相同，所以還分不出效果來自時段本身還是吃得比較少。\n\n跟你的關係：你已從減脂期轉入增肌減脂，重點是保住肌肉。這兩篇的受試者都是過重或肥胖、以減重為目標，不能直接套用。可以帶走的是兩點：168 的時段可以配合晨跑與訓練時間彈性安排；生酮對肝臟與血糖的好處，證據集中在已有代謝問題的人。\n\n限制：兩篇的細節都出自新聞稿整理，這次沒有讀原始論文全文。",
+        "links": [
+          {
+            "label": "ScienceDaily：生酮試驗降低肝臟脂肪 67%",
+            "url": "https://www.sciencedaily.com/releases/2026/08/260828082327.htm"
+          },
+          {
+            "label": "ScienceDaily：限時進食一年後仍保住減重",
+            "url": "https://www.sciencedaily.com/releases/2026/07/260718010154.htm"
+          }
+        ]
+      },
+      "tracking_updates": [
+        {
+          "track": "claude-plan",
+          "text": "9/14 起，Claude Code 的週額度由暫時加成 50% 改為永久加成 25%，五小時上限不變。對原本享有加成的付費用戶，週額度實際少約 17%。",
+          "links": [
+            {
+              "label": "ClaudeDevs 官方公告",
+              "url": "https://x.com/ClaudeDevs/status/2093742321473065266"
+            },
+            {
+              "label": "QCode：公告原文與換算",
+              "url": "https://qcode.cc/en/claude-weekly-limit-september-2026"
+            }
+          ]
+        },
+        {
+          "track": "soundid-sale",
+          "text": "觸發條件成立。秋季特價 9/7 至 9/22，喇叭加耳機版 179 美元（原價 249），Apollo 監聽校正外掛 50 美元（原價 79）。詳見本期短訊。",
+          "links": [
+            {
+              "label": "Sonarworks：2026 秋季特價價目",
+              "url": "https://support.sonarworks.com/hc/en-us/articles/4410101986450-Sonarworks-Store-Autumn-Sale-2026"
+            }
+          ]
+        }
+      ],
+      "note": {
+        "topline": "改版後第一期。頭條 1 則談 macOS 27 與音訊相容性；主文 3 則，其中咖啡那則是延伸閱讀；深入 1 篇談生酮與 168；短訊 2 則。追蹤清單有 2 項進展，SoundID 促銷命中。",
+        "searched": "AI 領域搜 9/9 至 9/14，上期已搜到 9/10。其他領域是第一次搜，所以回溯到上期起點 9/3。方向包括跨領域大新聞、Anthropic、OpenAI、Google、Apple 發表會與 macOS 相容性、TONEX 與 Strymon 等效果器、鍵盤與音源、WING 韌體與擴充卡、IBC 與 PLASA 展、UA、Plugin Alliance、Waves 與免費插件、Logic 與 ProPresenter、Canva、桌球限量板、咖啡新品與沖煮大賽、生酮與 168、敬拜團隊新專輯，以及追蹤清單 8 項。",
+        "skipped": "GPT-6 Astra 與 Claude Fable 5.1 上期已報。樊振東金標 ALC 限量板是 8/2 的消息，在區間外。WING MADI 卡查不到發佈日與官方售價：Sweetwater 要求真人驗證，改搜其他來源只找到規格。IBC 的 DHD 廣播控台與 PLASA 的 Violet Audio 平台跟你的系統無關。Waves 與 UA 的免費插件包分別是 2025 年 4 月與 2026 年 4 月的舊消息；UA 買 Apollo 送外掛只限新購硬體。Hillsong、Bethel、Elevation、Strymon、鍵盤、ProPresenter、Logic 在區間內都沒有新發佈。Eureka Mignon Zero 55S 查不到確切上市日。創作者名單尚未指定，這個領域沒有搜。"
+      },
+      "corrections": []
+    },
     {
       "week": "2026-09-10",
       "items": [
@@ -480,7 +826,7 @@
           "title": "Gemini Workspace擴大:自訂指令＋一鍵轉簡報",
           "summary": "Google 從 9 月 2 日起(最長 15 天陸續生效)把 Gemini 的「自訂指令」功能從原本只在 Docs 可用,擴大到 Drive 問答、Chat 問答,以及 Slides、Sheets、Gmail 的 Gemini 側邊欄,等於只要設定一次個人化偏好(例如固定用繁體中文回覆、固定用哪些角色稱呼),所有這些介面都會套用,不必每次重複下指令。同一波更新也擴大了「直接從素材產生內容」的能力,例如把一份提案文件直接轉成投影片,或用多個專案檔案生成客戶洞察簡報,分階段從 9/1 到 9/21 陸續開放給不同網域。",
           "domains": ["governance", "team"],
-          "use": "你手上兒主課程大綱、會議記錄、事工提案都是 Google 文件,設定一次自訂指令(例如固定要求繁體中文、固定格式)之後在 Sheets 排班表跟 Slides 简報都能沿用;也可以試試看把一份課程大綱文件直接請 Gemini 轉成投影片初稿,省下手動搬移文字的時間,再自己微調視覺。",
+          "use": "你手上兒主課程大綱、會議記錄、事工提案都是 Google 文件,設定一次自訂指令(例如固定要求繁體中文、固定格式)之後在 Sheets 排班表跟 Slides 簡報都能沿用;也可以試試看把一份課程大綱文件直接請 Gemini 轉成投影片初稿,省下手動搬移文字的時間,再自己微調視覺。",
           "links": [
             {"label": "Google Workspace Updates:自訂指令擴大到更多應用程式", "url": "https://workspaceupdates.googleblog.com/2026/09/custom-instructions-for-gemini-in-Workspace-now-available-in-more-apps.html"}
           ]
@@ -1214,7 +1560,7 @@
         },
         {
           "title": "Canva Code 2.0 開放免費帳號使用,一句話生成互動網頁",
-          "summary": "VentureBeat 本週報導 Canva 把先前僅限付費方案的 Canva Code 2.0 開放給所有使用者(含免費帳號),用純文字描述需求就能生成一個可互動的網頁、小工具或簡易 App,不需要寫程式,產出後在 Canva 介面裡可直接繼續調整。上週雷達提過 Canva AI 2.0 大改版時 Canva Code 2.0 只是附帶一句提及,這週的新訊息是它已經從「發表」變成「免費帳號也能用」,门槛實際降低到可以马上試。",
+          "summary": "VentureBeat 本週報導 Canva 把先前僅限付費方案的 Canva Code 2.0 開放給所有使用者(含免費帳號),用純文字描述需求就能生成一個可互動的網頁、小工具或簡易 App,不需要寫程式,產出後在 Canva 介面裡可直接繼續調整。上週雷達提過 Canva AI 2.0 大改版時 Canva Code 2.0 只是附帶一句提及,這週的新訊息是它已經從「發表」變成「免費帳號也能用」,門檻實際降低到可以馬上試。",
           "domains": [
             "social"
           ],
@@ -2092,160 +2438,322 @@
 </script>
 
 <script>
-let DOMAINS, REPORTS;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const safeUrl = u => /^https?:\/\//i.test(u || '') ? u : '#';
+
+let CFG, TRACK, REPORTS;
 try {
-  DOMAINS = JSON.parse(document.getElementById('domains-data').textContent);
-  REPORTS = JSON.parse(document.getElementById('weekly-reports').textContent).reports;
+  CFG = JSON.parse(document.getElementById('radar-config').textContent);
+  TRACK = JSON.parse(document.getElementById('tracking-data').textContent).items || [];
+  REPORTS = JSON.parse(document.getElementById('weekly-reports').textContent).reports || [];
 } catch (e) {
   const err = document.createElement('p');
   err.style.cssText = 'margin:40px auto;max-width:600px;padding:16px 20px;background:#F7E8E4;border:1px solid #DDB3A8;border-radius:10px;font-size:14px;color:#8A4A3A';
-  err.textContent = '資料區塊解析失敗(JSON 格式錯誤),頁面暫時無法顯示內容。請 Claude 檢查 ai-radar.html 的資料區塊:' + e.message;
+  err.textContent = '資料區塊解析失敗（JSON 格式錯誤），頁面暫時無法顯示內容。請 Claude 檢查 ai-radar.html 的資料區塊：' + e.message;
   document.querySelector('.wrap').prepend(err);
   throw e;
 }
-const FRONTIER = { key: 'frontier', name: '通用前沿', color: 'var(--plum)' };
-const ALL = [...DOMAINS, FRONTIER];
-const cmap = Object.fromEntries(ALL.map(d => [d.key, d]));
+
+const DOMAINS = CFG.domains;
+const dmap = Object.fromEntries(DOMAINS.map(d => [d.key, d]));
+const TAGS = CFG.tags || {};
+const ACCESS = CFG.access || {};
+const LEGACY = CFG.legacy || { map: {}, names: {} };
+const LV = {
+  invest: { t: '值得主動投入', c: 'var(--sage)' },
+  try: { t: '挑場景試', c: 'var(--caramel)' },
+  passive: { t: '被動受益', c: 'var(--dustyblue)' },
+  skip: { t: '可略過', c: 'var(--rose)' }
+};
 
 let filter = 'all';
-let saved = JSON.parse(localStorage.getItem('aiRadarSaved') || '[]');
+let query = '';
+const openWeeks = new Set();
+let saved = [];
+try { saved = JSON.parse(localStorage.getItem('aiRadarSaved') || '[]'); } catch (e) { saved = []; }
+const persist = () => { try { localStorage.setItem('aiRadarSaved', JSON.stringify(saved)); } catch (e) {} };
 
-/* ---- filter bar ---- */
-const bar = document.getElementById('filterBar');
-function chipEl(key, name, color) {
-  const b = document.createElement('button');
-  b.className = 'chip'; b.textContent = name; b.dataset.key = key;
-  b.onclick = () => { filter = (filter === key) ? 'all' : key; render(); };
-  if (filter === key) { b.classList.add('active'); b.style.background = color || 'var(--text)'; }
-  return b;
+/* ---------- 共用判斷 ---------- */
+const isV2 = r => (r.schema || 1) >= 2;
+function itemDomains(it, r) {
+  if (isV2(r)) return [it.domain, ...(it.also || [])];
+  return (it.domains || []).flatMap(k => LEGACY.map[k] || []);
 }
+const passFilter = (it, r) => filter === 'all' || itemDomains(it, r).includes(filter);
+function itemText(it) {
+  return [it.title, it.lead, it.what, it.why, it.relation, it.limits, it.summary, it.use,
+    (it.verdict || {}).practice].join(' ').toLowerCase();
+}
+const passQuery = it => !query || itemText(it).includes(query);
+const issueNo = r => REPORTS.length - REPORTS.indexOf(r);
+
+/* ---------- 小元件 ---------- */
+function domainTag(k) {
+  const d = dmap[k];
+  return d ? `<span class="tag" style="background:${d.color}">${esc(d.name)}</span>` : '';
+}
+const legacyTag = k => `<span class="tag" style="background:var(--slate)">${esc(LEGACY.names[k] || k)}</span>`;
+const starBtn = id => {
+  const on = saved.includes(id);
+  return `<button class="star ${on ? 'on' : ''}" data-star="${esc(id)}" title="收藏">${on ? '★' : '☆'}</button>`;
+};
+const linksHtml = ls => `<div class="links">${(ls || []).map(l => `<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>`;
+const field = (label, text) => text ? `<div class="f"><b>${label}</b><p>${esc(text)}</p></div>` : '';
+
+function datesLine(d) {
+  d = d || {};
+  const parts = [['事件', d.event], ['發表', d.published], ['截止', d.deadline], ['查核', d.checked]]
+    .filter(x => x[1]).map(x => `${x[0]} ${esc(x[1])}`);
+  return parts.length ? `<p class="dates">${parts.join(' · ')}</p>` : '';
+}
+
+/* ---------- 新格式卡片 ---------- */
+function v2Card(it, big) {
+  const d = dmap[it.domain] || {};
+  const tags = [domainTag(it.domain), ...(it.also || []).map(domainTag),
+    ...(it.tags || []).map(t => `<span class="etag">${esc((TAGS[t] || {}).name || t)}</span>`),
+    it.extended ? '<span class="etag ext">延伸閱讀</span>' : ''].join('');
+  const v = it.verdict && LV[it.verdict.level]
+    ? `<div class="verdict-in"><span class="lv" style="background:${LV[it.verdict.level].c}">${LV[it.verdict.level].t}</span>${esc(it.verdict.practice || '')}</div>` : '';
+  return `<article class="item${big ? ' big' : ''}" style="--dc:${d.color || 'var(--terracotta)'}">
+    ${starBtn(it.title)}
+    <div class="tags">${tags}</div>
+    <h4>${esc(it.title)}</h4>
+    <p class="lead">${esc(it.lead)}</p>
+    <div class="detail">
+      ${field('發生什麼', it.what)}${field('為何值得知道', it.why)}${field('跟你的關係', it.relation)}${field('未確認與限制', it.limits)}
+      ${v}${datesLine(it.dates)}
+    </div>
+    <button class="more" data-toggle>展開全文 ▾</button>
+    ${linksHtml(it.links)}
+  </article>`;
+}
+
+function briefRow(it) {
+  const acc = it.access ? `<span class="acc">${esc(ACCESS[it.access] || it.access)}</span>` : '';
+  const dl = it.dates && it.dates.deadline ? `<span class="dl">期限 ${esc(it.dates.deadline)}</span>` : '';
+  return `<li class="brief">${starBtn(it.title)}
+    <div class="brief-head">${domainTag(it.domain)}${acc}${dl}</div>
+    <b>${esc(it.title)}</b>
+    <p>${esc(it.lead)}</p>
+    ${it.limits ? `<p class="lim">條件與限制：${esc(it.limits)}</p>` : ''}
+    ${linksHtml(it.links)}
+  </li>`;
+}
+
+function deepBlock(dp) {
+  const paras = String(dp.body || '').split(/\n\s*\n/).map(p => `<p>${esc(p)}</p>`).join('');
+  return `<div class="deep">
+    <div class="tags">${domainTag(dp.domain)}</div>
+    <h4>${esc(dp.title)}</h4>
+    <div class="body clamped">${paras}</div>
+    <button class="more" data-deep>展開全文 ▾</button>
+    ${linksHtml(dp.links)}
+  </div>`;
+}
+
+const trackById = id => TRACK.find(t => t.id === id);
+function updRow(u) {
+  const t = trackById(u.track) || { name: u.track };
+  return `<div class="upd"><b>${esc(t.name)}</b><p>${esc(u.text)}</p>${linksHtml(u.links)}</div>`;
+}
+
+function subsec(title, hint, inner) {
+  return inner ? `<div class="subsec"><h3>${title}${hint ? ` <small>${hint}</small>` : ''}</h3>${inner}</div>` : '';
+}
+
+/* ---------- 一期的內容（新格式） ---------- */
+function v2Issue(r) {
+  const items = (r.items || []).filter(it => passFilter(it, r));
+  const head = items.filter(it => it.tier === 'headline');
+  const main = items.filter(it => it.tier === 'main');
+  const brief = items.filter(it => it.tier === 'brief');
+  const deep = r.deep && (filter === 'all' || r.deep.domain === filter) ? r.deep : null;
+  const upds = (r.tracking_updates || []).filter(u => {
+    const t = trackById(u.track);
+    return filter === 'all' || (t && t.domain === filter);
+  });
+  let html = '';
+  html += subsec('本週值得知道', '重大變化，暫時用不上也收', head.length ? `<div class="items big">${head.map(it => v2Card(it, true)).join('')}</div>` : '');
+  html += subsec('主文選讀', '先看兩句重點，需要再展開', main.length ? `<div class="items">${main.map(it => v2Card(it)).join('')}</div>` : '');
+  html += subsec('一件事看深一點', '', deep ? deepBlock(deep) : '');
+  html += subsec('追蹤有變化', '完整清單在下方「追蹤清單」', upds.map(updRow).join(''));
+  html += subsec('短訊與限時資源', '免費插件、限時領取、活動與小消息', brief.length ? `<ul class="brief-list">${brief.map(briefRow).join('')}</ul>` : '');
+  if (!html) html = '<p class="empty">這個領域本期沒有內容。</p>';
+  if (filter === 'all' && r.note) {
+    const n = r.note;
+    html += `<div class="note">
+      ${n.topline ? `<p><b>本期說明</b> · ${esc(n.topline)}</p>` : ''}
+      ${n.searched ? `<p><b>搜了什麼</b> · ${esc(n.searched)}</p>` : ''}
+      ${n.skipped ? `<p><b>沒收什麼與原因</b> · ${esc(n.skipped)}</p>` : ''}
+    </div>`;
+  }
+  if ((r.corrections || []).length) {
+    html += `<div class="corr"><b>更正紀錄</b>${r.corrections.map(c => `<p>${esc(c.date)} · ${esc(c.text)}</p>`).join('')}</div>`;
+  }
+  return html;
+}
+
+/* ---------- 一期的內容（改版前格式） ---------- */
+const SUM_CLAMP = 160;
+function legacyCard(it) {
+  const long = (it.summary || '').length > SUM_CLAMP;
+  return `<article class="item">
+    ${starBtn(it.title)}
+    <div class="tags">${(it.domains || []).map(legacyTag).join('')}</div>
+    <h4>${esc(it.title)}</h4>
+    <p class="sum${long ? ' clamped' : ''}">${esc(it.summary)}</p>
+    ${long ? '<button class="more" data-clamp>展開全文 ▾</button>' : ''}
+    <div class="use"><b>對你的用法</b> · ${esc(it.use)}</div>
+    ${linksHtml(it.links)}
+  </article>`;
+}
+function legacyIssue(r) {
+  const items = (r.items || []).filter(it => passFilter(it, r));
+  let html = '<p class="legacy-note">這一期是改版前「AI 應用雷達」的格式，領域標籤沿用舊分類。</p>';
+  html += items.length ? `<div class="items">${items.map(legacyCard).join('')}</div>` : '<p class="empty">這個領域本期沒有內容。</p>';
+  if (filter === 'all' && r.analysis) {
+    const a = r.analysis;
+    html += `<div class="analysis"><h4>本期分析與總結</h4><p class="topline">${esc(a.topline)}</p>` +
+      (a.verdicts || []).map(v => {
+        const l = LV[v.level] || LV.try;
+        return `<div class="verdict"><span class="lv" style="background:${l.c}">${l.t}</span><b>${esc(v.item)}</b>
+          <p>${esc(v.reason)}</p><div class="practice"><b>實務</b> · ${esc(v.practice)}</div></div>`;
+      }).join('') + (a.meta ? `<p class="meta-note">${esc(a.meta)}</p>` : '') + '</div>';
+  }
+  if ((r.corrections || []).length) {
+    html += `<div class="corr"><b>更正紀錄</b>${r.corrections.map(c => `<p>${esc(c.date)} · ${esc(c.text)}</p>`).join('')}</div>`;
+  }
+  return html;
+}
+const issueHtml = r => isV2(r) ? v2Issue(r) : legacyIssue(r);
+const issueCount = r => {
+  const n = (r.items || []).filter(it => passFilter(it, r)).length;
+  return n + (isV2(r) && r.deep && (filter === 'all' || r.deep.domain === filter) ? 1 : 0);
+};
+
+/* ---------- 各區塊 ---------- */
 function renderBar() {
-  bar.innerHTML = '';
-  bar.appendChild(chipEl('all', '全部', 'var(--text)'));
-  ALL.forEach(d => bar.appendChild(chipEl(d.key, d.name, d.color)));
+  const bar = document.getElementById('filterBar');
+  const chip = (key, name, color) => {
+    const on = filter === key;
+    return `<button class="chip${on ? ' active' : ''}" data-filter="${key}" style="${on ? `background:${color}` : ''}">${esc(name)}</button>`;
+  };
+  bar.innerHTML = chip('all', '全部', 'var(--text)') + DOMAINS.map(d => chip(d.key, d.name, d.color)).join('');
 }
 
-/* ---- domain cards ---- */
-function renderDomains() {
-  const g = document.getElementById('domainGrid');
-  g.innerHTML = '';
-  const shown = DOMAINS.filter(d => filter === 'all' || filter === d.key);
-  document.getElementById('domains').style.display = shown.length ? '' : 'none';
-  shown.forEach(d => {
-    const c = document.createElement('div');
-    c.className = 'card';
-    c.style.setProperty('--dc', d.color);
-    c.innerHTML = `
-      <h3><span class="dot"></span>${d.name}</h3>
-      <div class="doing">${d.doing}</div>
-      <ul>${d.uses.map(u => `<li>${u}</li>`).join('')}</ul>
-      <div class="tools">${d.tools.map(t => `<span class="tool">${t}</span>`).join('')}</div>`;
-    g.appendChild(c);
-  });
+function renderLatest() {
+  const meta = document.getElementById('latestMeta');
+  const body = document.getElementById('latestBody');
+  if (!REPORTS.length) { meta.innerHTML = ''; body.innerHTML = '<p class="empty">尚無資料。</p>'; return; }
+  const r = REPORTS[0];
+  const range = r.range ? ` · 搜尋區間 ${esc(r.range.from)} 至 ${esc(r.range.to)}` : '';
+  meta.innerHTML = `<span class="badge">第 ${issueNo(r)} 期</span><span>${esc(r.week)}${range}</span>`;
+  body.innerHTML = issueHtml(r);
 }
 
-/* ---- weekly reports ---- */
-function itemId(it) { return it.title; }
-const openWeeks = new Set(REPORTS.length ? [REPORTS[0].week] : []);
-const SUM_CLAMP = 160; /* 超過此字數的摘要預設折疊 */
-function renderReports() {
-  const list = document.getElementById('reportList');
-  list.innerHTML = '';
-  if (!REPORTS.length) { list.innerHTML = '<p class="empty">尚無週報。</p>'; return; }
-  REPORTS.forEach((r, i) => {
-    const visible = r.items.filter(it => filter === 'all' || it.domains.includes(filter));
-    if (!visible.length) return;
-    const sec = document.createElement('div');
-    const isOpen = filter !== 'all' || openWeeks.has(r.week);
-    sec.className = 'report' + (isOpen ? ' open' : '');
-    sec.innerHTML = `<button class="report-head">
-      <span class="caret">▶</span>
-      <span class="badge">第 ${REPORTS.length - i} 期</span>
-      <span>${r.week}</span>
-      <span class="count">· ${visible.length} 則</span>
-    </button>`;
-    sec.querySelector('.report-head').onclick = () => {
-      openWeeks.has(r.week) ? openWeeks.delete(r.week) : openWeeks.add(r.week);
-      render();
-    };
-    const body = document.createElement('div');
-    body.className = 'report-body';
-    const grid = document.createElement('div');
-    grid.className = 'items';
-    visible.forEach(it => {
-      const el = document.createElement('div');
-      el.className = 'item';
-      const isSaved = saved.includes(itemId(it));
-      const long = (it.summary || '').length > SUM_CLAMP;
-      el.innerHTML = `
-        <button class="star ${isSaved ? 'on' : ''}" title="加入想試清單">${isSaved ? '★' : '☆'}</button>
-        <div class="tags">${it.domains.map(k => `<span class="tag" style="background:${(cmap[k]||{}).color || 'var(--slate)'}">${(cmap[k]||{}).name || k}</span>`).join('')}</div>
-        <h4>${it.title}</h4>
-        <p class="sum${long ? ' clamped' : ''}">${it.summary}</p>
-        ${long ? '<button class="more">展開全文 ▾</button>' : ''}
-        <div class="use"><b>對你的用法</b> · ${it.use}</div>
-        <div class="links">${(it.links||[]).map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join('')}</div>`;
-      el.querySelector('.star').onclick = () => {
-        const id = itemId(it);
-        saved = saved.includes(id) ? saved.filter(s => s !== id) : [...saved, id];
-        localStorage.setItem('aiRadarSaved', JSON.stringify(saved));
-        render();
-      };
-      const more = el.querySelector('.more');
-      if (more) more.onclick = () => {
-        const p = el.querySelector('.sum');
-        const clamped = p.classList.toggle('clamped');
-        more.textContent = clamped ? '展開全文 ▾' : '收合 ▴';
-      };
-      grid.appendChild(el);
-    });
-    body.appendChild(grid);
-    if (r.analysis) {
-      const LV = {
-        invest: { t:'值得主動投入', c:'var(--sage)' },
-        try: { t:'挑場景試', c:'var(--caramel)' },
-        passive: { t:'被動受益', c:'var(--dustyblue)' },
-        skip: { t:'可略過', c:'var(--rose)' }
-      };
-      const an = document.createElement('div');
-      an.className = 'analysis';
-      an.innerHTML = `<h4>本期分析與總結</h4>
-        <p class="topline">${r.analysis.topline}</p>` +
-        r.analysis.verdicts.map(v => {
-          const l = LV[v.level] || LV.try;
-          return `<div class="verdict">
-            <span class="lv" style="background:${l.c}">${l.t}</span><b>${v.item}</b>
-            <p>${v.reason}</p>
-            <div class="practice"><b>實務</b> · ${v.practice}</div>
-          </div>`;
-        }).join('') +
-        (r.analysis.meta ? `<p class="meta-note">${r.analysis.meta}</p>` : '');
-      body.appendChild(an);
-    }
-    sec.appendChild(body);
-    list.appendChild(sec);
-  });
-  if (!list.children.length) list.innerHTML = '<p class="empty">這個領域目前沒有相關週報。</p>';
+function renderTracking() {
+  const list = document.getElementById('trackList');
+  const shown = TRACK.filter(t => filter === 'all' || t.domain === filter);
+  document.getElementById('tracking').hidden = !shown.length && filter !== 'all';
+  if (!shown.length) { list.innerHTML = '<p class="empty">目前沒有追蹤中的事件。</p>'; return; }
+  list.innerHTML = shown.map(t => {
+    const hit = t.status === '已命中';
+    const last = (t.history || [])[0];
+    return `<div class="track${hit ? ' hit' : ''}">
+      <div class="brief-head">${domainTag(t.domain) || `<span class="tag" style="background:var(--slate)">其他</span>`}<span class="st${hit ? ' hit' : ''}">${esc(t.status || '等待中')}</span></div>
+      <h4>${esc(t.name)}</h4>
+      <p><b>觸發條件</b> · ${esc(t.trigger)}</p>
+      <p><b>為何在等</b> · ${esc(t.why)}</p>
+      ${t.stop_when ? `<p><b>何時不再追</b> · ${esc(t.stop_when)}</p>` : ''}
+      ${last ? `<p><b>最近進展</b> · ${esc(last.date)} ${esc(last.text)}</p>` : ''}
+      <p class="dates">建立 ${esc(t.since)}${t.last_checked ? ` · 最後查核 ${esc(t.last_checked)}` : ''}</p>
+    </div>`;
+  }).join('');
 }
 
-/* ---- saved list ---- */
+function renderArchive() {
+  const list = document.getElementById('archiveList');
+  const older = REPORTS.slice(1);
+  const html = older.map(r => {
+    const n = issueCount(r);
+    if (!n && filter !== 'all') return '';
+    const open = openWeeks.has(r.week);
+    return `<div class="report${open ? ' open' : ''}">
+      <button class="report-head" data-week="${esc(r.week)}"><span class="caret">▶</span>
+        <span class="badge">第 ${issueNo(r)} 期</span><span>${esc(r.week)}</span><span>· ${n} 則</span>
+        ${isV2(r) ? '' : '<span class="etag">舊格式</span>'}</button>
+      <div class="report-body">${open ? issueHtml(r) : ''}</div>
+    </div>`;
+  }).join('');
+  list.innerHTML = html || '<p class="empty">這個領域的舊期沒有內容。</p>';
+}
+
+function renderResults() {
+  const sec = document.getElementById('results');
+  const on = !!query;
+  sec.hidden = !on;
+  ['latest', 'archive'].forEach(id => { document.getElementById(id).hidden = on; });
+  if (!on) return;
+  let total = 0;
+  const groups = REPORTS.map(r => {
+    const hits = (r.items || []).filter(it => passFilter(it, r) && passQuery(it));
+    total += hits.length;
+    if (!hits.length) return '';
+    const cards = hits.map(it => isV2(r) ? (it.tier === 'brief' ? `<ul class="brief-list">${briefRow(it)}</ul>` : v2Card(it)) : legacyCard(it)).join('');
+    return `<div class="result-group"><p>第 ${issueNo(r)} 期 · ${esc(r.week)}</p><div class="items">${cards}</div></div>`;
+  }).join('');
+  document.getElementById('resultNote').textContent = `「${query}」共 ${total} 則`;
+  document.getElementById('resultList').innerHTML = groups || '<p class="empty">找不到符合的內容。</p>';
+}
+
 function renderSaved() {
   const ul = document.getElementById('savedList');
-  ul.innerHTML = '';
-  if (!saved.length) { ul.innerHTML = '<li class="empty" style="border:none;background:none">還沒有收藏。在週報卡片右上點 ☆ 即可加入。</li>'; return; }
-  saved.forEach(id => {
-    const li = document.createElement('li');
-    li.innerHTML = `<span>${id}</span><button class="rm" title="移除">✕</button>`;
-    li.querySelector('.rm').onclick = () => {
-      saved = saved.filter(s => s !== id);
-      localStorage.setItem('aiRadarSaved', JSON.stringify(saved));
-      render();
-    };
-    ul.appendChild(li);
-  });
+  if (!saved.length) { ul.innerHTML = '<li class="empty" style="border:none;background:none">還沒有收藏。在卡片右上點 ☆ 即可加入。</li>'; return; }
+  ul.innerHTML = saved.map(id => `<li><span>${esc(id)}</span><button class="rm" data-unsave="${esc(id)}" title="移除">✕</button></li>`).join('');
 }
 
-function render() { renderBar(); renderDomains(); renderReports(); renderSaved(); }
+function renderWatch() {
+  const rules = CFG.rules || [];
+  document.getElementById('rulesBox').innerHTML = `<b>選材規則</b><ul>${rules.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+  const shown = DOMAINS.filter(d => filter === 'all' || filter === d.key);
+  document.getElementById('watchList').innerHTML = shown.map(d => `
+    <details class="watch" style="--dc:${d.color}"${filter === d.key ? ' open' : ''}>
+      <summary><span class="dot" style="background:${d.color}"></span>${esc(d.name)}<small>${esc(d.freq)}</small></summary>
+      <div class="watch-body">
+        <p>${esc(d.scope)}</p>
+        <ul>${(d.watch || []).map(w => `<li>${esc(w)}</li>`).join('')}</ul>
+      </div>
+    </details>`).join('');
+}
+
+function render() {
+  renderBar(); renderResults(); renderLatest(); renderTracking(); renderArchive(); renderSaved(); renderWatch();
+}
+
+/* ---------- 互動 ---------- */
+document.addEventListener('click', e => {
+  const f = e.target.closest('[data-filter]');
+  if (f) { const k = f.dataset.filter; filter = (filter === k || k === 'all') ? 'all' : k; render(); return; }
+  const s = e.target.closest('[data-star]');
+  if (s) { const id = s.dataset.star; saved = saved.includes(id) ? saved.filter(x => x !== id) : [...saved, id]; persist(); render(); return; }
+  const u = e.target.closest('[data-unsave]');
+  if (u) { saved = saved.filter(x => x !== u.dataset.unsave); persist(); render(); return; }
+  const t = e.target.closest('[data-toggle]');
+  if (t) { const box = t.closest('.item'); const on = box.classList.toggle('expanded'); t.textContent = on ? '收合 ▴' : '展開全文 ▾'; return; }
+  const c = e.target.closest('[data-clamp]');
+  if (c) { const p = c.closest('.item').querySelector('.sum'); const cl = p.classList.toggle('clamped'); c.textContent = cl ? '展開全文 ▾' : '收合 ▴'; return; }
+  const dp = e.target.closest('[data-deep]');
+  if (dp) { const b = dp.closest('.deep').querySelector('.body'); const cl = b.classList.toggle('clamped'); dp.textContent = cl ? '展開全文 ▾' : '收合 ▴'; return; }
+  const w = e.target.closest('[data-week]');
+  if (w) { const k = w.dataset.week; openWeeks.has(k) ? openWeeks.delete(k) : openWeeks.add(k); renderArchive(); }
+});
+let qTimer;
+document.getElementById('search').addEventListener('input', e => {
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { query = e.target.value.trim().toLowerCase(); render(); }, 180);
+});
+
 render();
 </script>
 </body>

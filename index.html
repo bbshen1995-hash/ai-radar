@@ -146,14 +146,6 @@
   .brief .star { top: 4px; right: 4px; }
 
   /* ---------- tracking ---------- */
-  .track-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 12px; }
-  .track { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-  .track.hit { border-color: color-mix(in srgb, var(--terracotta) 55%, white); }
-  .track h4 { font-size: 15px; margin: 4px 0; }
-  .track p { font-size: 13px; color: var(--text-soft); }
-  .track p b { color: var(--text); font-weight: 500; }
-  .st { font-size: 11.5px; padding: 1px 9px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); color: var(--text-soft); }
-  .st.hit { background: var(--terracotta); color: #fff; border-color: transparent; }
   .upd { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--terracotta); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
   .upd b { font-size: 14.5px; }
   .upd p { font-size: 13.5px; color: var(--text-soft); margin-top: 3px; }
@@ -227,7 +219,7 @@
     .filters::-webkit-scrollbar { display: none; }
     .chip { padding: 6px 12px; font-size: 13px; flex: none; }
     .item { padding: 16px 14px; }
-    .items, .items.big, .track-list { gap: 12px; }
+    .items, .items.big { gap: 12px; }
     .deep { padding: 16px; }
     body { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
   }
@@ -257,12 +249,6 @@
     <div class="sec-head"><h2>本期</h2><span class="issue-meta" id="latestMeta"></span></div>
     <div class="sec-bar" style="background:var(--terracotta)"></div>
     <div id="latestBody"></div>
-  </section>
-
-  <section id="tracking">
-    <div class="sec-head"><h2>追蹤清單</h2><span class="sec-note">你在等的事件與觸發條件。有進展時會出現在當期的「追蹤有變化」</span></div>
-    <div class="sec-bar" style="background:var(--terracotta)"></div>
-    <div class="track-list" id="trackList"></div>
   </section>
 
   <section id="archive">
@@ -471,18 +457,6 @@
       "why": "小盤升級評估",
       "stop_when": "購入或改變方案",
       "since": "2026-09-11",
-      "status": "等待中",
-      "last_checked": "2026-09-17",
-      "history": []
-    },
-    {
-      "id": "tonex-board-fw",
-      "name": "TONEX Board 韌體補齊",
-      "domain": "instrument",
-      "trigger": "USB 錄音介面韌體（原訂 10/01）與桌面編輯器（原訂第四季）實際釋出",
-      "why": "評估時的否決理由之一是韌體未齊",
-      "stop_when": "兩項都釋出",
-      "since": "2026-09-14",
       "status": "等待中",
       "last_checked": "2026-09-17",
       "history": []
@@ -779,7 +753,9 @@
         "searched": "AI 領域搜 9/9 至 9/14，上期已搜到 9/10。其他領域是第一次搜，所以回溯到上期起點 9/3。方向包括跨領域大新聞、Anthropic、OpenAI、Google、Apple 發表會與 macOS 相容性、TONEX 與 Strymon 等效果器、鍵盤與音源、WING 韌體與擴充卡、IBC 與 PLASA 展、UA、Plugin Alliance、Waves 與免費插件、Logic 與 ProPresenter、Canva、桌球限量板、咖啡新品與沖煮大賽、生酮與 168、敬拜團隊新專輯，以及追蹤清單 8 項。",
         "skipped": "GPT-6 Astra 與 Claude Fable 5.1 上期已報。樊振東金標 ALC 限量板是 8/2 的消息，在區間外。WING MADI 卡查不到發佈日與官方售價：Sweetwater 要求真人驗證，改搜其他來源只找到規格。IBC 的 DHD 廣播控台與 PLASA 的 Violet Audio 平台跟你的系統無關。Waves 與 UA 的免費插件包分別是 2025 年 4 月與 2026 年 4 月的舊消息；UA 買 Apollo 送外掛只限新購硬體。Hillsong、Bethel、Elevation、Strymon、鍵盤、ProPresenter、Logic 在區間內都沒有新發佈。Eureka Mignon Zero 55S 查不到確切上市日。創作者名單尚未指定，這個領域沒有搜。"
       },
-      "corrections": []
+      "corrections": [
+        { "date": "2026-09-17", "text": "TONEX Board 那則寫「韌體進度已放進追蹤清單」。9/17 你決定不追蹤這一項，已從追蹤清單移除，之後不會再回報它的韌體進度。" }
+      ]
     },
     {
       "week": "2026-09-10",
@@ -2577,7 +2553,7 @@ function v2Issue(r) {
   html += subsec('本週值得知道', '重大變化，暫時用不上也收', head.length ? `<div class="items big">${head.map(it => v2Card(it, true)).join('')}</div>` : '');
   html += subsec('主文選讀', '先看兩句重點，需要再展開', main.length ? `<div class="items">${main.map(it => v2Card(it)).join('')}</div>` : '');
   html += subsec('一件事看深一點', '', deep ? deepBlock(deep) : '');
-  html += subsec('追蹤有變化', '完整清單在下方「追蹤清單」', upds.map(updRow).join(''));
+  html += subsec('追蹤有變化', '',upds.map(updRow).join(''));
   html += subsec('短訊與限時資源', '免費插件、限時領取、活動與小消息', brief.length ? `<ul class="brief-list">${brief.map(briefRow).join('')}</ul>` : '');
   if (!html) html = '<p class="empty">這個領域本期沒有內容。</p>';
   if (filter === 'all' && r.note) {
@@ -2652,26 +2628,6 @@ function renderLatest() {
   body.innerHTML = issueHtml(r);
 }
 
-function renderTracking() {
-  const list = document.getElementById('trackList');
-  const shown = TRACK.filter(t => filter === 'all' || t.domain === filter);
-  document.getElementById('tracking').hidden = !shown.length && filter !== 'all';
-  if (!shown.length) { list.innerHTML = '<p class="empty">目前沒有追蹤中的事件。</p>'; return; }
-  list.innerHTML = shown.map(t => {
-    const hit = t.status === '已命中';
-    const last = (t.history || [])[0];
-    return `<div class="track${hit ? ' hit' : ''}">
-      <div class="brief-head">${domainTag(t.domain) || `<span class="tag" style="background:var(--slate)">其他</span>`}<span class="st${hit ? ' hit' : ''}">${esc(t.status || '等待中')}</span></div>
-      <h4>${esc(t.name)}</h4>
-      <p><b>觸發條件</b> · ${esc(t.trigger)}</p>
-      <p><b>為何在等</b> · ${esc(t.why)}</p>
-      ${t.stop_when ? `<p><b>何時不再追</b> · ${esc(t.stop_when)}</p>` : ''}
-      ${last ? `<p><b>最近進展</b> · ${esc(last.date)} ${esc(last.text)}</p>` : ''}
-      <p class="dates">建立 ${esc(t.since)}${t.last_checked ? ` · 最後查核 ${esc(t.last_checked)}` : ''}</p>
-    </div>`;
-  }).join('');
-}
-
 function renderArchive() {
   const list = document.getElementById('archiveList');
   const older = REPORTS.slice(1);
@@ -2728,7 +2684,7 @@ function renderWatch() {
 }
 
 function render() {
-  renderBar(); renderResults(); renderLatest(); renderTracking(); renderArchive(); renderSaved(); renderWatch();
+  renderBar(); renderResults(); renderLatest(); renderArchive(); renderSaved(); renderWatch();
 }
 
 /* ---------- 互動 ---------- */

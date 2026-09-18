@@ -388,7 +388,7 @@
       "stop_when": "不再訂閱 Claude",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-17",
+      "last_checked": "2026-09-18",
       "history": [
         {
           "date": "2026-09-14",
@@ -405,7 +405,7 @@
       "stop_when": "不再訂閱 ChatGPT",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-17",
+      "last_checked": "2026-09-18",
       "history": []
     },
     {
@@ -417,7 +417,7 @@
       "stop_when": "教會換控台",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-17",
+      "last_checked": "2026-09-18",
       "history": []
     },
     {
@@ -429,7 +429,7 @@
       "stop_when": "決定不走 SoundGrid",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-17",
+      "last_checked": "2026-09-18",
       "history": []
     },
     {
@@ -441,7 +441,7 @@
       "stop_when": "購入或放棄",
       "since": "2026-09-11",
       "status": "已命中",
-      "last_checked": "2026-09-17",
+      "last_checked": "2026-09-18",
       "history": [
         {
           "date": "2026-09-14",
@@ -458,7 +458,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-17",
+      "last_checked": "2026-09-18",
       "history": []
     },
     {
@@ -470,7 +470,7 @@
       "stop_when": "機票訂妥",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-14",
+      "last_checked": "2026-09-18",
       "history": []
     }
   ]
@@ -482,51 +482,237 @@
 {
   "reports": [
     {
-      "week": "2026-09-17",
+      "week": "2026-09-18",
       "schema": 2,
       "range": {
         "from": "2026-09-13",
-        "to": "2026-09-17"
+        "to": "2026-09-18"
       },
       "items": [
         {
           "tier": "headline",
-          "domain": "design",
-          "tags": ["new", "capability", "access"],
+          "domain": "ai",
+          "also": [
+            "design"
+          ],
+          "tags": [
+            "new",
+            "capability"
+          ],
           "extended": false,
-          "title": "Google Pics 上線 Slides／文件：內嵌修圖，但排除免費帳號",
-          "lead": "Google 把 AI 修圖工具直接嵌進簡報與文件，點一下圖片就能編輯，不必跳去別的網站。免費 Google 帳號用不到，要看你的方案等級。",
-          "what": "Google Pics 於 2026-09-01 正式上線。它是獨立網頁工具（pics.new），也內嵌在 Google 文件與簡報裡。點選一張圖片，編輯面板就直接浮在文件上方，不必離開頁面。官方定位是 Workspace 版的生圖與修圖工具，正面對打 Canva。",
-          "why": "你常用 Google 簡報做主日學投影片、用 Canva 做海報。這次 Google 把生圖修圖能力搬進你已經在用的文件工具裡，理論上能省掉來回 Canva 的一道手續。",
-          "relation": "背景檔記錄你常做 Canva 海報與 Google 簡報教材。你的 Google 帳號是免費版，還是已訂閱 AI Pro 或 Workspace 商用方案，本次查證查不到紀錄。這直接決定用不用得到。",
-          "limits": "官方列的資格是 AI Pro／Ultra 訂閱戶，或 Workspace Business Standard 以上方案。免費帳號與最低階的 Business Starter 不含。部分來源說個人版 AI Pro「已可訂閱但啟用可能延遲」，另有來源說德國個人帳號被排除。地區與帳號類型的實際生效範圍，查到的說法不完全一致，台灣個人帳號現況未逐一驗證。",
-          "dates": { "published": "2026-09-01", "checked": "2026-09-17" },
-          "verdict": { "level": "try", "practice": "先查自己的 Google 帳號是不是 AI Pro／Ultra 或 Workspace Business Standard 以上；符合的話，下次編主日學投影片時直接點簡報裡的圖片試一次內嵌修圖面板，不符合就先略過。" },
+          "title": "Claude 對話與 Cowork 合併，新增 Docs 與 Slides",
+          "lead": "9/16 起，Claude 的對話與 Cowork 合成同一個介面，由 Claude 判斷任務該怎麼處理。同時推出 Docs 與 Slides 測試版，簡報可匯出 PowerPoint 或 PDF。",
+          "what": "Anthropic 9/16 公告，Pro 與 Max 方案先在網頁、桌面與手機版分批上線，未來幾週推完。Team 與免費方案之後跟進，企業版管理者會提前 30 天以上收到通知。\n\n合併後，對話、Cowork 與 Artifacts 在同一個視窗，不必再切分頁。新功能有三項。Claude Docs 可以分段協作撰寫，用留言要求修改。Claude Slides 可以建立、編輯、放映簡報，匯出 PowerPoint 或 PDF。Claude Design 可以在對話中直接使用，原本單獨使用的方式照舊。\n\n官方說既有的對話、專案、Artifacts、連接器與 skills 都留在原處。",
+          "why": "過去要先決定開對話還是 Cowork，選錯就得換地方重來。官方也承認使用者常選錯分頁。這次改成由系統分流，改變的是每天的入口，不只是多一個功能。\n\n簡報能匯出 PowerPoint，代表 Claude 做的投影片可以接到其他工具繼續編修，不會被鎖在 Claude 裡。",
+          "relation": "你同時用對話與 Cowork，合併後兩邊的工作脈絡會集中在一處。主日學投影片目前走 Google 簡報，海報走 Canva。Slides 匯出的 PowerPoint 能不能順利轉進 Google 簡報，是值得先試的一點。公告沒有提到 Claude Code，桌面版的 Code 分頁會不會跟著調整，要等實際更新才知道。",
+          "limits": "功能分批推送，你的帳號何時出現要以實際畫面為準。Docs 與 Slides 標示為測試版。公告沒有提到額度或價格調整。Slides 對中文字型與版面的處理，以及匯出後的樣子，目前都沒有實測資料。",
+          "dates": {
+            "event": "2026-09-16",
+            "published": "2026-09-16",
+            "checked": "2026-09-18"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "功能出現後，拿一堂已完成的主日學大綱請 Slides 做一版。匯出 PowerPoint 再匯入 Google 簡報，檢查中文字型、單頁容量與版面要不要重排。"
+          },
           "links": [
-            { "label": "Google Workspace Blog", "url": "https://workspace.google.com/blog/product-announcements/google-pics-brings-pro-level-ai-image-creation-and-editing-to-google-workspace" },
-            { "label": "Google Docs 編輯器說明：Pics 適用範圍", "url": "https://support.google.com/docs/answer/17256710?hl=en" }
+            {
+              "label": "Claude 官方部落格",
+              "url": "https://claude.com/blog/cowork-is-now-claude"
+            },
+            {
+              "label": "TechCrunch",
+              "url": "https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/"
+            }
+          ]
+        },
+        {
+          "tier": "headline",
+          "domain": "production",
+          "also": [
+            "plugin"
+          ],
+          "tags": [
+            "new",
+            "capability",
+            "access"
+          ],
+          "extended": false,
+          "title": "UA LUNA 3.0：免費版能分軌，付費版加和弦與歌詞辨識",
+          "lead": "Universal Audio 9/15 發表 LUNA 3.0，免費版加入四軌分軌分離與鋼琴捲簾。付費的 LUNA Studio 加入和弦擷取與歌詞轉錄，另推出含全部原生插件的 Spark Studio 訂閱。",
+          "what": "LUNA 分成兩版。LUNA Free 免費，沒有浮水印與時間限制。它包含無限軌、鋼琴捲簾、四軌分軌分離、八個 UAD 插件，以及 LUNA Play。LUNA Play 能自動偵測輸入並建軌，打開就能錄下點子。\n\nLUNA Studio 是 LUNA Pro 改名擴充，新購 199 美元。LUNA Pro 舊用戶升級 79 美元，6 月 1 日以後才買 Pro 的升級 2.99 美元。Studio 另外加了六軌分軌分離、Audio to MIDI、和弦擷取與歌詞轉錄。歌詞會對齊時間軸，和弦與歌詞兩項由 Moises 提供。\n\nUAD Spark Studio 訂閱每月 19.99 美元或每年 149.99 美元。內容是 LUNA Studio 加上 UA 全部原生插件。原本只有 Apollo 用戶能用的 Record FX（錄音時直接把效果錄進去），這版開放給所有人。",
+          "why": "UA 把原本綁著錄音介面的 DAW，改成有免費版的獨立產品線。分軌、和弦、歌詞這三件事，過去要另外開 Moises 之類的服務，現在直接落在 DAW 的時間軸上。\n\nSpark 訂閱這次把 DAW 也包進去，是 UA 從買斷往訂閱移動的又一步。只在 UA 生態內工作的人，入門成本明顯降低。",
+          "relation": "你的和弦採譜工具卡在歌詞定時，LUNA Studio 標榜歌詞與時間軸對齊，可以當對照組看它做到什麼程度。任何 UA 帳號都能領 LUNA Free。你手上有沒有 LUNA Pro、能不能用升級價，要到 UA 帳號裡確認。你的主力 DAW 是 Logic，這次的更新不構成換 DAW 的理由。",
+          "limits": "和弦擷取與歌詞轉錄的準確度是廠商自述，沒有找到第三方實測。是否支援中文歌詞，官方沒有說明。Spark Studio 是否包含 Apollo 用的 DSP 版插件，新聞稿與 FAQ 都沒寫清楚。上期頭條提到 UA 尚未支援 macOS 27，9/18 搜尋到的官方相容頁仍寫「測試中」。",
+          "dates": {
+            "event": "2026-09-15",
+            "published": "2026-09-15",
+            "checked": "2026-09-18"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "用 UA 帳號領 LUNA Free，拿一首採譜工具處理過的歌跑四軌分離，跟你現有的分離結果比。免費版沒有和弦與歌詞功能，要測這兩項，先確認有沒有升級資格再決定花不花錢。"
+          },
+          "links": [
+            {
+              "label": "Universal Audio 新聞稿",
+              "url": "https://www.uaudio.com/blogs/press/universal-audio-introduces-luna-3-0"
+            },
+            {
+              "label": "UA 官方 FAQ",
+              "url": "https://help.uaudio.com/hc/en-us/articles/53482819335700-FAQ-LUNA-3-0"
+            },
+            {
+              "label": "MusicRadar",
+              "url": "https://www.musicradar.com/music-tech/universal-audio-launches-a-major-update-to-the-free-luna-daw-that-the-company-is-calling-its-biggest-software-release-to-date"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "ai",
+          "tags": [
+            "access"
+          ],
+          "extended": false,
+          "title": "GPT-5.5 將於 10/14 從 ChatGPT 與 Codex 退役",
+          "lead": "OpenAI 9/15 公告，GPT-5.5 將在 10/14 退役。ChatGPT、ChatGPT Work 與 Codex 全方案都會移除它，API 不受影響。Codex 裡寫死 gpt-5.5 的設定與腳本，要在期限前改掉。",
+          "what": "退役範圍涵蓋所有方案，包含個人、Business、Enterprise 與 Edu。一般對話會自動移到新的預設模型。Codex 使用者要自己換成 GPT-5.6 Sol 或 GPT-6 Astra。\n\n官方列出要檢查的地方：工作區預設、已存的模型設定、代管設定、自訂代理、排程任務，以及寫明 GPT-5.5 的腳本。GPT-5.5 是 2026 年 4 月才推出的模型。",
+          "why": "寫死模型名稱的排程與腳本，到期後可能直接失敗，不會自動換成別的模型。這類問題通常要到排程下一次執行才會被發現。",
+          "relation": "你有專案交給 Codex 執行，例如和弦採譜工具。若有任何設定檔、排程或腳本指定 gpt-5.5，10/14 前要改。沒有指定的話，這則對你沒有影響。",
+          "limits": "OpenAI 官方說明頁用抓取工具常被擋，本則沒有直接讀到原文。內容依據是 Gizmochina 報導與 releasebot 的更新彙整。退役對 Codex 已存執行紀錄的影響，沒有查到說明。",
+          "dates": {
+            "event": "2026-10-14",
+            "published": "2026-09-15",
+            "deadline": "2026-10-14",
+            "checked": "2026-09-18"
+          },
+          "verdict": {
+            "level": "passive",
+            "practice": "在 Codex 專案資料夾搜尋 gpt-5.5 字串，涵蓋設定檔、排程與腳本。有就改成 gpt-5.6-sol，沒有就不必做事。"
+          },
+          "links": [
+            {
+              "label": "Gizmochina",
+              "url": "https://www.gizmochina.com/2026/09/16/openai-retiring-gpt-5-5-on-october-14-you-may-need-to-update-your-workflow/"
+            },
+            {
+              "label": "Releasebot：ChatGPT 更新彙整",
+              "url": "https://releasebot.io/updates/openai/chatgpt"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "pa",
+          "tags": [
+            "new"
+          ],
+          "extended": false,
+          "title": "Yamaha DM5 控台發表：DM7 的引擎放進小機身",
+          "lead": "Yamaha 9/10 發表 DM5 與 DM5 Compact，沿用 DM7 的處理引擎與操作方式。美國定價分別是 9,999 與 6,999 美元。擴充槽可插 Waves 的 SoundGrid 卡，官方把教會列為目標場合之一。",
+          "what": "DM5 有 32 路類比輸入、16 路輸出，可處理 60 個輸入聲道，雙推桿區。DM5 Compact 是 16 進 16 出、48 個輸入聲道，單推桿區，寬 44.6 公分可上機架。兩款都有 64 進 64 出的 Dante（96 kHz）。另有 24 條混音匯流排、12 組矩陣、12 個 DCA 與 18 軌 USB 錄放。\n\n機身有一個 PY 系列擴充槽。可插 MADI、AES、額外 Dante，或 Waves 做的 WSG-PY64 SoundGrid 卡。主螢幕嵌了會隨狀態改標示的玻璃按鍵，官方稱是數位控台首見。同時發表三款新的 R 系列 Dante I/O，以及可離線編輯的 DM Editor。",
+          "why": "這是 Yamaha 在一萬美元以內補上的中階機種，直接落在 WING 所在的價位上方。FOH 雜誌的初步試用認為音質與 DM7 相當。對中小型教會來說，買的是 Yamaha 的操作邏輯與 Dante 生態，代價是比 WING 貴不少。",
+          "relation": "你 7 月比較過五台控台，結論是 WING 續用，換控台不在近期優先。這則不改變那個結論。值得記下的是 DM5 也有 SoundGrid 卡，印證你當時的判斷：SoundGrid 是可攜的投資，不必綁著換控台。",
+          "limits": "價格取自 FOH 雜誌，是美國價，台灣代理價與上市時間沒有查到。音質評價來自單一媒體的初步試用。本則是 9/10 的事件，在本期區間之前，上期也沒有收，是對照 9/17 舊版後補收的。",
+          "dates": {
+            "event": "2026-09-10",
+            "published": "2026-09-10",
+            "checked": "2026-09-18"
+          },
+          "verdict": {
+            "level": "skip",
+            "practice": "不需行動。日後若重新評估控台，把 DM5 Compact 列入比較，重點看台灣價與 SoundGrid 卡的實際支援。"
+          },
+          "links": [
+            {
+              "label": "Yamaha 美國官方新聞稿",
+              "url": "https://usa.yamaha.com/news_events/2026/0910_dm5.html"
+            },
+            {
+              "label": "FOH 雜誌初步試用",
+              "url": "https://fohonline.com/featured/first-look-yamaha-dm5-digital-console-series/"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "tabletennis",
+          "tags": [],
+          "extended": false,
+          "title": "WTT 澳門冠軍賽：莫雷高德與張本美和奪冠",
+          "lead": "9/13 決賽，莫雷高德 4:1 勝卡爾德拉諾，張本美和 4:3 險勝陳熠。王楚欽與菲利克斯．勒布倫這站缺席，莫雷高德首輪就逆轉了法蘭西斯卡。",
+          "what": "WTT 澳門冠軍賽 9/13 結束。男單決賽，莫雷高德以 11-7、11-9、3-11、11-8、11-9 勝卡爾德拉諾。\n\n他的晉級路線：首輪 3:2 勝法蘭西斯卡，當時先落後 0:2。第二輪 3:1 勝戶上隼輔，八強 4:2 勝約爾吉奇，四強 4:3 勝張本智和。\n\n女單四強，張本美和 4:1 勝陳幸同，陳熠 4:3 勝早田希娜。決賽張本美和先拿兩局，被陳熠連追三局，最後以 11-9、12-10 收下，總比數 4:3。",
+          "why": "冠軍賽是 WTT 大滿貫以下最高的一級，這站仍有世界前 15 名中的 10 人參賽。王楚欽與菲利克斯．勒布倫缺席，歐洲與日本選手爭冠的空間變大。莫雷高德藉此站穩世界第 5。",
+          "relation": "法蘭西斯卡是你關注的選手，這站首輪就遇上最後的冠軍，領先 2:0 後被逆轉。這是賽事消息，不牽涉器材決策。",
+          "limits": "男單路線與比分取自 Butterfly 官方文章。PingSunday 原文用抓取工具讀取回 403，改用瀏覽器讀到，女單比分據此核對。女單八強以前的路線沒有逐場查。",
+          "dates": {
+            "event": "2026-09-13",
+            "published": "2026-09-14",
+            "checked": "2026-09-18"
+          },
+          "links": [
+            {
+              "label": "Butterfly 官方",
+              "url": "https://butterflyonline.com/moregard-back-on-top-in-macao/"
+            },
+            {
+              "label": "PingSunday",
+              "url": "https://pingsunday.com/wtt-champions-macao-2026-results-miwa-harimoto-and-truls-moregard-lift-the-trophies/"
+            }
           ]
         },
         {
           "tier": "brief",
-          "domain": "coffee",
-          "tags": ["evidence"],
-          "extended": true,
-          "title": "2026 WBrC 亞軍配方：幾何濾杯與「透明度金字塔」沖煮理念",
-          "lead": "6 月世界沖煮大賽的亞軍配方這幾週才被整理成文章。核心主張是沖煮只負責「選擇」風味，不是製造風味，濾杯設計則走向更精準控制流速的幾何結構。",
-          "what": "2026 年世界沖煮大賽於 6/25-27 在比利時布魯塞爾舉行，亞軍是 Simon Gautherin。他的理念叫「透明度金字塔」：生豆決定風味、烘焙釋放風味、沖煮選擇風味、水質突出風味。他與其他選手在區域賽場採用的濾杯強調精準控流，是幾何結構、先進合成材料、保溫性高的款式，不是市售川流或 V60 常見的形狀。",
-          "limits": "本則是比賽結束近三個月後才出現的整理文章，非本週新事件，故標延伸閱讀。冠軍是馬來西亞選手 Nas Jaafar，他的「Switch 底座兩段式萃取」配方已在 9/14 那期報過。這則補的是亞軍的沖煮理念與濾杯趨勢，兩者可對照但不是同一組數據。文章未附選手實際使用的豆種與烘焙度細節。",
-          "dates": { "event": "2026-06-25", "checked": "2026-09-17" },
+          "domain": "plugin",
+          "tags": [
+            "new"
+          ],
+          "extended": false,
+          "title": "免費相位對齊插件 OmniPass",
+          "lead": "Soundins 釋出免費的全通濾波插件 OmniPass。它只轉動特定頻段的相位，不改頻率響應，適合處理多支麥克風收同一音源時的相位抵消，例如鼓組或 Bass 的 DI 加音箱麥。",
+          "limits": "屬於錄音後製工具，WING 現場用不到。沒有自動對齊功能，要靠你聽和看相位圖來調。支援 macOS 10.15 以上的 AU、VST3、AAX，原生支援 Apple 晶片，不需帳號即可下載。",
+          "access": "free",
+          "dates": {
+            "published": "2026-09-16",
+            "checked": "2026-09-18"
+          },
           "links": [
-            { "label": "2026 WBrC 亞軍配方解密", "url": "https://shop.cozyhousecoffee.com/blog/posts/blogposts2026-wbrc-simon-gautherin-clarity-pyramid" }
+            {
+              "label": "Bedroom Producers Blog",
+              "url": "https://bedroomproducersblog.com/2026/09/16/soundins-omnipass/"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "plugin",
+          "tags": [
+            "access"
+          ],
+          "extended": false,
+          "title": "UA Ampex ATR-102 母帶磁帶插件限時 81% 折扣",
+          "lead": "Thomann 賣 UA Ampex ATR-102 原生版，38 歐元，原價 195 歐元，到 9/30 為止。它模擬 1976 年的雙軌母帶磁帶機，常放在總線上加溫暖感與黏合感。",
+          "limits": "這是原生版，不是 Apollo 的 DSP 版。折扣由 Thomann 經銷，台灣購買是否適用、授權如何轉入 UA 帳號，沒有查證。9/15 的消息，對照 9/17 舊版後補收。",
+          "access": "sale",
+          "dates": {
+            "published": "2026-09-15",
+            "deadline": "2026-09-30",
+            "checked": "2026-09-18"
+          },
+          "links": [
+            {
+              "label": "gearnews",
+              "url": "https://www.gearnews.com/steinberg-universal-audio-native-instruments-deal/"
+            }
           ]
         }
       ],
       "tracking_updates": [],
       "note": {
-        "topline": "本期只涵蓋 9/13 至 9/17 四天，新事件稀少：主文 1 則、延伸閱讀 1 則。主文 Google Pics 其實 9/1 就上線，是前兩期漏掉的消息，這次補上；延伸閱讀是 6 月賽事的後續整理文章，非本週新聞。追蹤清單 7 項本週查核皆無新進展，只更新查核日；虎航班表這項本週未查（預估開賣期在 11-12 月，還沒到）。",
-        "searched": "跨領域大新聞（科技、AI、音樂產業）；AI 領域 Anthropic／OpenAI／Google／Apple 系統層動態；樂器領域 TONEX、Line 6、Strymon、Meris、Walrus、Nord／Roland／Yamaha／Korg 鍵盤；PA 領域 WING 韌體、Waves SoundGrid 授權、UA／RME／Genelec／Radial、Shure／Sennheiser／MIPRO；插件領域 UA／Plugin Alliance／Waves 與 Bedroom Producers Blog 免費動態；製作與投影領域 Logic／MainStage／ProPresenter／OBS；設計領域 Canva／Google 簡報；敬拜領域 Hillsong／Bethel／Elevation 新歌；桌球領域丹羽孝希／樊振東與品牌新品；咖啡領域 DF64／Lelit／Rancilio／Breville 與 WBrC 後續；健康領域生酮與 168 斷食新研究；追蹤清單 7 項逐一查核。",
-        "skipped": "WING 韌體最新仍是 2025 年底的 3.0／3.1，區間內無新版本；Line 6／Strymon／Meris／Walrus 區間內查無新品發表；Nord／Roland／Yamaha／Korg 鍵盤查無區間內新品；Waves SoundGrid 授權模式查無 2026 年變動公告；UA／RME／Genelec／Radial 查無區間內新硬體；Shure／Sennheiser／MIPRO 查無區間內新品；Hillsong／Bethel／Elevation 查無區間內新歌發布；丹羽孝希／樊振東本週查無新聞、其他品牌限量款也查無區間內消息；生酮與 168 斷食查無區間內新研究；DF64 Gen 2.7 出貨期落在 9 月底至 10 月中，屬既有預購狀態非本週事件，故不收；UA 對 macOS 27 的相容性仍是「測試中、有小顯示問題」，與 9/14 那期已報的狀態相同、無實質新進展，故不重報；HX Stomp 台灣代理最新報價查無資料，只查到美元定價；Bedroom Producers Blog 本週有多款免費插件（Korg Prophecy 模擬器、相位對齊濾波器、光電壓縮器、人聲音高偏移等），但性質偏合成器與人聲處理，跟你 UA／Plugin Alliance／Waves 為主的鏈路關聯低，故未收；蘋果 9/9 發表會（iPhone 18 Pro、摺疊機 iPhone Duo、新任執行長 John Ternus 接棒）在區間外且與你的樂器／PA／設計工具無直接關係，故不收。"
+        "topline": "本期 7 則：頭條 2、主文 3、短訊 2，其中 2 則是對照 9/17 舊版後補收。本期取代 9/17 當天的兩個版本（上午排程的 2 則版與下午手動的 7 則版），依你 9/17 晚間的指示重跑。重心在工具入口與取得方式的變動，也就是 Claude 介面合併與 UA LUNA 3.0 的免費版與訂閱改制。區間 9/13 至 9/18，名單照 9/17 修訂稿的三層分法搜尋，radar-config 本身尚未改版。",
+        "searched": "區間 2026-09-13 至 2026-09-18。\n跨領域：AI Weekly、llm-stats 兩站週報，Anthropic 官方新聞頁，音樂器材綜合新聞。\nAI：Claude 與 Claude Code、ChatGPT 與 Codex 的更新彙整、Gemini、Grok。\n樂器：音箱模擬與擷取的類別搜尋；TONEX、Line 6、Strymon、Walrus、Meris；UA 與 TC Electronic；Tone Factor 與 Tone Shepherd；Gretsch 與 Fender；Ludwig、Truth、Istanbul Agop。另讀 Guitar World 效果器頁與 MusicRadar 新聞頁。\nPA：WING 韌體；IBC 與 PLASA 展期；Waves SoundGrid 與官方更新紀錄；UA Apollo；Shure 與 Sennheiser；Allen & Heath、Yamaha、Midas。\n插件：Bedroom Producers Blog 9/12 至 9/17 全部貼文；Plugin Alliance；Waves。\n製作：UA 對 macOS 27 的相容性；Logic 與 MainStage；ProPresenter；Ableton。\n其他：Canva 與 Google 簡報；WTT、MLTT 與 Victas；Lelit、DF64、Timemore、Fellow 與 Sprudge；肌酸與阻力訓練、熱飲杯微塑膠；Bethel、Elevation、Hillsong、Gateway。\n追蹤清單七項逐項查。合計約 62 次搜尋與抓取，3 次改用瀏覽器；寫入後對照舊版，另查證 4 頁（其中 2 頁用瀏覽器）。",
+        "skipped": "AI：Claude 主導 26% 內部研發的報告、澳洲資料中心、Life Sciences 計畫，與你的使用無關。ChatGPT for Word（9/17）不收，你用的是 Google 文件。自訂 GPT 退役公告是 9/11，在區間外。Gemini 3.8 Live 是語音代理模型，與你的工作流交集低。Grok 4.7 在 9/14 的報導中仍未發布，9/18 也沒有搜到正式發布的消息。\n\n樂器：第一層品牌在區間內沒有新品。Strymon Flint V2 是舊品的評測。Walrus Fundamental Lo-Fi Delay 在搜尋結果裡沒有發表日。我沒有再讀 Walrus 官網，無法判斷是否在區間內。Gretsch Electromatic 黑色 limba 版是 9/12 綜合報導裡的小改款。Victas 的 Xegna 與 Magnass 是 2 月型錄的品項。\n\nPA：WING 沒有新韌體。Allen & Heath 官網產品新聞沒有 9 月新品，WebFetch 回 403，改用瀏覽器讀到。Waves 的 TRACT 量測插件（9/7）與 Extreme-C X15（9/9）在上期區間內，上期沒收，本期不在區間。只記一筆：TRACT Measure 能在 SuperRack 內直接量測 PA，跟 SoundGrid 路徑有關。搜尋結果裡的 SuperRack V14.30 其實是 2024 年的消息。\n\n插件：UA、Plugin Alliance、Waves 在區間內沒有免費或限時領取。Waves 目前是買滿送插件，不算免費。BPB 其他免費插件多為合成器與音色庫，跟你的用途交集低。\n\n製作：Logic、MainStage、ProPresenter 在區間內沒有更新。Ableton 最新是 8/26 的 12.4.5。\n\n咖啡：搜了 Lelit、DF64、Timemore、Fellow 四家與 Sprudge，區間內沒有新品或得獎沖法。\n\n健康：肌酸統合分析兩篇發表日不明，屬既有證據的延續。昆士蘭大學的紙杯微塑膠研究 8/29 發表。報導說 PLA 內襯釋出量是 PE 的 12 倍，同文列出的數字卻只差約 1.6 倍。沒讀原論文前不收。\n\n敬拜：用一次綜合搜尋查 Bethel、Elevation、Hillsong、Gateway。結果只有舊專輯，沒有區間內的新專輯或教學。跟隨對象逐人搜尋與華語三個免費樂譜標的，這輪沒有執行，預算用在區間新聞。YouTube 頻道也沒有用瀏覽器逐一讀。這兩段留給 9/24 新版流程首跑時補。\n\n台灣與中文來源：本期沒有找到區間內的中文一手來源，照實標注。\n\n對照 9/17 舊版後補收 2 則。Yamaha DM5 是 9/10 發表，在上期區間內但上期沒收；本期從 9/13 起算，所以也沒搜到。UA ATR-102 折扣是 9/15 的消息，UA 品牌搜尋沒有命中折扣。舊版另有三則不補：Google Pics 是 9/1 的事件，早於上期區間；Canva ProSuite 是 Affinity、Cavalry 等專業軟體的套組，不是你在用的 Canva 編輯器；WBrC 亞軍配方是 6 月的事，上期已收冠軍配方。"
       },
       "corrections": []
     },

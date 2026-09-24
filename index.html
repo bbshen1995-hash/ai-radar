@@ -481,6 +481,42 @@
       "status": "等待中",
       "last_checked": "2026-09-24",
       "history": []
+    },
+    {
+      "id": "behringer-sc16o",
+      "kind": "availability",
+      "name": "Behringer SC16-O 出貨與台灣售價",
+      "domain": "pa",
+      "trigger": "經銷商轉為現貨，或台灣公司貨開賣",
+      "why": "WING Rack 接手 IEM 所需的 16 路類比輸出候選，可取代 DN4816-O",
+      "stop_when": "台灣開賣或決定不走這條路",
+      "since": "2026-09-24",
+      "status": "等待中",
+      "last_checked": "2026-09-24",
+      "history": [
+        {
+          "date": "2026-09-24",
+          "text": "Sweetwater 預購 259 美元（SC16-I 預購 359 美元），尚未出貨；台灣查無。"
+        }
+      ]
+    },
+    {
+      "id": "wing-madi",
+      "kind": "availability",
+      "name": "WING MADI 卡出貨",
+      "domain": "pa",
+      "trigger": "經銷商轉為現貨，或台灣公司貨開賣",
+      "why": "WING 的官方擴充卡，9/11 發表但未出貨",
+      "stop_when": "台灣開賣",
+      "since": "2026-09-24",
+      "status": "等待中",
+      "last_checked": "2026-09-24",
+      "history": [
+        {
+          "date": "2026-09-24",
+          "text": "Sweetwater 預購 309 美元；Thomann 199 美元，標數個月後到貨。"
+        }
+      ]
     }
   ]
 }
@@ -579,6 +615,53 @@
           ]
         },
         {
+          "tier": "main",
+          "domain": "pa",
+          "tags": [
+            "new",
+            "access",
+            "capability"
+          ],
+          "extended": false,
+          "title": "Behringer StageConnect 新介面開放預購，WING 可接",
+          "lead": "Behringer 9/21 發官方影片，示範用 WING Rack 加新的 StageConnect 介面擴充輸入輸出。美國經銷已開放預購：SC16-O 16 路輸出 259 美元，SC16-I 16 路輸入 359 美元。",
+          "what": "StageConnect 是 Behringer 自家的傳輸，一條 110 歐姆的數位 XLR 線可雙向傳最多 32 路。延遲 0.4 ms，線長上限 40 公尺，加延伸器可到 80 公尺。\n\n這次示範的三台都在 1 月 NAMM 低調發表過。SC16-I 有 8 個前級加 8 路線路輸入。SC16-O 是 16 路 XLR 類比輸出，由同一條線遠端供電 12V／18W，另有 Ultranet 橋接。SC88 是 8 進 8 出。\n\n9/24 查 Sweetwater，SC16-I 預購 359 美元，SC16-O 預購 259 美元。SC88 尚未上架。",
+          "why": "WING 系列本身有 StageConnect 埠，這些介面等於不用 Dante、不用網路交換器的 I/O 擴充。SC16-O 是舊款 Klark Teknik DN4816-O 的同類新機，價格較低。\n\n影片提到的 MIDI 傳輸，要等 WING 韌體支援。依 2 月的整理文章，當時 WING 還沒有這項功能。",
+          "relation": "你的 IEM 目前仍由 X-32 出 Bus。WING Rack 要接手 IEM，需要補一台 16 路類比輸出擴充，X-32 空出來後外出 PA 案才能重用它。SC16-O 是這一步的新候選，也不違反你不上 Dante 的原則。Ultranet 橋接對你用處不大，因為 P16 已除役。",
+          "limits": "三台都還在預購，沒有出貨日。官方產品頁沒有寫明支援哪些 WING 型號與韌體版本，WING 相容性目前是第三方整理文章的說法，作者當時也沒拿到實機。台灣公司貨的價格與上市時間查不到。這則是 9/24 交件後補收，見本期更正。",
+          "dates": {
+            "event": "2026-09-21",
+            "published": "2026-09-21",
+            "checked": "2026-09-24"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "先不下預購。等經銷商轉為現貨，再找一篇 WING Rack 接 SC16-O 的實機回報，確認 16 路都能指派成 IEM 的輸出，再比 DN4816-O 的價格。"
+          },
+          "links": [
+            {
+              "label": "Behringer 官方影片",
+              "url": "https://www.youtube.com/watch?v=GT9wd2GOIVc"
+            },
+            {
+              "label": "Behringer：SC16-O 產品頁",
+              "url": "https://www.behringer.com/en/products/0606-AED"
+            },
+            {
+              "label": "Behringer：SC16-I 產品頁",
+              "url": "https://www.behringer.com/en/products/0606-AEE"
+            },
+            {
+              "label": "Sweetwater：StageConnect 系列",
+              "url": "https://www.sweetwater.com/behringer-stageconnect/series"
+            },
+            {
+              "label": "Drew Brashler：WING StageConnect 指南",
+              "url": "https://drewbrashler.com/2026/behringer-wing-stageconnect-guide/"
+            }
+          ]
+        },
+        {
           "tier": "brief",
           "domain": "plugin",
           "tags": [
@@ -628,11 +711,16 @@
         }
       ],
       "note": {
-        "topline": "本期 3 則：頭條 1、主文 1、短訊 1。重心是 9/22 同一天的兩次模型發表與訂閱額度調整，追蹤清單的兩個方案項目都命中。其他領域在區間內沒有達到門檻的新事件，照規則寧缺勿濫。區間 9/17 至 9/24。",
+        "topline": "本期 4 則：頭條 1、主文 2、短訊 1，其中 StageConnect 一則是交件後補收。重心是 9/22 同一天的兩次模型發表與訂閱額度調整，追蹤清單的兩個方案項目都命中。其他領域在區間內沒有達到門檻的新事件，照規則寧缺勿濫。區間 9/17 至 9/24。",
         "searched": "區間 2026-09-17 至 2026-09-24，約 45 次搜尋與抓取，在 50 次上限內。\n跨領域：AI 週報兩站、The Neuron 9/22 摘要、Anthropic 發表頁、OpenAI 開發者社群公告。\nAI：Claude 與 Claude Code 版本彙整、ChatGPT 與 Codex 版本彙整、Google Workspace 與 Gemini、Claude Marketplace。\n樂器：TONEX、Line 6、Strymon 合併搜尋；Walrus、Meris、Morningstar 合併搜尋；音箱擷取類別搜尋；四家舞台鍵盤；Guitar World 效果器頁與 MusicRadar 新聞頁。\nPA：WING 韌體與擴充、PA 產業新品、Waves SoundGrid 與 UA Apollo、UA 對 macOS 27 的相容性。\n插件：Bedroom Producers Blog 9/17 至 9/23 全部貼文；UA、Plugin Alliance、Waves 免費與限時。\n製作：Logic、MainStage、ProPresenter、OBS；LUNA 3.0 評測。\n其他：Canva；WTT 與器材限量；Lelit、DF64、Timemore、Fellow；間歇性斷食、生酮、阻力訓練與咖啡因；Bethel、Elevation、Hillsong。\n跟隨對象：Kenyon Reed 與 David Hislop 合併搜一次。\n追蹤清單七項逐項查。",
         "skipped": "AI：Claude Marketplace（9/23）是企業採購與合作夥伴目錄，跟你的使用交集低。Claude Projects 改版（9/17）只在版本彙整站看到，且限部分用戶測試，沒有官方頁佐證，不收。Workspace 的 Gemini 跨 App 產出是 9/2 開始推送，在區間外。\n\n樂器：Guitar World 9/16 的 Strymon BigSky MX 評測是 2024 年的產品，不算新事件。TONEX Board 上期已報。Line 6、Walrus、Meris、Morningstar 與四家舞台鍵盤在區間內沒有搜到新品。\n\nPA：WING 最新仍是 3.1 版（2025 年 11 月）。Sony IER-M500 入耳監聽是 7/8 發表，在區間外；mixonline 回 403，改讀 audioXpress 確認日期。UA 對 macOS 27 仍在測試，官方說原生外掛有小的顯示問題，跟 9/14 頭條相比沒有實質進展。\n\n插件：UA、Plugin Alliance、Waves 在區間內沒有免費或限時領取。UA 的 Apollo 機架型買贈活動到 9/30，只限新購硬體。BPB 其他免費插件多為合成器、鼓機與取樣包。\n\n製作：Logic、MainStage、ProPresenter、OBS 在區間內沒有更新。LUNA 3.0 上期已報，本期只多了幾篇評測，沒有分軌品質的對照實測，不重報。\n\n桌球：器材與賽事兩次搜尋都沒有區間內結果。ITTF 新聞頁 WebFetch 回 403，這次沒有改用瀏覽器讀，預算留給 AI 兩則的一手查證，這是缺口。\n\n咖啡、健康、設計、敬拜：區間內沒有新品、得獎沖法或新證據。搜到一篇 2026 年的間歇性斷食加阻力訓練試驗，只有 20 位肥胖男性、發表日不明，不收。Canva ProSuite 上期已判定不收。\n\n跟隨對象：只合併搜了 Kenyon Reed 與 David Hislop，結果都是舊的器材介紹。其餘 12 位核心對象、YouTube 頻道與三個華語免費樂譜標的，這輪都沒有執行。原因是 9/17 修訂稿還沒經你核可，本期照現行流程跑。\n\n追蹤清單：WING、SoundGrid、HX Stomp 台灣售價、虎航 2027 夏季班表都沒有變化。虎航最新一次開賣是去年 11 月的 2026 夏季班表。台灣店家頁面沒有列出 HX Stomp 公司貨價格，無法判斷是否調價。SoundID 秋季特價已於 9/22 結束，狀態維持已命中。\n\n台灣與中文來源：除了虎航與 HX Stomp 兩項，本期沒有中文一手來源。"
       },
-      "corrections": []
+      "corrections": [
+        {
+          "date": "2026-09-24",
+          "text": "交件後補收一則：Behringer StageConnect 新介面（9/21 官方影片、美國經銷開放預購），在本期區間內。原本漏收的原因是搜尋只索引新聞稿與評測，而這件事沒有新聞稿。本期頭條加主文由 2 則變成 3 則。"
+        }
+      ]
     },
     {
       "week": "2026-09-18",
@@ -1093,7 +1181,14 @@
         "skipped": "GPT-6 Astra 與 Claude Fable 5.1 上期已報。樊振東金標 ALC 限量板是 8/2 的消息，在區間外。WING MADI 卡查不到發佈日與官方售價：Sweetwater 要求真人驗證，改搜其他來源只找到規格。IBC 的 DHD 廣播控台與 PLASA 的 Violet Audio 平台跟你的系統無關。Waves 與 UA 的免費插件包分別是 2025 年 4 月與 2026 年 4 月的舊消息；UA 買 Apollo 送外掛只限新購硬體。Hillsong、Bethel、Elevation、Strymon、鍵盤、ProPresenter、Logic 在區間內都沒有新發佈。Eureka Mignon Zero 55S 查不到確切上市日。創作者名單尚未指定，這個領域沒有搜。"
       },
       "corrections": [
-        { "date": "2026-09-17", "text": "TONEX Board 那則寫「韌體進度已放進追蹤清單」。9/17 你決定不追蹤這一項，已從追蹤清單移除，之後不會再回報它的韌體進度。" }
+        {
+          "date": "2026-09-17",
+          "text": "TONEX Board 那則寫「韌體進度已放進追蹤清單」。9/17 你決定不追蹤這一項，已從追蹤清單移除，之後不會再回報它的韌體進度。"
+        },
+        {
+          "date": "2026-09-24",
+          "text": "本期寫「WING MADI 卡查不到發佈日」有誤。Behringer 9/11 就在官方 YouTube 頻道發了介紹影片，影片寫「終於到了」，在本期區間內，應該收。9/24 查經銷商，實際還沒出貨：Sweetwater 預購 309 美元，Thomann 標 199 美元、數個月後到貨。規格是雙向 64 路 24-bit，兩個 SFP 光纖槽加 BNC 同軸，附贈的光纖模組可傳 2 公里。它是廣播與大型系統的擴充，跟你目前的 WING 系統沒有直接需求。"
+        }
       ]
     },
     {
@@ -1102,48 +1197,80 @@
         {
           "title": "GPT-6 Astra上線:電腦操作快2倍、資安能力躍升",
           "summary": "OpenAI 從 9 月 3 日起分階段釋出 GPT-6 Astra,號稱旗下最強模型,ChatGPT 的電腦操作(computer use)速度比前代快將近 2 倍,在軟體工程、專業工作與科學任務上都達到業界最佳表現,也更擅長長時間維持在任務範圍內、理解使用者意圖、執行多步驟工作流程。資安能力大幅躍升,具備自行找出未知安全漏洞並開發攻擊方法的能力,因此公開版對進階資安任務(如撰寫概念驗證攻擊程式)設有較嚴格的拒答限制,通過審核的企業才能拿到限制較少的版本。開放對象含 ChatGPT Plus/Pro/Business/Enterprise、API 與 AWS,API 定價每百萬輸入 10 美元、輸出 50 美元,與 Claude 目前主力模型定價打平。",
-          "domains": ["frontier"],
+          "domains": [
+            "frontier"
+          ],
           "use": "你的主力工具是 Claude 全家桶(Code、Chat、Cowork)而非 ChatGPT,這則對你來說主要是產業風向球:代理型模型在電腦操作與多步驟工作流程上的進展速度,關係到你未來評估要不要為特定任務(例如大量批次資料整理)額外引入其他模型的判斷基準,不需要現在就申請或切換。",
           "links": [
-            {"label": "OpenAI:GPT-6 Astra 官方發布", "url": "https://openai.com/index/gpt-6-astra/"},
-            {"label": "CNBC:OpenAI announces rollout of GPT-6 Astra", "url": "https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html"}
+            {
+              "label": "OpenAI:GPT-6 Astra 官方發布",
+              "url": "https://openai.com/index/gpt-6-astra/"
+            },
+            {
+              "label": "CNBC:OpenAI announces rollout of GPT-6 Astra",
+              "url": "https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html"
+            }
           ]
         },
         {
           "title": "Claude Fable 5.1上線,快取讀取價砍75%",
           "summary": "Anthropic 於 9 月 1 日同時推出 Claude Fable 5.1 與 Mythos 5.1(同一顆模型、安全防護層級不同)。最直接的變化是快取讀取(cache read)價格從基礎輸入價的 0.1 倍降到 0.025 倍,等於長對話重複讀取既有上下文的成本砍掉四分之三;輸入輸出價格本身不變。新增功能包含每則訊息可調整思考強度、可讀的工具呼叫進度更新。也有三項破壞性變更:強制指定某個工具(tool_choice=any 或指定工具名)現在會直接回傳錯誤,因為思考功能改為預設開啟;舊模型無法讀取 5.1 的思考區塊,若對話中途切換模型,思考內容會被靜默丟棄。",
-          "domains": ["frontier"],
+          "domains": [
+            "frontier"
+          ],
           "use": "你自己就是這個模型的重度使用者(Claude Code、Chat、Cowork 都在用),快取讀取降價 75% 對你長時間、多輪查證型的對話直接降低有效成本,間接緩解你在資源預算協議裡記錄的撞週用量上限問題;唯一要注意的是若 AgentMeter 或其他自寫腳本有呼叫 API 並強制指定工具,需要確認沒有用到 tool_choice=any 這個已失效的參數。",
           "links": [
-            {"label": "Claude Platform Docs:Fable 5.1 更新內容", "url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1"},
-            {"label": "tech-ish:Anthropic releases Claude Fable 5.1 and Mythos 5.1", "url": "https://tech-ish.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-mythos-5-1-here-is-what-changed/"}
+            {
+              "label": "Claude Platform Docs:Fable 5.1 更新內容",
+              "url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1"
+            },
+            {
+              "label": "tech-ish:Anthropic releases Claude Fable 5.1 and Mythos 5.1",
+              "url": "https://tech-ish.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-mythos-5-1-here-is-what-changed/"
+            }
           ]
         },
         {
           "title": "免費效果器 Geminate:單軌變雙軌厚度",
           "summary": "Witch Pig 於 9 月 9 日推出免費效果器 Geminate,屬於「doubler/mimic」類型,功能是讓單軌錄音聽起來像做過雙軌疊錄,增加聲音的寬度與厚度。介面只有三個旋鈕:Dynamics 控制音量隨機變化、Pitch 控制微幅走音或升高音高、Timing 控制延遲時間的隨機變化幅度,轉越右效果越明顯,可以做到很細微或很誇張的效果。支援 AU 與 VST3 格式,macOS 與 Windows 皆可用,確認完全免費、沒有訂閱或功能閹割。",
-          "domains": ["music"],
+          "domains": [
+            "music"
+          ],
           "use": "錄敬拜團 demo 或人聲訓練教材時,單軌人聲或木吉他不想花時間真的錄兩軌疊音,可以直接掛這顆效果器做出類似雙軌的寬度感,對應你在 Logic 混音教學時常需要示範「加厚」手法的場景。",
           "links": [
-            {"label": "Bedroom Producers Blog:Witch Pig Geminate 免費上線", "url": "https://bedroomproducersblog.com/2026/09/09/witch-pig-geminate/"}
+            {
+              "label": "Bedroom Producers Blog:Witch Pig Geminate 免費上線",
+              "url": "https://bedroomproducersblog.com/2026/09/09/witch-pig-geminate/"
+            }
           ]
         },
         {
           "title": "桌球 AI 教練 App:3D 動作比對＋自動剪輯",
           "summary": "一款桌球/羽球/網球通用的 AI 教練 App,原先以 PingPi 名稱在搜尋結果中出現,但目前 App Store 上架名稱已是「SportArc: AI Coach & Auto Cut」,6 天前才更新到 2.0.1 版,判斷是同一產品改名或重新上架,這點來源本身有點混亂,先誠實標註。功能包含:AI 分析揮拍動作並給文字回饋、把動作轉成 3D 模型可多角度檢視與前後比對、自動偵測影片中的來回球並剪掉停頓做成精華片段、依運動項目與目標排練習菜單。基本功能免費,進階訂閱月費 14.99 美元或年費 99.99 美元,支援 iPhone/iPad/Mac(M1 以上)。",
-          "domains": ["tabletennis"],
+          "domains": [
+            "tabletennis"
+          ],
           "use": "你平常會錄自己打球的影片做動作分析,這款 App 的 3D 動作比對剛好對應「看自己這次跟上次揮拍軌跡差在哪」的需求,免費版可以先試自動剪輯與基礎回饋,若真的常用再評估月費值不值得,不必一開始就訂閱。",
           "links": [
-            {"label": "App Store:SportArc AI Coach & Auto Cut", "url": "https://apps.apple.com/us/app/pingpi-ai-table-tennis-coach/id6768219425"}
+            {
+              "label": "App Store:SportArc AI Coach & Auto Cut",
+              "url": "https://apps.apple.com/us/app/pingpi-ai-table-tennis-coach/id6768219425"
+            }
           ]
         },
         {
           "title": "Gemini Workspace擴大:自訂指令＋一鍵轉簡報",
           "summary": "Google 從 9 月 2 日起(最長 15 天陸續生效)把 Gemini 的「自訂指令」功能從原本只在 Docs 可用,擴大到 Drive 問答、Chat 問答,以及 Slides、Sheets、Gmail 的 Gemini 側邊欄,等於只要設定一次個人化偏好(例如固定用繁體中文回覆、固定用哪些角色稱呼),所有這些介面都會套用,不必每次重複下指令。同一波更新也擴大了「直接從素材產生內容」的能力,例如把一份提案文件直接轉成投影片,或用多個專案檔案生成客戶洞察簡報,分階段從 9/1 到 9/21 陸續開放給不同網域。",
-          "domains": ["governance", "team"],
+          "domains": [
+            "governance",
+            "team"
+          ],
           "use": "你手上兒主課程大綱、會議記錄、事工提案都是 Google 文件,設定一次自訂指令(例如固定要求繁體中文、固定格式)之後在 Sheets 排班表跟 Slides 簡報都能沿用;也可以試試看把一份課程大綱文件直接請 Gemini 轉成投影片初稿,省下手動搬移文字的時間,再自己微調視覺。",
           "links": [
-            {"label": "Google Workspace Updates:自訂指令擴大到更多應用程式", "url": "https://workspaceupdates.googleblog.com/2026/09/custom-instructions-for-gemini-in-Workspace-now-available-in-more-apps.html"}
+            {
+              "label": "Google Workspace Updates:自訂指令擴大到更多應用程式",
+              "url": "https://workspaceupdates.googleblog.com/2026/09/custom-instructions-for-gemini-in-Workspace-now-available-in-more-apps.html"
+            }
           ]
         }
       ],

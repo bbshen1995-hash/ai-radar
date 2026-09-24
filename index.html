@@ -387,9 +387,13 @@
       "why": "9/14 起週額度加成縮小，影響訂閱與分工決策",
       "stop_when": "不再訂閱 Claude",
       "since": "2026-09-11",
-      "status": "等待中",
-      "last_checked": "2026-09-18",
+      "status": "已命中",
+      "last_checked": "2026-09-24",
       "history": [
+        {
+          "date": "2026-09-24",
+          "text": "觸發條件成立。9/22 起提高 Pro、Max、Team 與按席次計費企業版的五小時額度，並給訂閱用戶一次可保存的額度重置。官方沒有寫調幅；二手報導寫加 20%。週額度沒有調整的公告。詳見本期頭條。"
+        },
         {
           "date": "2026-09-14",
           "text": "9/14 起，Claude Code 的週額度由暫時加成 50% 改為永久加成 25%，五小時上限不變。對原本享有加成的付費用戶，週額度實際少約 17%。"
@@ -404,9 +408,14 @@
       "why": "雙訂閱比較的基準",
       "stop_when": "不再訂閱 ChatGPT",
       "since": "2026-09-11",
-      "status": "等待中",
-      "last_checked": "2026-09-18",
-      "history": []
+      "status": "已命中",
+      "last_checked": "2026-09-24",
+      "history": [
+        {
+          "date": "2026-09-24",
+          "text": "觸發條件成立。9/22 GPT-6 Sol 與 Luna 對 Plus 以上方案在 Codex 推出，公告說額度提高但沒給數字；Plus、Pro、Business 各得一次保存型重置。詳見本期主文。"
+        }
+      ]
     },
     {
       "id": "wing-firmware",
@@ -417,7 +426,7 @@
       "stop_when": "教會換控台",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-18",
+      "last_checked": "2026-09-24",
       "history": []
     },
     {
@@ -429,7 +438,7 @@
       "stop_when": "決定不走 SoundGrid",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-18",
+      "last_checked": "2026-09-24",
       "history": []
     },
     {
@@ -441,7 +450,7 @@
       "stop_when": "購入或放棄",
       "since": "2026-09-11",
       "status": "已命中",
-      "last_checked": "2026-09-18",
+      "last_checked": "2026-09-24",
       "history": [
         {
           "date": "2026-09-14",
@@ -458,7 +467,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-18",
+      "last_checked": "2026-09-24",
       "history": []
     },
     {
@@ -470,7 +479,7 @@
       "stop_when": "機票訂妥",
       "since": "2026-09-11",
       "status": "等待中",
-      "last_checked": "2026-09-18",
+      "last_checked": "2026-09-24",
       "history": []
     }
   ]
@@ -481,6 +490,150 @@
 <script type="application/json" id="weekly-reports">
 {
   "reports": [
+    {
+      "week": "2026-09-24",
+      "schema": 2,
+      "range": {
+        "from": "2026-09-17",
+        "to": "2026-09-24"
+      },
+      "items": [
+        {
+          "tier": "headline",
+          "domain": "ai",
+          "tags": [
+            "new",
+            "access"
+          ],
+          "extended": false,
+          "title": "Claude Opus 5.5 上線，五小時額度調高並送一次重置",
+          "lead": "9/22 Anthropic 發表 Opus 5.5，官方說典型工作量的成本比 Opus 5 低四成。同一天調高 Pro、Max、Team 的五小時額度，另給訂閱用戶一次可以保存的額度重置。",
+          "what": "Opus 5.5 是 5.5 系列的第一個模型。API 價格是每百萬 token 輸入 4 美元、輸出 20 美元，Opus 5 是 5 與 25 美元。快取讀取由 0.50 降到 0.20 美元。上下文 100 萬 token，單次輸出上限 12.8 萬。\n\n官方發表頁寫了兩件跟訂閱有關的事。第一，提高 Pro、Max、Team 與按席次計費企業版的五小時額度。第二，給訂閱用戶一次額度重置，可以先存著，自己挑時間用。\n\n據 Releasebot 彙整，Claude Code 2.1.280 起預設的 Opus 已是 Opus 5.5。",
+          "why": "9/14 週額度的加成由 50% 縮為 25%。這次調的是另一道上限，也就是五小時額度，方向相反。\n\n官方另說 Opus 5.5 完成同樣工作用的 token 比較少。如果屬實，同一份額度能做的事會再多一些，兩個效果會疊在一起。可保存的重置則是一次應急額度，適合留給長任務卡在上限前的時候。",
+          "relation": "你主力在 Claude Code 與 Cowork 跑長任務，五小時上限是常碰到的限制，這次直接相關。不過週額度沒有跟著調。如果你先撞到的是週上限，這次的幫助就有限。重置只有一次，何時用要你自己決定。",
+          "limits": "官方頁沒有寫調幅，也沒寫是否永久。調幅 20% 出自 MakeUseOf 的報導。重置期限 10/22、只能從網頁或桌面版啟用，出自一篇義大利部落格的搜尋摘要，原文本期讀取失敗。這兩點都還沒有官方確認。公告沒有提到週額度。成本低四成與效能數字都是廠商自述。",
+          "dates": {
+            "event": "2026-09-22",
+            "published": "2026-09-22",
+            "checked": "2026-09-24"
+          },
+          "verdict": {
+            "level": "passive",
+            "practice": "不必改做法，更新後自動使用。重置先留著，等長任務在上限前卡住再用。啟用前先在設定頁確認期限與適用範圍。"
+          },
+          "links": [
+            {
+              "label": "Anthropic：Opus 5.5 發表頁",
+              "url": "https://www.anthropic.com/claude-opus-5-5"
+            },
+            {
+              "label": "Claude 官方 X：額度調整公告",
+              "url": "https://x.com/claudeai/status/2102435538120691886"
+            },
+            {
+              "label": "MIXED：價格與額度整理",
+              "url": "https://mixed-news.com/en/claude-opus-5-5-price-4-per-million-tokens-usage-limits/"
+            },
+            {
+              "label": "MakeUseOf：五小時額度加 20%",
+              "url": "https://www.makeuseof.com/claudes-20-boost-is-back-celebrating-opus-5-5/"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "ai",
+          "tags": [
+            "new",
+            "access"
+          ],
+          "extended": false,
+          "title": "GPT-6 Sol 與 Luna 進入 Codex，訂閱用戶也拿到重置",
+          "lead": "同一天稍晚，OpenAI 推出 GPT-6 Sol 與 Luna，Plus 以上可在 Codex 使用。API 價格比 GPT-5.6 同級便宜一半，Plus、Pro、Business 用戶另得一次保存型重置。",
+          "what": "依 OpenAI 官方公告，Sol 與 Luna 9/22 起在 ChatGPT Work 與 Codex 推出。適用 Plus、Pro、Business、Enterprise 與 Edu 方案。Free 與 Go 用戶可以在桌面版試用 Luna。9to5Mac 報導，一般的 ChatGPT 對話裡選不到這兩個模型。\n\nAPI 價格是每百萬 token 計：Sol 輸入 2 美元、輸出 10 美元。Luna 是 0.10 與 0.50 美元。公告說使用額度會提高，但沒有給數字。另外，Plus、Pro 與 Business 用戶各得一次可保存的額度重置。",
+          "why": "Anthropic 與 OpenAI 在同一天發表新模型，也同一天給訂閱用戶保存型重置。價格與額度的競爭，這次直接落到一般訂閱方案上。\n\nSol 定位在複雜程式與代理任務，Luna 定位在大量、單純的任務。Codex 裡因此多了一個便宜的層級，可以把簡單的工作分出去。",
+          "relation": "你另訂 Codex，用它做 3D 模型與美術類工具，也拿它當雙訂閱比較的基準。Sol 接替 GPT-5.6 Sol 之後，你先前量過的 Codex 額度數字可能不再適用，要重量才準。GPT-5.5 將於 10/14 從 ChatGPT 與 Codex 退役，上期已報。",
+          "limits": "第三方部落格寫，Plus 每五小時可用 Sol 15 到 150 則、Luna 350 到 3000 則。官方公告裡沒有這組數字，週上限也沒公開。效能數字是 OpenAI 自述。重置的期限與用法，本期沒有查到官方說明。",
+          "dates": {
+            "event": "2026-09-22",
+            "published": "2026-09-22",
+            "checked": "2026-09-24"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "下次開 Codex 時先看預設模型是否已換成 Sol。拿一個你熟悉的工具任務跑一次，記下額度消耗，再決定要不要重量雙訂閱的比例。"
+          },
+          "links": [
+            {
+              "label": "OpenAI 開發者社群：官方公告",
+              "url": "https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925"
+            },
+            {
+              "label": "9to5Mac",
+              "url": "https://9to5mac.com/2026/09/22/openai-upgrading-chatgpt-and-codex-with-two-more-gpt-6-models/"
+            },
+            {
+              "label": "第三方整理：Plus 方案各模型額度",
+              "url": "https://christopheralarcon.com/blog/gpt-6-astra-chatgpt-plans"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "plugin",
+          "tags": [
+            "access"
+          ],
+          "extended": false,
+          "title": "Tone Empire OptoRED 光學壓縮器限時免費",
+          "lead": "OptoRED 原價 79 美元，結帳時輸入折扣碼 TONEFAMOPTO 就變成 0 元。它模擬經典美系光學壓縮器，有側鏈低切與乾濕比，Mac 與 Windows 都能用。",
+          "limits": "廠商沒有公布截止日，折扣碼隨時可能失效。要註冊 Tone Empire 帳號並線上啟用，一份授權可啟用三台。格式有 VST3、AU 與 AAX。",
+          "access": "claim",
+          "dates": {
+            "published": "2026-09-23",
+            "checked": "2026-09-24"
+          },
+          "links": [
+            {
+              "label": "Bedroom Producers Blog",
+              "url": "https://bedroomproducersblog.com/2026/09/23/tone-empire-optored-free/"
+            },
+            {
+              "label": "Tone Empire 官方頁",
+              "url": "https://tone-empire.com/shop/optored/"
+            }
+          ]
+        }
+      ],
+      "tracking_updates": [
+        {
+          "track": "claude-plan",
+          "text": "觸發條件成立。9/22 起提高 Pro、Max、Team 與按席次計費企業版的五小時額度，並給訂閱用戶一次可保存的額度重置。官方沒有寫調幅；二手報導寫加 20%。週額度沒有調整的公告。詳見本期頭條。",
+          "links": [
+            {
+              "label": "Anthropic：Opus 5.5 發表頁",
+              "url": "https://www.anthropic.com/claude-opus-5-5"
+            }
+          ]
+        },
+        {
+          "track": "codex-plan",
+          "text": "觸發條件成立。9/22 GPT-6 Sol 與 Luna 對 Plus 以上方案在 Codex 推出，公告說額度提高但沒給數字；Plus、Pro、Business 各得一次保存型重置。詳見本期主文。",
+          "links": [
+            {
+              "label": "OpenAI 開發者社群：官方公告",
+              "url": "https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925"
+            }
+          ]
+        }
+      ],
+      "note": {
+        "topline": "本期 3 則：頭條 1、主文 1、短訊 1。重心是 9/22 同一天的兩次模型發表與訂閱額度調整，追蹤清單的兩個方案項目都命中。其他領域在區間內沒有達到門檻的新事件，照規則寧缺勿濫。區間 9/17 至 9/24。",
+        "searched": "區間 2026-09-17 至 2026-09-24，約 45 次搜尋與抓取，在 50 次上限內。\n跨領域：AI 週報兩站、The Neuron 9/22 摘要、Anthropic 發表頁、OpenAI 開發者社群公告。\nAI：Claude 與 Claude Code 版本彙整、ChatGPT 與 Codex 版本彙整、Google Workspace 與 Gemini、Claude Marketplace。\n樂器：TONEX、Line 6、Strymon 合併搜尋；Walrus、Meris、Morningstar 合併搜尋；音箱擷取類別搜尋；四家舞台鍵盤；Guitar World 效果器頁與 MusicRadar 新聞頁。\nPA：WING 韌體與擴充、PA 產業新品、Waves SoundGrid 與 UA Apollo、UA 對 macOS 27 的相容性。\n插件：Bedroom Producers Blog 9/17 至 9/23 全部貼文；UA、Plugin Alliance、Waves 免費與限時。\n製作：Logic、MainStage、ProPresenter、OBS；LUNA 3.0 評測。\n其他：Canva；WTT 與器材限量；Lelit、DF64、Timemore、Fellow；間歇性斷食、生酮、阻力訓練與咖啡因；Bethel、Elevation、Hillsong。\n跟隨對象：Kenyon Reed 與 David Hislop 合併搜一次。\n追蹤清單七項逐項查。",
+        "skipped": "AI：Claude Marketplace（9/23）是企業採購與合作夥伴目錄，跟你的使用交集低。Claude Projects 改版（9/17）只在版本彙整站看到，且限部分用戶測試，沒有官方頁佐證，不收。Workspace 的 Gemini 跨 App 產出是 9/2 開始推送，在區間外。\n\n樂器：Guitar World 9/16 的 Strymon BigSky MX 評測是 2024 年的產品，不算新事件。TONEX Board 上期已報。Line 6、Walrus、Meris、Morningstar 與四家舞台鍵盤在區間內沒有搜到新品。\n\nPA：WING 最新仍是 3.1 版（2025 年 11 月）。Sony IER-M500 入耳監聽是 7/8 發表，在區間外；mixonline 回 403，改讀 audioXpress 確認日期。UA 對 macOS 27 仍在測試，官方說原生外掛有小的顯示問題，跟 9/14 頭條相比沒有實質進展。\n\n插件：UA、Plugin Alliance、Waves 在區間內沒有免費或限時領取。UA 的 Apollo 機架型買贈活動到 9/30，只限新購硬體。BPB 其他免費插件多為合成器、鼓機與取樣包。\n\n製作：Logic、MainStage、ProPresenter、OBS 在區間內沒有更新。LUNA 3.0 上期已報，本期只多了幾篇評測，沒有分軌品質的對照實測，不重報。\n\n桌球：器材與賽事兩次搜尋都沒有區間內結果。ITTF 新聞頁 WebFetch 回 403，這次沒有改用瀏覽器讀，預算留給 AI 兩則的一手查證，這是缺口。\n\n咖啡、健康、設計、敬拜：區間內沒有新品、得獎沖法或新證據。搜到一篇 2026 年的間歇性斷食加阻力訓練試驗，只有 20 位肥胖男性、發表日不明，不收。Canva ProSuite 上期已判定不收。\n\n跟隨對象：只合併搜了 Kenyon Reed 與 David Hislop，結果都是舊的器材介紹。其餘 12 位核心對象、YouTube 頻道與三個華語免費樂譜標的，這輪都沒有執行。原因是 9/17 修訂稿還沒經你核可，本期照現行流程跑。\n\n追蹤清單：WING、SoundGrid、HX Stomp 台灣售價、虎航 2027 夏季班表都沒有變化。虎航最新一次開賣是去年 11 月的 2026 夏季班表。台灣店家頁面沒有列出 HX Stomp 公司貨價格，無法判斷是否調價。SoundID 秋季特價已於 9/22 結束，狀態維持已命中。\n\n台灣與中文來源：除了虎航與 HX Stomp 兩項，本期沒有中文一手來源。"
+      },
+      "corrections": []
+    },
     {
       "week": "2026-09-18",
       "schema": 2,

@@ -523,7 +523,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-24",
       "status": "等待中",
-      "last_checked": "2026-10-01",
+      "last_checked": "2026-10-08",
       "history": [
         {
           "date": "2026-09-24",
@@ -544,11 +544,28 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-24",
       "status": "等待中",
-      "last_checked": "2026-10-01",
+      "last_checked": "2026-10-08",
       "history": [
         {
           "date": "2026-09-24",
           "text": "開始追蹤，基準如下。旋轉拍賣 0 筆，露天只有一筆代購，PTT 吉他板沒有。Reverb 二手估值 163 到 252 美元，寄台運費約 173 美元，未含關稅。台灣新品售價這次沒查。"
+        }
+      ]
+    },
+    {
+      "id": "reddit-access",
+      "name": "Claude 能否讀 Reddit（Anthropic 政策與 Reddit 合作）",
+      "domain": "ai",
+      "trigger": "任一成立即命中：Anthropic 與 Reddit 宣布資料授權或合作；Reddit 對 Anthropic 的訴訟和解、撤告或判決；Anthropic 公告 Claude 工具開放 Reddit；或每期的網域探測不再回報 reddit.com 無法存取",
+      "why": "社群搜尋的 Reddit 目前只到 Google 摘要層，留言讀不到。解封後，Reddit 可以改回直接讀原文",
+      "stop_when": "Claude 可直接讀 Reddit，或不再需要 Reddit 資料",
+      "since": "2026-10-07",
+      "status": "等待中",
+      "last_checked": "2026-10-08",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "text": "開始追蹤，基準如下。Claude in Chrome 開 www 與 old 兩種網址、內建瀏覽器、WebFetch，都回報安全限制；WebSearch 限定 reddit.com 回 400，訊息是網域無法存取。Reddit 2025-06 起訴 Anthropic，至今查不到和解消息。"
         }
       ]
     }
@@ -560,6 +577,120 @@
 <script type="application/json" id="weekly-reports">
 {
   "reports": [
+    {
+      "week": "2026-10-08",
+      "schema": 2,
+      "range": { "from": "2026-09-30", "to": "2026-10-08" },
+      "items": [
+        {
+          "tier": "headline",
+          "domain": "ai",
+          "tags": ["new", "access"],
+          "extended": false,
+          "title": "Claude Haiku 5.5：小模型降價九成，代理能力大跳",
+          "lead": "10/7 Anthropic 發表 Haiku 5.5。10 萬 token 以內的 API 價格，比 Haiku 4.5 低九成。官方跑分在電腦操作類任務上逼近 Sonnet 5.5，寫程式仍有明顯差距。",
+          "what": "Haiku 5.5 的 API 價格分兩段。10 萬 token 以內，每百萬 token 輸入 0.10 美元、輸出 0.50 美元。超過 10 萬 token 是 0.50 與 2.50 美元。Haiku 4.5 是 1 與 5 美元。\n\n官方跑分以 OSWorld 2.1 離線子集為例，Haiku 5.5 是 72.4%。Haiku 4.5 是 15.7%，Sonnet 5.5 是 83.9%。Terminal-Bench 4.0 是 39.2%，Sonnet 5.5 是 70.6%。它也是第一個可調思考強度（effort）的 Haiku。\n\n同一天，Sonnet 5.5 的快取讀取價砍半，從每百萬 0.20 美元降到 0.10 美元。官方說多數代理任務因此便宜約兩成。API 與三大雲端平台即日可用，模型代號 claude-haiku-5-5。",
+          "why": "上一代 Haiku 在電腦操作與終端機任務上幾乎不能用，這一代第一次到了可以當代理子任務的程度。\n\n官方的定位很明確：大量的摘要、壓縮脈絡、分類與查資料交給 Haiku，複雜的程式與判斷留給 Sonnet 與 Opus。這會改變多代理工作流的成本結構。",
+          "relation": "你目前的派工慣例是蒐集、比對交給 Sonnet，判斷留在主線。Haiku 5.5 最可能先接手的，是讀網頁後做摘要、逐筆分類這類子任務。\n\n這直接關係到你的時段額度。同樣的蒐集量若改由 Haiku 跑，主要省下的是子代理那一段。但它的寫程式分數只有 Sonnet 的一半多，工具類專案不要換。",
+          "limits": "跑分都是 Anthropic 自述，比較對象是自家模型與 GPT-6 Luna。官方頁沒有寫 claude.ai 哪些方案能用，也沒有提 Claude Code。它何時出現在 Claude Code 的模型選單，本期查不到。內容長度上限頁面沒寫。訂閱方案的額度怎麼計算 Haiku，目前沒有公告。",
+          "dates": { "event": "2026-10-07", "published": "2026-10-07", "checked": "2026-10-08" },
+          "verdict": { "level": "try", "practice": "等 Claude Code 的模型選單出現 Haiku 5.5，拿上週做過的一個蒐集型子任務用它重跑。比對漏抓幾筆、額度用多少，再決定要不要改派工慣例。" },
+          "links": [
+            { "label": "Anthropic：Introducing Claude Haiku 5.5", "url": "https://www.anthropic.com/claude-haiku-5-5" },
+            { "label": "Anthropic 最新消息", "url": "https://www.anthropic.com/news" }
+          ]
+        },
+        {
+          "tier": "headline",
+          "domain": "pa",
+          "also": ["production", "plugin"],
+          "tags": ["new", "access"],
+          "extended": false,
+          "title": "UA Volt 全線換代：六款新機，Max 系列內建壓縮",
+          "lead": "10/1 UA 發表 Volt Gen 2 與 Volt Max 共六款，取代整條第一代 Volt。前級改成三種音色模式，Max 系列多了六組零延遲壓縮預設，美國價 149 到 499 美元。",
+          "what": "六款的美國 MAP（最低廣告價）如下。Volt 1 Gen 2，2 進 2 出，149 美元。Volt 2 Gen 2，2 進 4 出，219 美元。Volt 4 Gen 2，12 進 6 出，299 美元。Volt 2 Max，10 進 4 出，299 美元。Volt 4 Max，12 進 6 出，399 美元。Volt 4P Max，四軌前級，499 美元。\n\n全系列 32-bit／192kHz 轉換，內建 loopback（把電腦播放的聲音送回錄音或直播）。每軌前級有三種模式。Warmth 參考 610 真空管，Focus 參考美式固態控台，Shine 參考英式 Class-A。除了 Volt 1，都有彩色螢幕與 Auto-Gain。Volt 4 Gen 2 與三款 Max 有 ADAT 光纖輸入，可再擴充 8 軌。\n\nMax 系列另有六組壓縮預設，取材自 1176、LA-2A 與 VCA 壓縮器，還有內建對講麥克風與第二組耳機孔。Volt 4 Max 與 4P Max 多了主副喇叭切換。\n\n隨附 UAD Volt Studio Bundle，共 15 款插件。其中有 LA-2A、1176、Topline Vocal Tune 與 LUNA。另附 Melodyne Essential 與三個月 FL Studio Producer。",
+          "why": "Volt 是 UA 的入門線，也是很多教會與新手第一台介面的候選。這次是整條線換代，舊款會陸續退場。\n\nProduction Expert 指出兩個取捨。Max 取代了第一代的 276、476、476P。前級音色與壓縮都會直接印進錄音檔，事後不能拿掉，這跟在混音時才加插件的做法不同。",
+          "relation": "你 10/2 至 10/3 替另一間教會比較 UA 1000 美元以下的介面與附贈插件，當時用的是第一代型號。新一代把 Vocal Tune 與 LUNA 放進標配，你當時問到的兩樣都在。\n\n你也指出過 Auto-Gain 會讓新手跳過 gain staging（增益結構）的學習。這次 Auto-Gain 從 Volt 2 起全面標配，這個顧慮更適用了。\n\n那間教會以直播為主，全系列的 loopback 是有用的。第一代退場可能帶來清倉價，可以一起放進比較。",
+          "limits": "上市狀態有出入。UA 新聞稿寫 10/1 起全球上市。美國 Chuck Levin's 的 Volt 2 Gen 2 頁，卻寫新訂單預計 11/1 出貨。10/8 Sweetwater 搜尋頁回傳 0 筆，沒有讀到產品頁。\n\n台灣代理與台幣價格本期查不到中文來源。音色模式與壓縮預設的效果都是廠商描述，還沒有量測或評測。第一代各型號的原價本期沒有核對。",
+          "dates": { "event": "2026-10-01", "published": "2026-10-01", "checked": "2026-10-08" },
+          "verdict": { "level": "try", "practice": "如果那間教會還沒下單，把比較表改成三欄：Volt 2 Gen 2、Volt 2 Max、第一代清倉價。差別集中在 ADAT、對講與壓縮預設。先問台灣代理的到貨時間再定。" },
+          "links": [
+            { "label": "UA 新聞稿：Volt Gen 2 與 Volt Max", "url": "https://www.uaudio.com/blogs/press/universal-audio-announces-new-volt-and-volt-max-audio-interfaces" },
+            { "label": "Production Expert：六款規格與價格", "url": "https://www.production-expert.com/production-expert-1/universal-audio-launches-volt-gen-2-and-volt-max-usb-interfaces-with-tone-shaping-preamps-and-onboard-compression" },
+            { "label": "DJ Mag：發表報導", "url": "https://djmag.com/tech/universal-audio-announces-next-generation-of-volt-usb-audio-interfaces" },
+            { "label": "UA 官方影片：Getting Started with Volt", "url": "https://www.youtube.com/watch?v=jmJHE_5n_3w" }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "ai",
+          "tags": ["new", "capability"],
+          "extended": false,
+          "title": "ChatGPT 對話換上 GPT-6，回答可直接長出互動介面",
+          "lead": "10/7 起 ChatGPT 的對話分頁改用 GPT-6，Plus 以上跑 Sol，免費與 Go 跑 Luna。新功能 Intelligent UI 讓回答直接帶圖表、按鈕、表單與小工具。",
+          "what": "OpenAI 說，GPT-6 會依問題決定回答的形式。比較題可能並排呈現，解說題可能給互動圖，也可以直接要它做一個計算機或分帳工具。介面在模型生成時逐步顯示，不必等整段寫完。\n\nPlus、Pro、Business 與 Enterprise 從 10/7 開始推送，免費與 Go 從 10/8 開始。官方說需要上網查的問題，GPT-6 Instant 開始回答的時間比 GPT-5.6 Instant 提早。\n\n官方明寫：這次只換對話分頁，Work 與 Codex 用的模型不變。",
+          "why": "這是 ChatGPT 預設互動方式的改變，而且一開始就給免費用戶。過去要另外開畫布或寫程式才有的互動頁，現在在一般對話裡就會出現。\n\nClaude 的 Artifact 與對話內視覺化是同一個方向。兩邊比的已經不只是文字品質，也包括回答的呈現形式。",
+          "relation": "你在 Claude 這邊常用 Artifact 做一次性小工具與比較頁。ChatGPT 這次把同類能力放進一般對話，同工或家人用免費版也看得到。\n\n你的 Codex 工作不受影響，官方明說 Codex 的模型這次沒換。上兩期提過的 Codex 額度與品質要重量，這次不必因此再重來。",
+          "limits": "能力與速度都是 OpenAI 的內部評測。同一頁的中文段落寫提早 32%，英文段落寫提早 44%，兩個數字對不上，以官方後續說明為準。各方案的使用額度沒有公布。推送是逐步進行，你的帳號何時看到不一定。",
+          "dates": { "event": "2026-10-07", "published": "2026-10-07", "checked": "2026-10-08" },
+          "verdict": { "level": "passive", "practice": "不必另外學。下次在 ChatGPT 問比較型問題時，看它是否自動給互動表格。好用的話，再考慮拿來做給同工看的簡易工具。" },
+          "links": [
+            { "label": "OpenAI：GPT-6 and Intelligent UI for everyone", "url": "https://openai.com/zh-Hant/index/gpt-6-for-everyone/" },
+            { "label": "OpenAI 最新消息", "url": "https://openai.com/zh-Hant/news/" }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "instrument",
+          "tags": ["new", "capability", "access"],
+          "extended": false,
+          "title": "TONEX 2 Player 2.1 正式版，Board 韌體補上 USB 錄音",
+          "lead": "10/2 IK 推出 TONEX 2 Player 2.1，結束公開測試，同時開賣 TONEX Rig 軟體加購。TONEX Board 同步更新韌體 1.1.0，補上上市時缺的 USB 錄音與 USB MIDI。",
+          "what": "Player 2.1 對所有 TONEX 用戶免費。新的 TONEX Rig 是付費加購，把 Board 的整套效果鏈搬進電腦。它有 12 個區塊、雙路徑與立體聲，一個預設最多放四個 Tone Model。上市時有 76 種效果，IK 說 10 月下旬起會免費再加。\n\nRig 的價格分三級，都未稅。已註冊的 TONEX Board 用戶免費。符合資格的付費 TONEX 用戶 99.99 美元，TONEX CS 用戶 149.99 美元。做好的 Rig 可以在 ToneNET 分享，再傳到 Board。\n\nBoard 韌體 1.1.0 加了 USB 錄音，4 進 2 出，其中兩軌有效果、兩軌是乾訊號。另有 USB MIDI、場景可指定輸入輸出參數、SAFE MODE 鎖定，以及觸控反應改善。",
+          "why": "TONEX Board 上市時，USB 錄音功能還沒開放，是評測常扣分的地方。這次補齊後，Board 可以兼當錄音介面。\n\nRig 則讓沒有 Board 的人也能在電腦上用同一套引擎，等於 IK 把硬體與軟體做成同一個生態。",
+          "relation": "你的音色核心是兩顆 TONEX One。Player 2.1 是管理 Tone Model 的軟體，免費更新即受益。TONEX One 本期沒有新韌體，IK 頻道與新聞都沒有提到。\n\nTONEX Board 你評估後沒有放進 2026 到 2027 的窗口。這次補上 USB 錄音，是那份評估的前提之一有變動，不過決定是否重評要看你當時排除它的理由。Rig 加購價取決於你的授權屬於哪一級。",
+          "limits": "「符合資格的付費用戶」範圍，報導沒有細列，要以 IK 帳號頁顯示為準。效果數量與後續新增都是廠商自述。USB 錄音的延遲與音質本期沒有評測可參考。",
+          "dates": { "event": "2026-10-02", "published": "2026-10-02", "checked": "2026-10-08" },
+          "verdict": { "level": "passive", "practice": "下次開 IK Product Manager 時把 Player 更新到 2.1。Rig 等你有在電腦上跑整套效果鏈的需要時再看。" },
+          "links": [
+            { "label": "Sonicstate：TONEX 2 Player 2.1 與 Board 1.1.0", "url": "https://sonicstate.com/news/2026/10/02/ik-multimedia-releases-tonex-2-player/" },
+            { "label": "IK 官方影片：TONEX 2 Player 2.1", "url": "https://www.youtube.com/watch?v=UIMkJ8xLPLs" },
+            { "label": "IK 官方影片：TONEX Board 1.1.0 韌體", "url": "https://www.youtube.com/watch?v=jN6OcUWHfTU" }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "ai",
+          "tags": ["access"],
+          "title": "Gemini 免費帳號 10/9 起只剩 Flash-Lite",
+          "lead": "Google 調整個人帳號的 Gemini 模型權限。免費帳號 10/9 起只能用 Flash-Lite，AI Plus 失去 Pro，AI Pro 與 Ultra 不變；工作與學校帳號不受影響。",
+          "limits": "AI Plus 的生效日以 Google 寄給各帳號的信為準。之後用免費 Gemini 做對照測試，結果只代表 Flash-Lite，不代表 Gemini Pro。",
+          "dates": { "event": "2026-10-09", "published": "2026-10-03", "checked": "2026-10-08" },
+          "links": [
+            { "label": "Google 說明：Gemini 模型權限變更", "url": "https://support.google.com/gemini/answer/17004136?hl=en" },
+            { "label": "Let's Data Science：分級整理", "url": "https://letsdatascience.com/news/google-limits-gemini-model-access-by-subscription-24b0d7ca" }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "worship",
+          "tags": ["access"],
+          "title": "讚美之泉〈定睛在耶穌身上〉教室與約書亞新和弦譜",
+          "lead": "讚美之泉 10/8 上傳〈定睛在耶穌身上〉樂團教室，有全團、鍵盤、鋼琴、貝斯、鼓與電吉他六支示範。約書亞 No.28 雲端資料夾新增〈給祢我全所有〉和弦譜，上期標「即將釋出」的這首已補上。",
+          "limits": "示範影片免費；讚美之泉的 PDF 詩歌譜要付費。約書亞 10/6 上傳新歌〈祢寶血為我而流〉的 Live 版，說明欄還沒有和弦譜連結。",
+          "access": "free",
+          "dates": { "published": "2026-10-08", "checked": "2026-10-08" },
+          "links": [
+            { "label": "讚美之泉：〈定睛在耶穌身上〉樂團完整示範", "url": "https://www.youtube.com/watch?v=0l9vzI1MXNk" },
+            { "label": "讚美之泉：電吉他完整示範", "url": "https://www.youtube.com/watch?v=SIHm_MakNwc" },
+            { "label": "約書亞：〈給祢我全所有〉官方歌詞 MV", "url": "https://www.youtube.com/watch?v=1PO-pva_Z0w" },
+            { "label": "約書亞 No.28 官方和弦譜資料夾", "url": "https://drive.google.com/drive/folders/1tXXpaWQq7rWZ7g13lwrjMqAglfVeVJQ-" }
+          ]
+        }
+      ],
+      "tracking_updates": [],
+      "corrections": []
+    },
     {
       "week": "2026-10-01",
       "schema": 2,

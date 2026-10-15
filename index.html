@@ -665,6 +665,40 @@
           ]
         },
         {
+          "tier": "headline",
+          "domain": "ai",
+          "also": [
+            "design"
+          ],
+          "tags": [
+            "capability",
+            "access"
+          ],
+          "extended": false,
+          "title": "Claude Design 併入對話，獨立網站 12/14 收掉",
+          "lead": "10/8 Anthropic 宣布 Claude 的 Docs、Slides、Design 結束測試。所有方案都能用，包含免費版。Claude Design 搬進一般對話裡，claude.ai/design 獨立網站只保留到 12/14。",
+          "what": "Docs、Slides、Design 三項轉為正式版，所有方案都能用。新增的功能有：管理者指定範本、可分享到組織外、帶格式的 PowerPoint 與 PDF 匯出、手機上編輯。\n\nClaude Design 改成在 Claude 對話裡使用。原本的 claude.ai/design 獨立網站保留到 12 月 14 日。企業版的 Docs、Slides、Design 從 10/15 起預設開啟。\n\n同一天還推出兩個測試功能：Claude Dashboards 從公司資料庫做會自動更新的儀表板，付費方案可用。Claude Motion 把提示變成可下載成 MP4 的動畫說明影片，只給 Team 與 Enterprise。",
+          "why": "Claude Design 從獨立產品變成對話裡的一種輸出，代表設計、文件、簡報開始共用同一個入口。獨立網站有關閉日期，現在在那邊維護的專案要在期限前搬家。\n\nPowerPoint 與 PDF 匯出帶格式，是正式版和測試版最實際的差別。過去最常卡住的就是匯出後版面跑掉。",
+          "relation": "你在 Claude Design 裡有兩套設計系統專案，平常也用 DesignSync 同步。獨立網站 12/14 關閉，這兩個專案的存放位置與同步流程都會受影響。\n\n你也常用 Claude 內建的 Docs 與 Slides 做教材與文件。轉正式版後的 PowerPoint 匯出，可以交給兒主教室那台跑 PPT 的電腦。",
+          "limits": "官方文章沒有寫 claude.ai/design 上的既有專案會不會自動搬進對話，也沒寫 12/14 之後舊連結會怎樣。DesignSync 等工具是否要跟著改，文章沒有提。\n\nClaude Code 與桌面版是否同步支援，官方文章也沒有寫。",
+          "dates": {
+            "event": "2026-10-08",
+            "published": "2026-10-08",
+            "deadline": "2026-12-14",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "invest",
+            "practice": "先在對話裡打開一個既有的 Design 專案，確認設計系統、元件與歷史版本都在，DesignSync 也還能同步。有缺的話，在 12/14 前把專案匯出備份。"
+          },
+          "links": [
+            {
+              "label": "Claude 官方部落格：Build live dashboards and animate explainers with Claude",
+              "url": "https://claude.com/resources/articles/dashboards-and-motion"
+            }
+          ]
+        },
+        {
           "tier": "main",
           "domain": "instrument",
           "tags": [
@@ -702,9 +736,9 @@
           ],
           "extended": false,
           "title": "Zoom Neurig：約 300 美元的 NAM 觸控綜效",
-          "lead": "Zoom 發表 Neurig，原生支援開源的 NAM 擷取檔，內建 32 款音箱與分軌分離。日本售價 47,800 日圓，日本樂器行標示 11 月發售。",
-          "what": "Neurig 支援 TONE3000 的 NAM A2 Lite 格式。音箱、效果器、箱體與整條訊號鏈的擷取檔都能自行載入。內建 32 款音箱，另有 6 款 Zoom 原創音箱。\n\n最多同時跑 14 個效果，支援串聯、並聯與分路。接口有 send／return、MIDI 輸入輸出、立體聲與單聲道輸出。另有藍牙、looper 與可撐 4.5 小時的電池。四個踏板、兩個旋鈕，觸控螢幕操作。AI 音色生成與分軌分離要透過 Zoom 的雲端服務 SessionZ Pedal。",
-          "why": "NAM 是開源的音箱建模格式，網路上已有大量免費擷取檔。過去要在踏板上跑 NAM，多半要靠小廠或自組硬體。主流品牌把它做進 300 美元級的產品，代表擷取檔生態不再綁在單一品牌。\n\n這跟 TONEX 的路線形成對照。TONEX 有自己的 Tone Model 格式與 ToneNET 平台，Neurig 則直接吃開源格式。",
+          "lead": "Zoom 發表 Neurig，原生支援開源的 NAM capture，內建 32 款音箱與分軌分離。日本售價 47,800 日圓，日本樂器行標示 11 月發售。",
+          "what": "Neurig 支援 TONE3000 的 NAM A2 Lite 格式。音箱、效果器、箱體與整條訊號鏈的capture都能自行載入。內建 32 款音箱，另有 6 款 Zoom 原創音箱。\n\n最多同時跑 14 個效果，支援串聯、並聯與分路。接口有 send／return、MIDI 輸入輸出、立體聲與單聲道輸出。另有藍牙、looper 與可撐 4.5 小時的電池。四個踏板、兩個旋鈕，觸控螢幕操作。AI 音色生成與分軌分離要透過 Zoom 的雲端服務 SessionZ Pedal。",
+          "why": "NAM 是開源的音箱建模格式，網路上已有大量免費capture。過去要在踏板上跑 NAM，多半要靠小廠或自組硬體。主流品牌把它做進 300 美元級的產品，代表capture生態不再綁在單一品牌。\n\n這跟 TONEX 的路線形成對照。TONEX 有自己的 Tone Model 格式與 ToneNET 平台，Neurig 則直接吃開源格式。",
           "relation": "你的音色核心是兩顆 TONEX One，小盤也在評估多合一的小型 modeler。Neurig 的價格帶與 TONEX One 加 HX One 的組合接近，功能卻涵蓋音箱、效果與 looper。\n\n它不在你目前的購買名單上，價值在於當作小盤排列組合的一個對照點，看 NAM 生態會不會分走 TONEX 的優勢。",
           "limits": "300 美元是 Guitar World 以日圓換算的估計，美國官方售價還沒公布。日本 Soundhouse 頁面寫 2026 年 11 月新發售，沒有確切日期。台灣代理與價格這次沒有查到。\n\n「史上最準的建模」是 Zoom 自述。雲端分軌分離與 AI 音色是否收費，目前沒有說明。",
           "dates": {
@@ -714,7 +748,7 @@
           },
           "verdict": {
             "level": "passive",
-            "practice": "不必現在處理。等第一批評測出來，看它跑 NAM 擷取檔的延遲與 CPU 餘裕，再決定要不要放進小盤比較表。"
+            "practice": "不必現在處理。等第一批評測出來，看它跑 NAM capture的延遲與 CPU 餘裕，再決定要不要放進小盤比較表。"
           },
           "links": [
             {
@@ -756,6 +790,69 @@
             {
               "label": "Line 6 YouTube：Helix Stadium 1.4 Firmware Update",
               "url": "https://www.youtube.com/watch?v=StAMPE_XF1M"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "ai",
+          "tags": [
+            "access"
+          ],
+          "extended": false,
+          "title": "Anthropic 10/14 開上市前投資人日",
+          "lead": "Bloomberg 10/1 報導，Anthropic 10/14 在舊金山總部對機構投資人舉辦上市前說明會。市場預估估值接近 2 兆美元，上市時間預計在 11 月美國期中選舉之後。",
+          "what": "Anthropic 6 月已向美國證管會秘密遞交上市申請草案。Reuters 與 CNBC 引述保密公開說明書：2025 年營收約 46 億美元，是前一年的 12 倍。同年淨損 420 億美元。\n\n它承諾未來十年至少 5,180 億美元的算力與基礎設施支出，其中約八成不能取消。對象包括 Google、Amazon、Microsoft 與 Broadcom 相關設備租賃。說明書的風險章節約 80 頁，比談業務計畫的篇幅多。\n\n10/14 是只限受邀機構投資人的說明會，正式掛牌日、價格與股數都還沒公布。",
+          "why": "這是 AI 產業今年最大的資本事件之一。上市後，Anthropic 要按季對外公布財報，定價、額度與產品取捨會多一層股東壓力。\n\n另一面是透明度：營收結構、算力合約與風險揭露會變成公開資料。過去只能從傳聞推測的方案調整理由，之後可以對照財報。",
+          "relation": "你的主力工具是 Claude，方案額度與定價的走向直接影響你的工作量能。上市本身不會立刻改變方案，但之後的定價與額度調整，可以拿財報的毛利與算力成本來解讀。",
+          "limits": "財務數字來自 Reuters 與 CNBC 引述的保密公開說明書，Anthropic 沒有公開確認。正式公開版 S-1 還沒出現在證管會資料庫。\n\n估值區間是潛在投資人的預估，不是定價。上市時間有「期中選舉後」與「感恩節前」兩種說法。Bloomberg 原文有付費牆。這裡改用 Investing.com 的轉載標題與 Yahoo Finance 的轉載報導。",
+          "dates": {
+            "event": "2026-10-14",
+            "published": "2026-10-01",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "Investing.com：Anthropic Is Said To Schedule Pre-IPO Investor Day Oct. 14（Bloomberg）",
+              "url": "https://www.investing.com/news/stock-market-news/anthropic-is-said-to-schedule-preipo-investor-day-oct-14--bloomberg-432SI-4928280"
+            },
+            {
+              "label": "Yahoo Finance：Anthropic's IPO filing reveals a staggering AI bet",
+              "url": "https://finance.yahoo.com/technology/ai/articles/anthropics-ipo-filing-reveals-staggering-211700504.html"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "ai",
+          "tags": [
+            "new",
+            "access"
+          ],
+          "extended": false,
+          "title": "Gemini 4 Argon 開放 Google AI Pro 與 Ultra",
+          "lead": "Google 9/30 發表的旗艦模型 Gemini 4 Argon，原本只給資安合作夥伴。10/13 起 Google AI Pro 與 Ultra 訂閱者可以在 Gemini App 使用。",
+          "what": "Gemini 4 Argon 是 Gemini 4 世代的旗艦，Google 的定位是寫程式、企業知識工作與資安防禦。9/30 發表時只開放給少數資安合作夥伴。\n\n10/13 Google 部落格宣布，AI Pro 與 Ultra 訂閱者可在 Gemini App 使用 Argon。文章沒有提免費帳號。\n\n依 Google 自己公布的跑分，它在幾項寫程式與資安測試上跟 Astra、Opus 相當。部分寫程式測試則落後。",
+          "why": "Google 延遲數月、放棄 Gemini 3.5 Pro 之後，這是第一個對標 Opus 的模型開放給一般訂閱者。前沿模型從兩強變回三強，方案定價的競爭壓力會跟著回來。\n\n上期你看到 Gemini 免費帳號 10/9 起只剩 Flash-Lite。對照這次，Google 正在把好模型集中到付費層。",
+          "relation": "你目前的主力是 Claude，另訂 Codex，沒有 Google AI 付費方案。Argon 對你主要是比較基準：之後評估要不要換工具或加訂閱時，它是第三個選項。\n\nGoogle 文件與簡報是你的日常工具，Workspace 裡的 Gemini 之後可能換上 Argon。但這次文章沒有寫何時換。",
+          "limits": "跑分是 Google 自述。文章沒有寫使用額度、開放地區，也沒有寫台灣是否同步開放。API 價格只有台灣媒體報導的 2 美元與 10 美元（每百萬 token 輸入與輸出），Google 官方頁沒有確認。",
+          "dates": {
+            "event": "2026-10-13",
+            "published": "2026-10-13",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "passive",
+            "practice": "不必主動訂閱。若之後有一題 Claude 處理不好，再用 Google 的免費試用拿同一題比對。"
+          },
+          "links": [
+            {
+              "label": "Google 部落格：Gemini 4 is now available in the Gemini app",
+              "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"
+            },
+            {
+              "label": "Google 部落格：Gemini 4 Argon",
+              "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
             }
           ]
         },
@@ -828,12 +925,75 @@
               "url": "https://techcrunch.com/2026/10/08/google-brings-agentic-ai-to-gemini-starting-with-businesses/"
             }
           ]
+        },
+        {
+          "tier": "brief",
+          "domain": "pa",
+          "tags": [
+            "new"
+          ],
+          "title": "MOTU OctaLite：八軌前級半機架介面已出貨",
+          "lead": "MOTU 推出半機架 USB-C 介面 OctaLite，有 8 個 combo 輸入。增益最高 +74 dB，EIN -129 dBu。售價 849.95 美元，已經出貨。它有 ADAT 輸入輸出，也能當另一台介面的八軌前級擴充。",
+          "limits": "規格出自 Production Expert 的報導，是廠商數據。台灣代理與價格沒有查。",
+          "dates": {
+            "event": "2026-10-12",
+            "published": "2026-10-12",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "Production Expert：MOTU Ships OctaLite",
+              "url": "https://www.production-expert.com/production-expert-1/motu-ships-octalite-a-half-rack-usb-interface-with-eight-mic-preamps"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "ai",
+          "tags": [
+            "new"
+          ],
+          "title": "Apple TV 4K 換 A19，搭載對話式 Siri AI",
+          "lead": "10/13 Apple 發表新 Apple TV 4K，A19 晶片，新增 AV1 解碼。Siri AI 以測試版提供對話式搜尋與家庭控制。美國售價 299 美元，11/13 上市。",
+          "limits": "新聞稿列出 30 個國家與地區開放預購，但沒有點名；台灣不在 Siri AI 的首波語言與地區清單。",
+          "dates": {
+            "event": "2026-10-13",
+            "published": "2026-10-13",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "Apple Newsroom：Apple unveils the new Apple TV 4K",
+              "url": "https://www.apple.com/newsroom/2026/10/apple-unveils-the-new-apple-tv-4k/"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "plugin",
+          "tags": [
+            "access"
+          ],
+          "title": "本週免費插件：Polarity-MEQ 等三款",
+          "lead": "Gearnews 10/11 整理三款免費插件。分別是頻譜比對 EQ Polarity-MEQ、顆粒取樣器 GRNi Lite、人聲復古效果 Lega Effect。Lega Effect 有 AAX，另兩款支援 AU 與 VST3。",
+          "access": "free",
+          "limits": "文章沒有寫是永久免費還是限時，也沒有寫是否要註冊，下載前看各開發者頁面。",
+          "dates": {
+            "published": "2026-10-11",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "Gearnews：Free Plugins of the Week",
+              "url": "https://www.gearnews.com/polarity-meq-free-plugins/"
+            }
+          ]
         }
       ],
       "deep": {
         "domain": "instrument",
         "title": "同一週，兩家廠商把分軌分離與開源建模放進踏板",
-        "body": "10/12 Zoom 發表 Neurig，隔天 Line 6 推出 Helix Stadium 1.4。兩件事放在一起看，綜效踏板正在加入兩種新能力。\n\n第一是分軌分離。過去要把一首歌的吉他拿掉來練，得先在電腦上用 Logic Stem Splitter 這類軟體處理。Line 6 把它做在機器本身，Zoom 則透過雲端服務提供。兩家的做法不同：本機處理不需網路，但吃機器運算；雲端處理不吃本機資源，但要連線，也可能牽涉收費。\n\n第二是開放格式的音箱建模。NAM 是開源格式，網路上有大量免費擷取檔。Blackstar 先做進產品，Zoom 這次把它放進 300 美元級的主流機種。這跟 IK 的 TONEX、Line 6 的 Proxy 各自維護封閉格式，是兩條不同的路。\n\n這對既有用戶的意義是：擷取檔能不能跨品牌帶走，開始變成選機器時要考慮的條件。TONEX 的優勢是 ToneNET 的大量付費與免費 Tone Model，加上它在你手上已經是音色核心。NAM 的優勢是格式開放，換硬體時檔案還能用。\n\n目前兩家的分軌分離都沒有第三方品質比較，Neurig 也還沒出貨。比較合理的做法是先記下這個方向，等評測出來再看。若 NAM 踏板的延遲與擷取檔品質追上 TONEX，你小盤的排列組合就多一個選項；若追不上，它只是入門市場的新玩家。",
+        "body": "10/12 Zoom 發表 Neurig，隔天 Line 6 推出 Helix Stadium 1.4。兩件事放在一起看，綜效踏板正在加入兩種新能力。\n\n第一是分軌分離。過去要把一首歌的吉他拿掉來練，得先在電腦上用 Logic Stem Splitter 這類軟體處理。Line 6 把它做在機器本身，Zoom 則透過雲端服務提供。兩家的做法不同：本機處理不需網路，但吃機器運算；雲端處理不吃本機資源，但要連線，也可能牽涉收費。\n\n第二是開放格式的音箱建模。NAM 是開源格式，網路上有大量免費capture。Blackstar 先做進產品，Zoom 這次把它放進 300 美元級的主流機種。這跟 IK 的 TONEX、Line 6 的 Proxy 各自維護封閉格式，是兩條不同的路。\n\n這對既有用戶的意義是：capture能不能跨品牌帶走，開始變成選機器時要考慮的條件。TONEX 的優勢是 ToneNET 的大量付費與免費 Tone Model，加上它在你手上已經是音色核心。NAM 的優勢是格式開放，換硬體時檔案還能用。\n\n目前兩家的分軌分離都沒有第三方品質比較，Neurig 也還沒出貨。比較合理的做法是先記下這個方向，等評測出來再看。若 NAM 踏板的延遲與capture品質追上 TONEX，你小盤的排列組合就多一個選項；若追不上，它只是入門市場的新玩家。",
         "links": [
           {
             "label": "Guitar World：Zoom Neurig",

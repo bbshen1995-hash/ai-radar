@@ -523,7 +523,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-24",
       "status": "等待中",
-      "last_checked": "2026-10-08",
+      "last_checked": "2026-10-15",
       "history": [
         {
           "date": "2026-09-24",
@@ -544,7 +544,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-24",
       "status": "等待中",
-      "last_checked": "2026-10-08",
+      "last_checked": "2026-10-15",
       "history": [
         {
           "date": "2026-09-24",
@@ -561,7 +561,7 @@
       "stop_when": "Claude 可直接讀 Reddit，或不再需要 Reddit 資料",
       "since": "2026-10-07",
       "status": "等待中",
-      "last_checked": "2026-10-08",
+      "last_checked": "2026-10-15",
       "history": [
         {
           "date": "2026-10-07",
@@ -577,6 +577,277 @@
 <script type="application/json" id="weekly-reports">
 {
   "reports": [
+    {
+      "week": "2026-10-15",
+      "schema": 2,
+      "range": {
+        "from": "2026-10-07",
+        "to": "2026-10-15"
+      },
+      "items": [
+        {
+          "tier": "headline",
+          "domain": "production",
+          "also": [
+            "worship"
+          ],
+          "tags": [
+            "new",
+            "capability",
+            "access"
+          ],
+          "extended": false,
+          "title": "ProPresenter 22 上線，Cloud 讓多台電腦同步",
+          "lead": "10/14 Renewed Vision 發表 ProPresenter 22、Cloud 與 ProDisplay。Cloud 讓多台電腦共用同一套資料庫與歌單，官方說不另收費。",
+          "what": "ProPresenter 22 的新功能有八項。重點是 Cloud、歌詞文字動畫、可搜尋的動態貼圖庫，以及能直接播放 HLS 串流。另外可以暫時停用螢幕而不刪設定，匯入 PowerPoint 時能選要不要保留原背景。\n\nCloud 會同步資料庫、歌單、主題、媒體、編排與巨集。每台電腦都留一份完整本機副本，斷網時聚會照常進行。官方部落格寫「每個 ProPresenter 帳號都內含、不另收費」，容量上限 50 GB。它只能在裝了 ProPresenter 的電腦上用，沒有網頁版。\n\nProDisplay 是另一個產品，跑在 Apple TV 上，用瀏覽器排程，把內容送到兒童教室、大廳這類空間。它有自己的訂閱，不含在 ProPresenter 裡。",
+          "why": "過去要在家備歌單，得靠匯出、雲端硬碟或遠端桌面把檔案搬到控制室電腦。Cloud 把這一步變成內建功能，也讓控制室電腦故障時，換一台登入就能接手。\n\n這是 ProPresenter 第一次把多機協作做成官方標準流程。對只有一台投影電腦的教會，最大價值是備援；對有多位同工輪流備課的團隊，價值在不必再約定誰改哪一份檔。",
+          "relation": "主堂投影用的是 ProPresenter，Cloud 直接對應到備歌單與換機備援兩件事。\n\nProDisplay 對應兒主教室與大廳的螢幕。但兒主教室目前是 Windows 跑 PPT，要用它得另添 Apple TV 並付訂閱，門檻比 Cloud 高很多。\n\n文字動畫與貼圖庫偏向效果，是否適合主日敬拜要看你對投影潔淨度的標準。",
+          "limits": "三篇官方文章都沒有寫 ProPresenter 22 的系統需求，也沒有寫 22 版是否限訂閱用戶。這兩點要在升級前看下載頁確認。\n\nCloud 的電腦台數上限、能否加購容量，官方沒寫。ProDisplay 只寫有免費試用與一面免費螢幕，沒有列價格。\n\n以上功能都是廠商自述，還沒有第三方實測。",
+          "dates": {
+            "event": "2026-10-14",
+            "published": "2026-10-14",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "先在非聚會時段把一台備用電腦升到 22 版，開 Cloud 同步現有資料庫。確認歌單、媒體路徑與巨集都正確帶過去，再決定主控電腦何時升級。"
+          },
+          "links": [
+            {
+              "label": "Renewed Vision：What's New in ProPresenter 22",
+              "url": "https://renewedvision.com/blog/whats-new-in-propresenter-22"
+            },
+            {
+              "label": "Renewed Vision：Introducing Cloud",
+              "url": "https://renewedvision.com/blog/introducing-cloud"
+            },
+            {
+              "label": "Renewed Vision：Introducing ProDisplay",
+              "url": "https://renewedvision.com/blog/introducing-prodisplay"
+            }
+          ]
+        },
+        {
+          "tier": "headline",
+          "domain": "ai",
+          "also": [
+            "design"
+          ],
+          "tags": [
+            "new",
+            "capability"
+          ],
+          "extended": false,
+          "title": "Claude 進駐 Google 文件、試算表與簡報",
+          "lead": "Anthropic 推出 Claude for Google Workspace 公開測試版，在文件旁開側欄直接改檔。所有付費方案都能用，另有讓 Claude 從對話端建立、修改 Google 檔案的連接器。",
+          "what": "側欄外掛從 Google Workspace Marketplace 安裝，開檔後從「擴充功能」叫出 Claude。\n\n在文件裡，它能就地改句子與標題樣式，大幅改寫則以建議卡片呈現，逐張決定套用或略過。在試算表裡，它能寫公式、做樞紐分析表與原生圖表；要合併或清理資料時，會用 Python 處理後寫回。在簡報裡，它沿用簡報現有的版面與主題做新投影片，再檢查元素重疊、超出頁面與難讀的文字。\n\n預設是「改之前先問」，也可以切成全部自動套用。連接器的權限跟著 Google 原本的共用設定走。",
+          "why": "過去在 Claude 裡處理 Google 檔案，多半要貼內容進對話，再把結果貼回去，格式常常走樣。側欄改成在檔案原地動手，簡報還會照既有版型產出，省掉最耗時的排版回填。\n\n對常用 Google 簡報做教材的人，這是 Claude 第一次能在簡報檔裡直接沿用你的版型。",
+          "relation": "你的主日學投影片、課程大綱與不少行政文件都在 Google 文件與簡報上，這項功能直接落在日常工作流程裡。\n\n你的投影片有潔淨規範與單頁容量上限，側欄產出後仍要照那套標準驗收。它的版面檢查只抓重疊與出界，不懂你的禁令。",
+          "limits": "官方發表日是 10/6，比本期區間早一天，上期沒有收到，本期補上。\n\n目前是公開測試版。Team 與 Enterprise 要由管理者先開連接器，個人 Pro 或 Max 方案的安裝流程官方說明較簡略。中文排版、繁中字型在簡報裡的表現，官方沒有提，目前也沒有找到中文使用者實測。",
+          "dates": {
+            "event": "2026-10-06",
+            "published": "2026-10-06",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "拿一份已完成的主日學簡報複本，請側欄新增兩頁，檢查它是否沿用原版型、繁中字型有沒有被換掉、單頁字數有沒有超過你的上限。"
+          },
+          "links": [
+            {
+              "label": "Claude 官方部落格：Claude now works with Google Docs, Sheets, and Slides",
+              "url": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides"
+            },
+            {
+              "label": "Reworked：Claude for Google Workspace in public beta",
+              "url": "https://www.reworked.co/digital-workplace/anthropic-opens-claude-for-google-workspace-in-beta/"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "instrument",
+          "tags": [
+            "new"
+          ],
+          "extended": false,
+          "title": "Fender 新一代 American Professional，改了橋與拾音器",
+          "lead": "10/13 Fender 發表新一代 American Professional，名稱拿掉 II、III 這類代號。Telecaster 換上有溝槽的補償式黃銅橋釘，起價 1,799 美元，比前代常見售價低 100 美元。",
+          "what": "新系列涵蓋 Strat、Strat HSS、Tele、Hotshot Tele、Jazzmaster、Jaguar 與 P／J Bass。\n\n全系列換上 V-Mod III 拾音器，每個琴型各自調整，磁柱高低改成貼近指板弧度。硬體方面，Strat 鞍座的螺絲不再凸出，Telecaster 換成有溝槽的補償式黃銅橋釘。Jazzmaster 與 Jaguar 換上新設計的 HiMass Modern 橋與 Panorama 顫音系統。\n\n電子部分換成新的 ClassicGear 電位器，每把都有 push-push 音色開關。琴頸改為 Deep C 並做指板邊緣圓化。美國售價：Strat 與 Tele 1,799 美元，Hotshot Tele 1,849 美元。Jazzmaster 1,899 美元。",
+          "why": "這一代改的是長年被批評、很多人買回家就換掉的地方：Tele 的三鞍座音準、Jazzmaster 與 Jaguar 的橋。原廠直接處理，等於把一筆常見的改裝費省下來。\n\n同一時間，市面上還有 75 週年的 American Professional II 紀念款與 Classic 線。型號名稱很接近，選購時容易混淆。",
+          "relation": "你正在找 Telecaster。這一代 Tele 的補償式橋釘解決了傳統三鞍座的音準問題，又不必走到改裝。\n\n你手上有 Puleo 的 Jazzmaster。新一代 Jazzmaster 的新橋，可以拿來對照你對偏置琴型的期待。",
+          "limits": "規格與「解決 70 年老問題」都出自 Fender 與 Guitar World 的訪談，還沒有獨立評測。\n\n10/15 查 Sweetwater，搜尋結果只有 75 週年紀念款與 Classic 琴頸。新一代還沒上架，出貨日不明。台灣代理價與到貨時間，這次沒有查到中文來源。V-Mod III 的實際聲音差異，要等試彈或評測。",
+          "dates": {
+            "event": "2026-10-13",
+            "published": "2026-10-13",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "等台灣樂器行到貨後，拿新一代 Tele 與你在看的其他 Tele 同店試彈。先比高把位和弦的音準，再比橋段拾音器在你的 TONEX 音色下的表現。"
+          },
+          "links": [
+            {
+              "label": "Guitar World：Fender reveals next-gen American Professional range",
+              "url": "https://www.guitarworld.com/gear/electric-guitars/fender-american-professional-2026"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "instrument",
+          "tags": [
+            "new",
+            "capability"
+          ],
+          "extended": false,
+          "title": "Zoom Neurig：約 300 美元的 NAM 觸控綜效",
+          "lead": "Zoom 發表 Neurig，原生支援開源的 NAM 擷取檔，內建 32 款音箱與分軌分離。日本售價 47,800 日圓，日本樂器行標示 11 月發售。",
+          "what": "Neurig 支援 TONE3000 的 NAM A2 Lite 格式。音箱、效果器、箱體與整條訊號鏈的擷取檔都能自行載入。內建 32 款音箱，另有 6 款 Zoom 原創音箱。\n\n最多同時跑 14 個效果，支援串聯、並聯與分路。接口有 send／return、MIDI 輸入輸出、立體聲與單聲道輸出。另有藍牙、looper 與可撐 4.5 小時的電池。四個踏板、兩個旋鈕，觸控螢幕操作。AI 音色生成與分軌分離要透過 Zoom 的雲端服務 SessionZ Pedal。",
+          "why": "NAM 是開源的音箱建模格式，網路上已有大量免費擷取檔。過去要在踏板上跑 NAM，多半要靠小廠或自組硬體。主流品牌把它做進 300 美元級的產品，代表擷取檔生態不再綁在單一品牌。\n\n這跟 TONEX 的路線形成對照。TONEX 有自己的 Tone Model 格式與 ToneNET 平台，Neurig 則直接吃開源格式。",
+          "relation": "你的音色核心是兩顆 TONEX One，小盤也在評估多合一的小型 modeler。Neurig 的價格帶與 TONEX One 加 HX One 的組合接近，功能卻涵蓋音箱、效果與 looper。\n\n它不在你目前的購買名單上，價值在於當作小盤排列組合的一個對照點，看 NAM 生態會不會分走 TONEX 的優勢。",
+          "limits": "300 美元是 Guitar World 以日圓換算的估計，美國官方售價還沒公布。日本 Soundhouse 頁面寫 2026 年 11 月新發售，沒有確切日期。台灣代理與價格這次沒有查到。\n\n「史上最準的建模」是 Zoom 自述。雲端分軌分離與 AI 音色是否收費，目前沒有說明。",
+          "dates": {
+            "event": "2026-10-12",
+            "published": "2026-10-13",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "passive",
+            "practice": "不必現在處理。等第一批評測出來，看它跑 NAM 擷取檔的延遲與 CPU 餘裕，再決定要不要放進小盤比較表。"
+          },
+          "links": [
+            {
+              "label": "Guitar World：Zoom Neurig",
+              "url": "https://www.guitarworld.com/gear/amp-modeler-pedals/zoom-neurig"
+            },
+            {
+              "label": "Soundhouse：ZOOM NEURIG 商品頁",
+              "url": "https://www.soundhouse.co.jp/en/products/detail/item/397816/"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "instrument",
+          "also": [
+            "production"
+          ],
+          "tags": [
+            "capability"
+          ],
+          "extended": false,
+          "title": "Helix Stadium 1.4：分軌分離進到旗艦機",
+          "lead": "10/13 Line 6 推出 Helix Stadium 免費韌體 1.4。新增 Showcase 分軌分離，能把音檔拆成鼓、貝斯、吉他、人聲與其他五軌，另加三台 Agoura 音箱與六顆效果。",
+          "what": "Showcase 分軌分離可以把任一音檔拆成五軌。你能單獨聽某一軌練習，也能把吉他那軌靜音，自己接著彈。\n\n1.4 版還新增三台 Agoura 音箱（含 Brit SL100）、四顆破音與兩顆調變效果，預設載入速度變快。Helix Stadium 應用程式現在除了 Wi-Fi，也能用 USB-C 連線。更新可在機器上透過 Wi-Fi 下載，或用 Line 6 Central 經 USB 安裝。",
+          "why": "分軌分離原本是電腦軟體的功能，例如 Logic 的 Stem Splitter。現在 Line 6 與 Zoom 同一週都把它做進踏板，代表「拿原曲扒譜、去掉吉他跟彈」正在變成硬體的標準配備。\n\n這次更新只給 Helix Stadium 與 Stadium XL，舊的 Helix 與 HX 系列沒有。",
+          "relation": "你規劃的是二手 HX Stomp，不是 Stadium，這次更新不會直接用到。\n\n跟你的關係在扒譜流程：你的和弦採譜工具與敬拜團練歌，都需要「去掉某一軌再聽」。目前你用 Logic 的 Stem Splitter 處理，這類硬體功能是同一件事的另一個入口。",
+          "limits": "功能描述來自 Line 6 官方影片說明，分離品質沒有第三方比較。Line 6 官網的版本說明這次沒有讀到。\n\nHX Stomp 的韌體仍停在 3.80（2024 年 11 月），沒有跡象顯示 HX 系列會拿到分軌分離。",
+          "dates": {
+            "event": "2026-10-13",
+            "published": "2026-10-13",
+            "checked": "2026-10-15"
+          },
+          "verdict": {
+            "level": "skip",
+            "practice": "你沒有 Stadium，不必處理。若之後考慮升級到 Stadium 等級，再把分軌分離品質列入比較項目。"
+          },
+          "links": [
+            {
+              "label": "Line 6 YouTube：Helix Stadium 1.4 Firmware Update",
+              "url": "https://www.youtube.com/watch?v=StAMPE_XF1M"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "plugin",
+          "tags": [
+            "new",
+            "access"
+          ],
+          "title": "UA 把 Empirical Labs FATSO 做成原生插件",
+          "lead": "10/14 UA 推出原生版 FATSO 磁帶模擬，推廣價 79 美元到 12/31，原價 149 美元。已有 Apollo DSP 版的人升級只要 2.99 美元，UAD Spark 訂閱也包含。",
+          "access": "sale",
+          "limits": "優惠價與升級價出自 Sound On Sound 的報導。你是否已持有 DSP 版 FATSO，這裡無法判斷，要看 UA 帳號。",
+          "dates": {
+            "event": "2026-10-14",
+            "published": "2026-10-14",
+            "deadline": "2026-12-31",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "Sound On Sound：Universal Audio's Empirical Labs FATSO goes native",
+              "url": "https://www.soundonsound.com/news/universal-audios-empirical-labs-fatso-goes-native"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "instrument",
+          "tags": [
+            "new"
+          ],
+          "title": "Walrus Fable、Lore 推出立體聲 MKII",
+          "lead": "10/13 Walrus Audio 上架 Fable 與 Lore 的立體聲 MKII，各 349.99 美元。官網顯示有貨。五組演算法都改成立體聲，可存 3 組預設，經 MIDI 可叫 127 組。",
+          "limits": "價格與庫存讀自 Walrus 官網 10/15 的商品資料。初代單聲道版仍以 299.99 美元在售。台灣代理與價格沒有查。",
+          "dates": {
+            "event": "2026-10-13",
+            "published": "2026-10-13",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "Walrus Audio YouTube：Fable Stereo Technical Demo",
+              "url": "https://www.youtube.com/watch?v=7xGiLlAgH-o"
+            },
+            {
+              "label": "Walrus Audio YouTube：Lore Stereo Technical Demo",
+              "url": "https://www.youtube.com/watch?v=UCiuQdn_gys"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "ai",
+          "tags": [
+            "new"
+          ],
+          "title": "Gemini 推出會自己執行任務的代理，企業先用",
+          "lead": "10/8 Google 在 Gemini 推出統一的代理，能規劃工作、用技能與工具。它可接上 Workspace、Microsoft 365、Slack 與任意 MCP 伺服器。先開放給企業客戶，一般用戶沒有時程。",
+          "limits": "TechCrunch 的報導沒有寫價格，也沒有寫哪些 Workspace 方案包含。",
+          "dates": {
+            "event": "2026-10-08",
+            "published": "2026-10-08",
+            "checked": "2026-10-15"
+          },
+          "links": [
+            {
+              "label": "TechCrunch：Google brings agentic AI to Gemini, starting with businesses",
+              "url": "https://techcrunch.com/2026/10/08/google-brings-agentic-ai-to-gemini-starting-with-businesses/"
+            }
+          ]
+        }
+      ],
+      "deep": {
+        "domain": "instrument",
+        "title": "同一週，兩家廠商把分軌分離與開源建模放進踏板",
+        "body": "10/12 Zoom 發表 Neurig，隔天 Line 6 推出 Helix Stadium 1.4。兩件事放在一起看，綜效踏板正在加入兩種新能力。\n\n第一是分軌分離。過去要把一首歌的吉他拿掉來練，得先在電腦上用 Logic Stem Splitter 這類軟體處理。Line 6 把它做在機器本身，Zoom 則透過雲端服務提供。兩家的做法不同：本機處理不需網路，但吃機器運算；雲端處理不吃本機資源，但要連線，也可能牽涉收費。\n\n第二是開放格式的音箱建模。NAM 是開源格式，網路上有大量免費擷取檔。Blackstar 先做進產品，Zoom 這次把它放進 300 美元級的主流機種。這跟 IK 的 TONEX、Line 6 的 Proxy 各自維護封閉格式，是兩條不同的路。\n\n這對既有用戶的意義是：擷取檔能不能跨品牌帶走，開始變成選機器時要考慮的條件。TONEX 的優勢是 ToneNET 的大量付費與免費 Tone Model，加上它在你手上已經是音色核心。NAM 的優勢是格式開放，換硬體時檔案還能用。\n\n目前兩家的分軌分離都沒有第三方品質比較，Neurig 也還沒出貨。比較合理的做法是先記下這個方向，等評測出來再看。若 NAM 踏板的延遲與擷取檔品質追上 TONEX，你小盤的排列組合就多一個選項；若追不上，它只是入門市場的新玩家。",
+        "links": [
+          {
+            "label": "Guitar World：Zoom Neurig",
+            "url": "https://www.guitarworld.com/gear/amp-modeler-pedals/zoom-neurig"
+          },
+          {
+            "label": "Line 6 YouTube：Helix Stadium 1.4 Firmware Update",
+            "url": "https://www.youtube.com/watch?v=StAMPE_XF1M"
+          }
+        ]
+      },
+      "tracking_updates": [],
+      "corrections": []
+    },
     {
       "week": "2026-10-08",
       "schema": 2,

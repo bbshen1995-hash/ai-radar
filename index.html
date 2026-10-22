@@ -523,7 +523,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-24",
       "status": "等待中",
-      "last_checked": "2026-10-15",
+      "last_checked": "2026-10-22",
       "history": [
         {
           "date": "2026-09-24",
@@ -544,7 +544,7 @@
       "stop_when": "購入或改變方案",
       "since": "2026-09-24",
       "status": "等待中",
-      "last_checked": "2026-10-15",
+      "last_checked": "2026-10-22",
       "history": [
         {
           "date": "2026-09-24",
@@ -561,7 +561,7 @@
       "stop_when": "Claude 可直接讀 Reddit，或不再需要 Reddit 資料",
       "since": "2026-10-07",
       "status": "等待中",
-      "last_checked": "2026-10-15",
+      "last_checked": "2026-10-22",
       "history": [
         {
           "date": "2026-10-07",
@@ -577,6 +577,166 @@
 <script type="application/json" id="weekly-reports">
 {
   "reports": [
+    {
+      "week": "2026-10-22",
+      "schema": 2,
+      "range": {
+        "from": "2026-10-14",
+        "to": "2026-10-22"
+      },
+      "items": [
+        {
+          "tier": "headline",
+          "domain": "ai",
+          "tags": [
+            "new"
+          ],
+          "extended": false,
+          "title": "Claude Duet：在背景替你盯信箱與待辦的代理",
+          "lead": "10/21 Anthropic 推出 Claude Duet 研究預覽版。它是在背景工作、需要你時才通知的代理 App，目前只開放美國 Pro 與 Max 用戶排候補，台灣還不能用。",
+          "what": "Duet 是獨立的 iOS 與 Android App，電腦上走 claude.ai 網頁。它每天早上整理已連接帳號裡最重要的事。之後每隔幾小時檢查一次，有事才通知你。\n\n它能接排會議、做儀表板與預測、寫原型與網頁這類工作。Duet 跑在自己的虛擬機上，內建瀏覽器，所以你的電腦和手機不必開著。它可串接 Claude Marketplace 上超過 6,000 個連接器與外掛。官方舉的例子有 Gmail、Slack、Canva、Docusign。\n\n發送訊息、付款、簽署文件、刪除東西之前，它會列出要做的動作，等你核准。買賣證券、帳戶間轉帳這類動作，就算你核准也不做。信用卡號與身分證號由專門的分類器擋下。",
+          "why": "過去的 Claude 要你開口才動。Duet 是 Anthropic 第一個預設主動盯事情的產品，把排程、監看與通知做成內建功能。\n\n它和一般對話共用同一份額度。官方明寫背景檢查與大型任務會吃更多額度，所以「主動」本身有成本。之後評估方案時，要算的不只是你用多少，還有你讓它盯多少。",
+          "relation": "你已經用排程任務、晨間簡報與事工提醒系統，自己搭出類似的東西，也用手機推播核准權限。Duet 等於官方版的同一套做法。\n\n差別有兩點。它跑在 Anthropic 的雲端機器上，不靠你的 Mac。它也讀不到你本機的對話庫與工具。你的排程很多是讀本機檔案，這部分它取代不了。",
+          "limits": "目前只限美國。官方頁沒有寫其他國家何時開放，也沒寫 Team 與 Enterprise 何時納入。\n\n官方自己列出的限制：它可能誤讀訊息串、誤判輕重緩急；訂票這類個人事務比工作任務弱；還不能讓你看它的瀏覽器畫面。第三方彙整說它用 Opus 5.5，官方產品頁這次沒有讀到模型名稱。",
+          "dates": {
+            "event": "2026-10-21",
+            "published": "2026-10-21",
+            "checked": "2026-10-22"
+          },
+          "verdict": {
+            "level": "passive",
+            "practice": "台灣開放前不必處理。開放後先只接一個信箱跑一週，看它一天吃掉多少額度。再拿來跟你現有的排程任務比，決定哪些交給它。"
+          },
+          "links": [
+            {
+              "label": "Claude 官方部落格：Introducing Claude Duet",
+              "url": "https://claude.com/resources/articles/claude-duet"
+            },
+            {
+              "label": "Claude 產品頁：Claude Duet",
+              "url": "https://claude.com/product/claude-duet"
+            }
+          ]
+        },
+        {
+          "tier": "main",
+          "domain": "ai",
+          "also": [
+            "design"
+          ],
+          "tags": [
+            "capability"
+          ],
+          "extended": false,
+          "title": "Claude Code 新增閒置壓縮，長對話放著會自動摘要",
+          "lead": "Claude Code 2.1.299 加入閒置壓縮。超過 20 萬 token 的對話閒置約 54 分鐘，會自動壓縮成摘要，可以在 /config 關掉。",
+          "what": "依官方更新紀錄，2.1.299 在終端機版加入閒置壓縮。對話超過 20 萬 token、閒置約 54 分鐘，就自動壓縮。門檻可用環境變數 CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS 調整。2.1.302 在 /config 加了開關。\n\n同一週還有幾項跟長時間執行有關的改動。2.1.301 與 2.1.305 各新增一個環境變數，讓無人值守的重試撞到額度上限時，能提早結束，或察覺額度已提前恢復。2.1.302 也在 /design-sync 與 /design-login 加上提示。內容是獨立的 Claude Design 12/14 關閉。",
+          "why": "54 分鐘的設計，是趕在一小時的提示快取過期前先壓縮。壓縮後再回來，下一則訊息不必重送整段長對話，比較省額度。\n\n代價是細節會變成摘要。長對話放著去開會，回來時它記得的是摘要版，原文細節可能已經不在上下文裡。",
+          "relation": "你常在同一個 session 連做多段長工作，也研究過上下文用量的顯示與 20 萬門檻。閒置壓縮會在你離開時改變上下文，回來時要先知道它可能已經壓過。\n\n你平常用的是桌面版的 Code 分頁。更新紀錄寫的是「在終端機」，桌面版是否同樣觸發，紀錄沒寫。DesignSync 的關閉提示，則直接對應你那兩套設計系統專案。",
+          "limits": "各版本的日期取自第三方彙整 havoptic，官方更新紀錄沒有標日期。54 分鐘與 20 萬 token 是更新紀錄寫的數字，實際觸發條件沒有實測。桌面版與雲端 session 是否適用，官方沒寫。",
+          "dates": {
+            "event": "2026-10-14",
+            "published": "2026-10-14",
+            "checked": "2026-10-22"
+          },
+          "verdict": {
+            "level": "try",
+            "practice": "下次長對話離開前，記一下當時的上下文用量，回來看有沒有出現壓縮訊息。若壓縮後你得重講脈絡，就在 /config 關掉，或把門檻調高。"
+          },
+          "links": [
+            {
+              "label": "Claude Code 官方更新紀錄（GitHub CHANGELOG）",
+              "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+            },
+            {
+              "label": "havoptic：Claude Code October 2026 Releases",
+              "url": "https://www.havoptic.com/releases/claude-code/2026/10"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "instrument",
+          "tags": [
+            "new",
+            "capability"
+          ],
+          "title": "Yamaha CK76 開放預購，CK 系列 OS 2.0 免費更新",
+          "lead": "Yamaha 推出 76 鍵的 CK76，Sweetwater 標 1,249.99 美元、預購中。CK61 與 CK88 可免費更新 OS 2.0，多三組電鋼琴音色、8 組 Live Set 與進階分割模式。",
+          "limits": "CK76 用的是輕量的 FSB 鍵盤，不是配重琴鍵。你主堂選琴以平台鋼琴手感為準、音色全走 MainStage，這台不在那個條件內。台灣代理與上市日這次沒有查。",
+          "dates": {
+            "event": "2026-10-21",
+            "published": "2026-10-21",
+            "checked": "2026-10-22"
+          },
+          "links": [
+            {
+              "label": "Gearnews：Yamaha CK Series CK76 and OS 2.0",
+              "url": "https://www.gearnews.com/yamaha-ck-series-synth/"
+            },
+            {
+              "label": "Sweetwater：Yamaha CK76 Stage Keyboard",
+              "url": "https://www.sweetwater.com/store/detail/CK76--yamaha-ck76-stage-keyboard"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "plugin",
+          "also": [
+            "production"
+          ],
+          "tags": [
+            "new",
+            "access"
+          ],
+          "title": "PitchNet：免費開源的人聲修音插件",
+          "lead": "Session Loops 發表 PitchNet，在鋼琴卷軸上改人聲的音高與時值，再用 AI 重新合成。Mac 版有 AU、VST3、AAX，需 macOS 13 以上，免帳號直接下載。",
+          "access": "free",
+          "limits": "目前是 0.7.2 版，音質說法是廠商自述，還沒有獨立評測。ARA 只寫支援「相容的 DAW」，Logic 能否用 ARA 沒有確認。官方建議有獨立顯示卡，用內建顯示晶片會變慢。",
+          "dates": {
+            "published": "2026-10-17",
+            "checked": "2026-10-22"
+          },
+          "links": [
+            {
+              "label": "Bedroom Producers Blog：Session Loops releases PitchNet",
+              "url": "https://bedroomproducersblog.com/2026/10/20/session-loops-pitchnet/"
+            },
+            {
+              "label": "Production Expert：Session Loops PitchNet",
+              "url": "https://www.production-expert.com/production-expert-1/session-loops-pitchnet-free-pitch-correction-plugin"
+            }
+          ]
+        },
+        {
+          "tier": "brief",
+          "domain": "pa",
+          "tags": [
+            "new"
+          ],
+          "title": "IK ARC Studio+：不接電腦也能做監聽校正",
+          "lead": "IK 推出 ARC Studio+，在硬體裡做房間校正，用附的量測麥克風就能不接電腦建立校正檔。新增超低音輸出與自動相位、分頻，另有 S/PDIF 與 USB-C 輸入。",
+          "limits": "Sweetwater 標 399.99 美元，Thomann 標 469 歐元。舊 ARC Studio 與 ARC Mic 用戶另有升級包。校正效果是廠商自述，沒有第三方評測。它跟 SoundID 或 Apollo 監聽校正的差別，文章都沒有比較。",
+          "dates": {
+            "published": "2026-10-15",
+            "checked": "2026-10-22"
+          },
+          "links": [
+            {
+              "label": "Gearnews：IK Multimedia ARC STUDIO Plus",
+              "url": "https://www.gearnews.com/ik-multimedia-arc-studio-plus/"
+            },
+            {
+              "label": "Production Expert：IK Multimedia ARC Studio+",
+              "url": "https://www.production-expert.com/production-expert-1/ik-multimedia-arc-studio-adds-sub-management-and-digital-io"
+            }
+          ]
+        }
+      ],
+      "tracking_updates": [],
+      "corrections": []
+    },
     {
       "week": "2026-10-15",
       "schema": 2,
@@ -1006,7 +1166,12 @@
         ]
       },
       "tracking_updates": [],
-      "corrections": []
+      "corrections": [
+        {
+          "date": "2026-10-22",
+          "text": "「Gemini 4 Argon 開放 Google AI Pro 與 Ultra」的「跟你的關係」寫你沒有 Google AI 付費方案，有誤。你在 Gemini.app 用的帳號是 AI Pro，10/16 起也已在 Antigravity 實測 Argon。所以 Argon 對你是已在用的工具，不只是比較基準。"
+        }
+      ]
     },
     {
       "week": "2026-10-08",
